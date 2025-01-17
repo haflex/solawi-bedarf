@@ -70,7 +70,7 @@ const onAddAdditionalShipmentItem = () => {
     depotIds: [],
     quantity: 0,
     totalShipedQuantity: 0,
-    isBio: false,
+    isBio: true,
     description: null,
     showItem: true,
   });
@@ -80,7 +80,7 @@ const onAddShipmentItem = () => {
   editShipment.value.shipmentItems.push({
     depotIds: [],
     totalShipedQuantity: 0,
-    isBio: false,
+    isBio: true,
     description: null,
     multiplicator: 100,
     conversionFrom: 1,

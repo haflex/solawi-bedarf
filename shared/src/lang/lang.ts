@@ -177,7 +177,7 @@ export const language = {
           title: "Bedarfsmeldung",
           msrp: "Dein Richtwert: {total} € pro Monat",
           msrpTooltip:
-          "Der Richtwert errechnet sich aus dem Sockelbeitrag und den von Dir gewählten Lebensmitteln und Mengen.",
+          "Der Richtwert errechnet sich aus den von Dir gewählten Lebensmitteln und Mengen.",
           offer: "Dein finanzieller Beitrag: {offer} € pro Monat",
           item: {
             freq: "{freq} voraussichtliche Häufigkeit (in Wochen)",
@@ -421,7 +421,7 @@ export const language = {
   },
   components: {
     seasonSelector: {
-      label: "Saison-Auswahl",
+      label: "Saison",
       description:
         "Hier kannst du festlegen, für welche Saison du deinen Bedarf anmelden und Einstellungen vornehmen möchtest.",
       notYetAvailable:

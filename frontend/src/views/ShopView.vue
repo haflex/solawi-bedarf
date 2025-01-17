@@ -43,7 +43,7 @@ const biStore = useBIStore();
 const { depot, msrp, submit } = storeToRefs(biStore);
 const { userId } = storeToRefs(userStore);
 const { productCategories } = storeToRefs(productStore);
-const { activeConfigId, config } = storeToRefs(configStore);
+const { activeConfigId } = storeToRefs(configStore);
 
 const open = ref(false);
 const faqOpen = ref(false);

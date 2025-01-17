@@ -32,7 +32,7 @@ export const appConfig = {
       relative: 1.0, // 1.0
     },
     [UserCategory.CAT115]: {
-      absolute: 50.0, // 0.0
+      absolute: 0.0, // 0.0
       relative: 1.0, // 1.15
     },
     [UserCategory.CAT130]: {
@@ -44,7 +44,6 @@ export const appConfig = {
   offerReasonLimit: 0.7, // 0.9
   needsCategoryReason: [UserCategory.CAT100], //[UserCategory.CAT115, UserCategory.CAT100]
   availableCategories: [
-    UserCategory.CAT130,
     UserCategory.CAT115,
   ], // [UserCategory.CAT130, UserCategory.CAT115, UserCategory.CAT100]
   defaultCategory: UserCategory.CAT115, // UserCategory.CAT130

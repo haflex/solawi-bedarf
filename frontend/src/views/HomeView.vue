@@ -37,7 +37,7 @@ onMounted(async () => {
 <template>
   <v-card class="ma-4">
     <v-card-title style="white-space: normal">
-      {{ t.cards.shop.title }}
+      Bedarfsmeldung
     </v-card-title>
 
     <v-card-subtitle style="white-space: normal">
