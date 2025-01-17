@@ -17,40 +17,39 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import { Unit, UserCategory } from "./enum";
 
 export const appConfig = {
-  appUrl: "https://bedarf.lebenswurzel.biz",
+  appUrl: "https://plantage.weites-feld.org",
   address: {
-    name: "Solawi-Projekt Gemüseanbau in Graupa",
-    street: "Lindengrundstrasse 20",
+    name: "Weites Feld gGmbH",
+    street: "Hauptstraße 62a",
     postalcode: "01796",
-    city: "Pirna OT Graupa",
-    email: "solawi@lebenswurzel.org",
-    forumContact: "@rike",
+    city: "Struppen",
+    email: "hallo@weites-feld.org",
+    forumContact: "noForum"
   },
   msrp: {
     [UserCategory.CAT100]: {
-      absolute: 0, // 50.0
+      absolute: 50.0, // 0.0
       relative: 1.0, // 1.0
     },
     [UserCategory.CAT115]: {
-      absolute: 0, // 50
-      relative: 1.15, // 1.0
+      absolute: 50.0, // 0.0
+      relative: 1.0, // 1.15
     },
     [UserCategory.CAT130]: {
-      absolute: 0, // 50
-      relative: 1.3, // 1.0
+      absolute: 50.0, // 0.0
+      relative: 1.0, // 1.3
     },
   },
-  offerLimit: 0.6, // 0.75
-  offerReasonLimit: 0.9, // 0.7
-  needsCategoryReason: [UserCategory.CAT115, UserCategory.CAT100], // []
+  offerLimit: 0.75, // 0.6
+  offerReasonLimit: 0.7, // 0.9
+  needsCategoryReason: [UserCategory.CAT100], //[UserCategory.CAT115, UserCategory.CAT100]
   availableCategories: [
     UserCategory.CAT130,
     UserCategory.CAT115,
-    UserCategory.CAT100,
-  ], // [UserCategory.CAT130, UserCategory.CAT115]
-  defaultCategory: UserCategory.CAT130, // UserCategory.CAT115
-  showAlternateDepot: true, // false
-  externalAuthProvider: false, // true
+  ], // [UserCategory.CAT130, UserCategory.CAT115, UserCategory.CAT100]
+  defaultCategory: UserCategory.CAT115, // UserCategory.CAT130
+  showAlternateDepot: false, // true
+  externalAuthProvider: true, // false
   shipment: {
     totalQuantityRound: {
       [Unit.PIECE]: 1,
@@ -59,6 +58,7 @@ export const appConfig = {
     },
   },
   meta: {
-    sourceCodeUrl: "https://github.com/lebenswurzel/solawi-bedarf",
-  },
+    sourceCodeUrl: "https://github.com/lebenswurzel/solawi-bedarf"
+  }
 };
+

@@ -26,7 +26,7 @@ export const config = {
     secret: process.env.POSTGRES_SECRET || "secret",
   },
   server: {
-    serverPort: process.env.SERVER_PORT || "3000",
+    serverPort: "3030",
     initialUsername: process.env.INITIAL_USERNAME || "admin",
     initialPassword: process.env.INITIAL_PASSWORD || "admin",
   },
