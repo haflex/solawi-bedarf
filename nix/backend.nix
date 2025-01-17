@@ -4,24 +4,7 @@ buildNpmPackage {
     inherit version src npmDepsHash;
     sourceRoot = "source/backend";
 
-    #unpackPhase = ''
-    #    mkdir source
-    #    cp -r $src/* source/
-    #    chmod ug+w -R source
-    #'';
-
     dontBuild = true;
-
-    patches = [
-        #./001-backend-package.patch
-        ./002-database-use-url-2.patch
-        ./003-server-port.patch
-        ./004-roles.patch
-    ];
-    #postPatchPhase = ''
-    #    chmod +w ../shared/src/config.ts
-    #    cp ${configFile} ../shared/src/config.ts
-    #'';
 
     installPhase = ''
         mkdir -p $out/backend

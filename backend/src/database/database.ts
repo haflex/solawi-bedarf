@@ -95,7 +95,7 @@ console.log(
 
 const dataSourceOptions: PostgresConnectionOptions = {
   type: "postgres",
-  host: config.db.url,
+  url: config.db.url,
   port,
   username: config.db.username,
   password: config.db.password,
