@@ -62,15 +62,15 @@ onMounted(() => {
 <template>
   <v-card class="ma-4">
     <v-card-title>Login</v-card-title>
-    <v-card-subtitle>
+    <!--<v-card-subtitle>
       Noch kein Login?
       <router-link to="/register">Hier Registrieren</router-link>
-    </v-card-subtitle>
+    </v-card-subtitle>-->
     <v-card-text>
       <v-text-field
         v-model="username"
         label="Anmeldename"
-        placeholder="LW23042"
+        placeholder="vorname.nachname"
       ></v-text-field>
       <v-text-field label="Passwort" type="password" v-model="password" />
       <v-checkbox label="Heute angemeldet bleiben" v-model="untilMidnight" />

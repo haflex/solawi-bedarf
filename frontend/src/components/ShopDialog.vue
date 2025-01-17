@@ -98,7 +98,7 @@ const depotOptions = computed(() => {
     .map((d) => ({
       title: d.name,
       value: d.id,
-      subtitle: `${d.address} | ${d.openingHours}`,
+      subtitle: `${d.address} | ${d.openingHours} | ${d.comment}`,
     }));
 });
 
@@ -243,7 +243,7 @@ const onSave = () => {
   <v-dialog :model-value="open" @update:model-value="onClose">
     <v-card>
       <v-card-title>
-        <span class="text-h5">Bedarfsanmeldung für <SeasonText /></span>
+        <span class="text-h5">Bedarfsmeldung für <SeasonText /></span>
       </v-card-title>
       <v-card-text>
         <v-alert

@@ -121,7 +121,7 @@ const onUserPdfClick = async () => {
     <v-card-title> Übersicht</v-card-title>
     <v-card-text>
       Bei Click auf "Übersicht herunterladen" wird eine aktuelle Übersicht der
-      Bedarfsanmeldung als csv heruntergeladen und generiert. Das kann eine
+      Bedarfsmeldung als csv heruntergeladen und generiert. Das kann eine
       Weile dauern und sollte mit Rücksicht auf die Nutzer nicht zur
       Hauptnutzungszeit erfolgen.
     </v-card-text>
@@ -133,7 +133,7 @@ const onUserPdfClick = async () => {
     <v-card-title> Download Depot pdf</v-card-title>
     <v-card-text>
       Bei Click auf "Übersicht herunterladen" wird eine aktuelle Übersicht der
-      Bedarfsanmeldung je Depot als pdf heruntergeladen und generiert. Das kann
+      Bedarfsmeldung je Depot als pdf heruntergeladen und generiert. Das kann
       eine Weile dauern und sollte mit Rücksicht auf die Nutzer nicht zur
       Hauptnutzungszeit erfolgen.
     </v-card-text>
@@ -147,7 +147,7 @@ const onUserPdfClick = async () => {
     <v-card-title> Download Ernteteiler pdf</v-card-title>
     <v-card-text>
       Bei Click auf "Übersicht herunterladen" wird eine aktuelle Übersicht der
-      Bedarfsanmeldung je Ernteteiler als pdf heruntergeladen und generiert. Das
+      Bedarfsmeldung je Ernteteiler als pdf heruntergeladen und generiert. Das
       kann eine Weile dauern und sollte mit Rücksicht auf die Nutzer nicht zur
       Hauptnutzungszeit erfolgen.
     </v-card-text>

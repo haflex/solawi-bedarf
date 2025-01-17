@@ -37,26 +37,37 @@ onMounted(async () => {
 <template>
   <v-card class="ma-4">
     <v-card-title style="white-space: normal">
-      Herzlich willkommen zur Bedarfsanmeldung des Solawi-Projektes!
+      {{ t.cards.shop.title }}
     </v-card-title>
 
     <v-card-subtitle style="white-space: normal">
-      Du kannst noch bis zum
-      {{
-        configStore.config?.endBiddingRound &&
-        format(configStore.config?.endBiddingRound, "dd.MM.yyyy")
-      }}
-      Deine <router-link to="/shop">Bedarfsanmeldung</router-link> abgeben und
-      bis zum
-      {{
-        configStore.config?.startBiddingRound &&
-        format(configStore.config?.startBiddingRound, "dd.MM.yyyy")
-      }}
-      Deinen Bedarf beliebig anpassen.
+      <p>
+        Am 
+        {{
+          configStore.config?.startOrder &&
+          format(configStore.config?.startOrder, "dd.MM.yyyy")
+        }}
+        beginnt die <router-link to="/shop">Bedarfsmeldung</router-link>. 
+        Anschließend findet vom 
+        {{
+          configStore.config?.startBiddingRound &&
+          format(configStore.config?.startBiddingRound, "dd.MM.yyyy")
+        }}
+        bis zum 
+        {{
+          configStore.config?.endBiddingRound &&
+          format(configStore.config?.endBiddingRound, "dd.MM.yyyy")
+        }}
+        die Beitragsrunde (ehemals Geberrunde oder Bieterrunde) statt.
+      </p>
+      <p>
+       In der Bedarfsmeldung stellst du deinen individuellen Ernteanteil zusammen. In der 
+       Beitragsrunde legst du fest, wie du das ›Weite Feld‹ mit Geld und Zeit unterstützen wirst.
+      </p>
     </v-card-subtitle>
     <router-link to="/shop">
       <v-btn class="ml-5 my-5" color="primary" variant="elevated">
-        Zur Bedarfsanmeldung
+        Zur Bedarfsmeldung
       </v-btn>
     </router-link>
   </v-card>

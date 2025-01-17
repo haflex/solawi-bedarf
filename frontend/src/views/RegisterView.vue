@@ -80,7 +80,7 @@ const click = async () => {
     <v-form v-model="valid" @submit.prevent @submit="click">
       <v-card-text>
         <p>
-          Wenn Du Dich für die Bedarfsanmeldung registrierst, ist das
+          Wenn Du Dich für die Bedarfsmeldung registrierst, ist das
           <strong>keine</strong> verbindliche Anmeldung Deines Bedarfs. Du
           kannst Dich registrieren, um zu schauen, ob das Gemüse und die anderen
           Nahrungsmittel zu Dir passen. Erst die von Dir mit Ablauf der

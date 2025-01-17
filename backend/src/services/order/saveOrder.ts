@@ -253,7 +253,7 @@ export const saveOrder = async (
       attachments: pdfBlob
         ? [
             {
-              filename: `Bedarfsanmeldung ${orderUser.name} ${format(currentDate, "yyyy-MM-dd HH_mm_ss")}.pdf`,
+              filename: `Bedarfsmeldung ${orderUser.name} ${format(currentDate, "yyyy-MM-dd HH_mm_ss")}.pdf`,
               data: pdfBlob,
             },
           ]
