@@ -14,7 +14,7 @@ in {
         ldapEnable = mkEnableOption "LDAP";
         ldapUrl = mkOption { type = types.str; };
         ldapAdminDN = mkOption { type = types.str; };
-        ldapAdminPasswordFile = mkOption { type = types.str; };
+        ldapEnvFile = mkOption { type = types.str; }; # for setting admin password 
         ldapUserSearchBase = mkOption { type = types.str; };
         ldapGroupSearchBase = mkOption { type = types.str; };
         ldapGroupMemberAttribute = mkOption { type = types.str; };
@@ -52,7 +52,6 @@ in {
                 LDAP_ENABLED = "true";
                 LDAP_URL = cfg.ldapUrl;
                 LDAP_ADMIN_DN = cfg.ldapAdminDN;
-                LDAP_ADMIN_Password = builtins.readFile cfg.ldapAdminPasswordFile;
                 LDAP_USER_SEARCHBASE = cfg.ldapUserSearchBase;
                 LDAP_GROUP_SEARCHBASE = cfg.ldapGroupSearchBase;
                 LDAP_GROUP_MEMBER_ATTRIBUTE = cfg.ldapGroupMemberAttribute;
@@ -61,7 +60,9 @@ in {
             serviceConfig = {
                 User = "plant";
                 Group = "plant";
-            };
+            } // (if cfg.ldapEnable then {
+                EnvironmentFile = cfg.ldapEnvFile;
+            } else {});
         };
         #nginx
         services.nginx.virtualHosts."${cfg.host}" = {
