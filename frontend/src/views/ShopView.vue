@@ -145,47 +145,23 @@ onMounted(refresh);
       {{ depot?.comment }}
     </v-card-subtitle>
     <v-card-text>
-      <p>
-        Bitte wähle in den entsprechenden Kategorien die
-        Lebensmittel (Gemüse, Eier, Backwaren, Getreide, Lupinenkaffee) aus, die Du in der Saison 
-        2024/25 im Rahmen der solidarischen kooperativen Selbstversorgung vom ›Weiten Feld‹ beziehen 
-        möchtest. Lege dafür Deine individuelle Menge
-        je <u>geplanter</u> Verteilung
-        <v-icon>mdi-truck-fast-outline</v-icon> fest. Bitte beachte die
-        zusätzlichen Infor&shy;matio&shy;nen für manche Nahrungs&shy;mittel
-        (abrufbar über das Information-Symbol
-        <v-icon>mdi-information-outline</v-icon> hinter dem Namen des
-        Lebensmittels) sowie den
-        <a
-          style="color: #6750a4; cursor: pointer"
-          @click="() => (faqOpen = true)"
-        >
-          <u>Fragen & Antworten</u> (F&A) 
-        </a>
-        Bereich.
-      </p><br />
-      <p>
-        Die <strong>infrastrukturelle Basis</strong>, wie Hof, Land, Anlagen und Maschinen, ist eine 
-        wichtige Voraussetzung dafür, dass die Mitglieder des ›Weiten Feldes‹ überhaupt in den 
-        Genuss von Ernte kommen. 
-        Weil die Finanzierung der Infrastruktur eine besondere Herausforderung darstellt, zahlt jedes 
-        Mitglied unabhängig vom individuellen Bedarf einen <strong>Sockelbeitrag von €50 im Monat</strong>.
-      </p><br />
-      <p>
-        Wir haben mit dem ›Weiten Feld‹ viel vor und benötigen dafür Deine 
-        Unterstützung. Darum haben wir uns entschieden, unser Angebot an das Leisten von 
-        <strong>mindestens 24 Feldstunden je Saison</strong> zu knüpfen. Es gibt viele verschiedene 
-        Möglichkeiten der Mitarbeit. Für jeden wird etwas passendes dabei sein, davon sind wir überzeugt.
-      </p><br />
-      <p>
-        Sollte es dir nicht möglich sein, das ›Weite Feld‹ durch deine Zeit auf dem Acker, 
-        in den verschiedenen Arbeitsgruppen, Ämtern oder Gremien zu unterstützen, kannst du als Ausgleich 
-        unseren ideellen Bereich mit einer Spende von €24 je Feldstunde fördern. Der ideelle Bereich 
-        umfasst den Natur- und Artenschutz, die Förderung der Biodiversität, die Erhaltung des 
-        Kulturerbes, Natur- und Umweltbildung, Inklusion und Klimaschutz. Die Spenden werden 
-        ausschließlich im ideellen Bereich verwendet. Sie werden nicht zur Subventionierung des Budgets 
-        des ›Weiten Feldes‹ genutzt.
-      </p>
+      Bitte wähle in den entsprechenden Kategorien die
+      Lebensmittel (Gemüse, Eier, Backwaren, Getreide, Lupinenkaffee) aus, die Du in der Saison 
+      2024/25 im Rahmen der solidarischen kooperativen Selbstversorgung vom ›Weiten Feld‹ beziehen 
+      möchtest. Lege dafür Deine individuelle Menge
+      je <u>geplanter</u> Verteilung
+      <v-icon>mdi-truck-fast-outline</v-icon> fest. Bitte beachte die
+      zusätzlichen Infor&shy;matio&shy;nen für manche Nahrungs&shy;mittel
+      (abrufbar über das Information-Symbol
+      <v-icon>mdi-information-outline</v-icon> hinter dem Namen des
+      Lebensmittels) sowie den
+      <a
+        style="color: #6750a4; cursor: pointer"
+        @click="() => (faqOpen = true)"
+      >
+        <u>Informationen & Grundlagen</u>
+      </a>
+      Bereich.
     </v-card-text>
   </v-card>
 
