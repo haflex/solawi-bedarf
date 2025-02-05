@@ -80,9 +80,9 @@ export const saveOrder = async (
   if (!body.confirmGTC) {
     ctx.throw(http.bad_request, "commitment not confirmed");
   }
-  if (!appConfig.availableCategories.includes(body.category)) {
-    ctx.throw(http.bad_request, "no valid category");
-  }
+  //if (!appConfig.availableCategories.includes(body.category)) {
+  //  ctx.throw(http.bad_request, "no valid category");
+  //}
 
   if (!isRequisitionActive(role, active, requisitionConfig, now)) {
     ctx.throw(http.bad_request, "requisition not active");

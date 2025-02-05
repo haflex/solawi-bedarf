@@ -29,8 +29,8 @@ import {
   isCategoryReasonValid,
   isOfferReasonValid,
   isOfferValid,
-  needsCategoryReason,
-  needsOfferReason,
+  //needsCategoryReason,
+  //needsOfferReason,
   minOffer,
 } from "../../../shared/src/validation/reason.ts";
 import SeasonText from "./styled/SeasonText.vue";
@@ -114,9 +114,9 @@ const alternateDepot = computed(() => {
   return depots.value.find((d) => d.id == alternateDepotId.value);
 });
 
-const enableOfferReason = computed(() =>
-  needsOfferReason(modelInt.value, msrp.value.total),
-);
+//const enableOfferReason = computed(() =>
+//  needsOfferReason(modelInt.value, msrp.value.total),
+//);
 
 const offerReasonHint = computed(
   () =>
@@ -127,9 +127,9 @@ const needsHigherOffer = computed(
   () => !isOfferValid(modelInt.value, msrp.value.total),
 );
 
-const enableCategoryReason = computed(() =>
-  needsCategoryReason(category.value),
-);
+//const enableCategoryReason = computed(() =>
+//  needsCategoryReason(category.value),
+//);
 
 const categoryReasonHint = computed(
   () => !isCategoryReasonValid(category.value, categoryReason.value),
@@ -286,14 +286,14 @@ const onSave = () => {
           :persistent-hint="needsHigherOffer"
           :label="t.offer.label"
         />
-        <v-text-field
+        <!--<v-text-field
           class="mb-5"
           v-if="enableOfferReason"
           v-model="offerReason"
           :label="t.offerReason.label"
           :hint="offerReasonHint ? t.offerReason.hint : undefined"
           :persistent-hint="offerReasonHint"
-        />
+        />-->
         <v-select
           class="mb-5"
           :model-value="depotId.actual"
@@ -342,7 +342,7 @@ const onSave = () => {
             </div>
           </v-expand-transition>
         </v-alert>
-        <v-select
+        <!--<v-select
           class="mb-5"
           v-model="category"
           :items="categoryOptions"
@@ -351,15 +351,15 @@ const onSave = () => {
           persistent-hint
           :label="t.category.label"
         >
-        </v-select>
-        <v-text-field
+        </v-select>-->
+        <!--<v-text-field
           class="mb-5"
           v-if="enableCategoryReason"
           v-model="categoryReason"
           :label="t.categoryReason.label"
           :hint="categoryReasonHint ? t.categoryReason.hint : undefined"
           :persistent-hint="categoryReasonHint"
-        />
+        />-->
         <div class="mb-3">{{ t.confirm.title }}</div>
         <v-checkbox
           v-model="confirmGTC"

@@ -147,7 +147,7 @@ onMounted(refresh);
     <v-card-text>
       Bitte wähle in den entsprechenden Kategorien die
       Lebensmittel (Gemüse, Eier, Backwaren, Getreide, Lupinenkaffee) aus, die Du in der Saison 
-      2024/25 im Rahmen der solidarischen kooperativen Selbstversorgung vom ›Weiten Feld‹ beziehen 
+      2025/26 im Rahmen der solidarischen kooperativen Selbstversorgung vom ›Weiten Feld‹ beziehen 
       möchtest. Lege dafür Deine individuelle Menge
       je <u>geplanter</u> Verteilung
       <v-icon>mdi-truck-fast-outline</v-icon> fest. Bitte beachte die

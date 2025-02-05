@@ -88,8 +88,8 @@ export const language = {
           subtitle: "finanzielle Unterstützung des ideellen Bereichs",
         },
         [UserCategory.CAT115]: {
-          title: "aktives Mitglied",
-          subtitle: "Mitarbeit ca. 2 Feldstunden/Monat",
+          title: "ErnteTeiler",
+          subtitle: "teilt Ernte",
         },
         [UserCategory.CAT100]: {
           title: "engagiertes Mitglied",
@@ -194,7 +194,7 @@ export const language = {
         },
         offer: {
           label: "Finanzieller Beitrag pro Monat [€]",
-          hint: "Mindestwert für Deinen finanziellen Beitrag: {msrp}€",
+          hint: "Mindestwert für Deinen finanziellen Beitrag: {msrp}€. Wird dieser unterschritten ist es nicht möglich deine Bedarfsmeldung zu speichern",
         },
         offerReason: {
           label: "Warum möchtest Du weniger zahlen?",
