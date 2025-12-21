@@ -1,0 +1,87 @@
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: with lib; let
+  cfg = config.services.solawi-bedarf;
+
+in {
+    options.services.solawi-bedarf = {
+        enable = mkEnableOption "Solawi Bedarf";
+        package = mkOption {  };
+        host = mkOption { type = types.str; };
+        backendPort = mkOption { type = types.int; default = 3000; };
+        ldapEnable = mkEnableOption "LDAP";
+        ldapUrl = mkOption { type = types.str; };
+        ldapAdminDN = mkOption { type = types.str; };
+        ldapEnvFile = mkOption { type = types.str; }; # for setting admin password 
+        ldapUserSearchBase = mkOption { type = types.str; };
+        ldapGroupSearchBase = mkOption { type = types.str; };
+        ldapGroupMemberAttribute = mkOption { type = types.str; };
+        ldapRoleAdmin = mkOption { type = types.str; };
+        ldapRoleEmployee = mkOption { type = types.str; };
+        ldapRoleUser = mkOption { type = types.str; };
+    };
+
+    config = mkIf cfg.enable
+    {
+        #database
+        services.postgresql = {
+            enable = true;
+            ensureDatabases = ["plant"];
+            ensureUsers = [
+            {
+                name = "plant";
+                ensureDBOwnership = true;
+            }
+            ];
+        };
+        #user
+        users.users.plant = {
+            isSystemUser = true;
+            group = "plant";
+        };
+        users.groups.plant = {};
+        systemd.services.bedarf-be = {
+            description = "Plantage Backend";
+            wantedBy = ["default.target"];
+            after = [ "postgresql.service" ];
+            environment = {
+                POSTGRES_URL = "socket:/run/postgresql";
+                POSTGRES_PORT = "5432";
+                POSTGRES_DB = "plant";
+                SERVER_PORT = (toString cfg.backendPort);
+            } // (if cfg.ldapEnable then {
+                LDAP_ENABLED = "true";
+                LDAP_URL = cfg.ldapUrl;
+                LDAP_ADMIN_DN = cfg.ldapAdminDN;
+                LDAP_USER_SEARCHBASE = cfg.ldapUserSearchBase;
+                LDAP_GROUP_SEARCHBASE = cfg.ldapGroupSearchBase;
+                LDAP_GROUP_MEMBER_ATTRIBUTE = cfg.ldapGroupMemberAttribute;
+                LDAP_ROLE_ADMIN = cfg.ldapRoleAdmin;
+                LDAP_ROLE_EMPLOYEE = cfg.ldapRoleEmployee;
+                LDAP_ROLE_USER = cfg.ldapRoleUser;
+            } else {});
+            script = "${cfg.package}/bin/bedarf-be";
+            serviceConfig = {
+                User = "plant";
+                Group = "plant";
+            } // (if cfg.ldapEnable then {
+                EnvironmentFile = cfg.ldapEnvFile;
+            } else {});
+        };
+        #nginx
+        services.nginx.virtualHosts."${cfg.host}" = {
+            root = "${cfg.package}/frontend/dist";
+            locations = {
+            "/api/" = {
+                proxyPass = "http://localhost:${toString cfg.backendPort}/";
+            };
+            "/".extraConfig = ''
+                add_header 'Cache-Control' 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0';
+            '';
+            };
+        };
+    };
+}

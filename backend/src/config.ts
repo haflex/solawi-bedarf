@@ -26,7 +26,7 @@ export const config = {
     secret: process.env.POSTGRES_SECRET || "secret",
   },
   server: {
-    serverPort: "3000",
+    serverPort: process.env.SERVER_PORT || "3000",
     initialUsername: process.env.INITIAL_USERNAME || "admin",
     initialPassword: process.env.INITIAL_PASSWORD || "admin",
   },
@@ -62,9 +62,9 @@ export const config = {
       process.env.LDAP_GROUP_SEARCHBASE || "ou=groups,dc=solawi,dc=biz",
     groupMemberAttribute: process.env.LDAP_GROUP_MEMBER_ATTRIBUTE || "member",
     groupRoleMapping: {
-      [UserRole.ADMIN]: "plantage_admin",
-      [UserRole.EMPLOYEE]: "plantage_employee",
-      [UserRole.USER]: "plantage_user",
+      [UserRole.ADMIN]: process.env.LDAP_ROLE_ADMIN || "plantage_admin",
+      [UserRole.EMPLOYEE]: process.env.LDAP_ROLE_EMPLOYEE || "plantage_employee",
+      [UserRole.USER]: process.env.LDAP_ROLE_USER || "plantage_user",
     },
   },
   testing: {
