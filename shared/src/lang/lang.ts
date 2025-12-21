@@ -33,8 +33,8 @@ import {
 
 export const language = {
   app: {
-    title: "Dein Solawi-Projekt",
-    subtitle: "Gemüseanbau in Graupa",
+    title: "›Weites Feld‹",
+    subtitle: "Kooperative Landwirtschaft (CSA) · mit gutem Grund und viel Geschmack!",
     navigation: {
       title: "Navigation",
       subtitle: "Solawi",
@@ -155,10 +155,10 @@ export const language = {
   pages: {
     login: {
       title: "Login",
-      subtitle: 'Noch kein Login? <a href="/#/register">Hier registrieren</a>',
+      subtitle: '',
       username: {
         label: "Anmeldename",
-        placholder: "LW23042",
+        placholder: "vorname.nachname",
       },
       password: {
         label: "Passwort",
@@ -170,23 +170,23 @@ export const language = {
     },
     home: {
       navigation: {
-        title: "Home",
+        title: "Startseite",
       },
       cards: {
         shop: {
           title:
-            "Herzlich willkommen zur Bedarfsanmeldung des Solawi-Projektes!",
+            "Herzlich willkommen zur Bedarfsmeldung des ›Weiten Feldes‹",
           subtitle:
-            'Hier kannst Du Deine <a href="/#/shop">Bedarfsanmeldung</a> abgeben.',
+            'Hier kannst Du Deine <a href="/#/shop">Bedarfsmeldung</a> abgeben.',
           offers: "{offers} € erreichtes monatliches Budget",
           food: "{food} % verteilte Nahrungsmittel aus Selbstanbau",
           action: "Zur Bedarfsmeldung",
         },
         list: {
-          title: "Nahrungsmittel entsprechend Deiner Bedarfsanmeldung für",
+          title: "Nahrungsmittel entsprechend Deiner Bedarfsmeldung für",
           subtitle: "KW {kw}",
-          text: "Hier erscheinen zu gegebener Zeit die Nahrungsmittel, die Du entsprechend Deiner Bedarfsanmeldung in Deinem Depot abholen kannst.",
-          shipment: "Nach der Bedarfsanmeldung gibt es ab {from}",
+          text: "Hier erscheinen zu gegebener Zeit die Lebensmittel, die Du entsprechend Deiner Bedarfsmeldung in Deinem Depot abholen kannst.",
+          shipment: "Nach der Bedarfsmeldung gibt es ab {from}",
           additionalShipment: "Zusätzlich gibt es:",
           seasonBefore: "Die Saison ist zur Zeit noch nicht aktiv.",
         },
@@ -194,7 +194,7 @@ export const language = {
     },
     shop: {
       navigation: {
-        title: "Bedarfsanmeldung",
+        title: "Bedarfsmeldung",
       },
       cards: {
         header: {
@@ -202,20 +202,20 @@ export const language = {
           depot: "Dein Depot:",
           openingHours: "Abholzeiten:",
           explaination:
-            "Bitte wähle in den entsprechenden Kategorien das Gemüse bzw. die Nahrungsmittel aus, die Du in der {season} im Rahmen des Solawi-Projektes beziehen möchtest. Lege dafür Deine entsprechende Menge je geplanter Verteilung \u26DF fest. Bitte beachte die zusätzlichen Infor­matio­nen für manche Nahrungs­mittel (abrufbar über das Information-Symbol \u24D8 hinter dem Namen des Nahrungsmittels) sowie die",
+          "Bitte wähle in den entsprechenden Kategorien die Lebensmittel (Gemüse, Eier, Backwaren, Getreide, Lupinenkaffee) aus, die Du in der Saison {season} im Rahmen der solidarischen kooperativen Selbstversorgung vom ›Weiten Feld‹ beziehen möchtest. Lege dafür Deine individuelle Menge je <u>geplanter</u> Verteilung \u26df fest. Bitte beachte die zusätzlichen Infor&shy;matio&shy;nen für manche Nahrungs&shy;mittel (abrufbar über das Information-Symbol \u24d8 hinter dem Namen des Lebensmittels) sowie den",
           faq: "Informationen und Grundlagen",
           orderDuringSeason:
             "Für Ernteteiler, die erst während der Saison dazustoßen und die daher nicht die vollen zwölf Monate dabei sind, wird zusätzlich angezeigt, wieviel eines Produkts bereits verteilt wurde (hellgraues Lastwagensymbol mit Prozentangabe). Bei der Berechnung des Orientierungswerts sind die bereits verteilten Produkte bereits herausgerechnet.",
         },
         products: {
-          title: "Bedarfsanmeldung",
-          msrp: "Dein Orientierungswert: **{total} € pro Monat**, davon",
+          title: "Bedarfsmeldung",
+          msrp: "Dein Richtwert: **{total} € pro Monat**, davon",
           msrpSelfgrown: "{selfgrown} € für selbst angebaute Produkte",
           msrpCooperation: "{cooperation} € für Kooperationsprodukte",
           msrpCompensation:
             "{compensation} € Differenz für Verringerung selbst angebauter Produkte",
           msrpTooltip:
-            "Der Orientierungswert errechnet sich aus den von Dir gewählten Nahrungsmitteln sowie Mengen und entspricht dem durchschnittlichen Solawi-Beitrag für Deine Auswahl.",
+            "Der Orientierungswert errechnet sich aus den von Dir gewählten Lebensmitteln sowie Mengen und entspricht dem durchschnittlichen Solawi-Beitrag für Deine Auswahl.",
           msrpCompensationTooltip:
             "Ausgleichsbeitrag, da die Verringerung des Gemüses aus Eigenanbau nicht auf eine Erhöhung der Kooperationsprodukte angerechnet werden kann",
           offer: "Dein gewählter Solawi-Beitrag:",
@@ -230,19 +230,19 @@ export const language = {
         },
       },
       dialog: {
-        title: "Bedarfsanmledung",
+        title: "Bedarfsmledung",
         alert: {
           title: "Wichtige Eingabehinweise",
           text: '<p class="my-2"> In Abhängigkeit davon, was Du eingibst, erscheinen möglicherweise zusätzliche Eingabefelder.</p> <p class="mb-2">Bitte fülle alle Eingabefelder, auch die gegebenenfalls zusätzlich erscheinenden, aus und stimme den Bedingungen am Ende dieses Formulars zu. Erst wenn diese Voraus­setzungen erfüllt sind, wird der »Speichern«-Button aktiviert.</p><p>Danke!</p>',
         },
         offer: {
-          label: "Solawi-Beitrag pro Monat [€]",
-          hint: "Mindestwert für Deinen Solawi-Beitrag: {msrp}€",
+          label: "Finanzieller Beitrag pro Monat [€]",
+          hint: "Mindestwert für Deinen finanziellen Beitrag: {msrp}€. Wird dieser unterschritten ist es nicht möglich deine Bedarfsmeldung zu speichern",
           lowOfferHint: "Begründung für Deinen Solawi-Beitrag erforderlich",
         },
         offerReason: {
           label: "Warum möchtest Du weniger zahlen?",
-          hint: "Bitte gib an, warum Du weniger als den Orientierungswert zahlen möchtest (mehr als 10 Zeichen)",
+          hint: "Bitte gib an, warum Du weniger als den Richtwert zahlen möchtest.",
         },
         depot: {
           label: "Depot (Abholstation)",
@@ -253,19 +253,19 @@ export const language = {
           hint: "Das Ausweichdepot wird genutzt wenn die erste Wahl überfüllt ist.",
         },
         category: {
-          label: "Wie möchtest Du mitarbeiten?",
+          label: "Art deiner Mitgliedschaft",
         },
         categoryReason: {
           label: "Wie möchtest Du mitarbeiten?",
           hint: "Bitte gib an, wie Du mitarbeiten möchtest.",
         },
         confirm: {
-          title: "Deine Zustimmung zu den Bedingungen:",
+          title: "Deine Zustimmung zu den Bedingungen",
           label:
-            "Ich haben die »Informationen und Grundlagen« unseres „{solawiName}“ gelesen. Mir ist bewusst, dass meine Bedarfsanmeldung im gesamten Zeitraum vor Ablauf der Anmeldefrist unverbindlich bleibt und jederzeit änderbar ist. Erst mit Ablauf der Anmeldefrist werden meine zuletzt ausgewählten Nahrungsmittel und -mengen, sowie mein Solawi-Beitrag verbindlich. Ich verpflichte mich, mit meinem verbindlichen Solawi-Beitrag für die gesamte {season} (12 Monate) das Solawi-Projekt mitzufinanzieren.",
+          "Ich habe die »Fragen & Antworten« (F&A) gelesen. Mir ist bewusst, dass meine Bedarfsmeldung bis zum Beginn der Beitragsrunde unverbindlich bleibt und jederzeit änderbar ist. Erst mit Beginn der Beitragsrunde werden meine zuletzt ausgewählten Lebensmittel und Mengen sowie mein finanzieller Beitrag verbindlich. Ich verpflichte mich, mit meinem verbindlichen finanziellen Beitrag für die gesamte Saison {season} das ›Weite Feld‹ mitzufinanzieren.",
         },
         confirmContribution: {
-          title: "Bestätigung deines Mitgliedschaftsmodells als {model}:",
+          title: "Bestätigung deines Mitgliedschaftsmodells als {model}",
           label:
             "Ich habe zur Kenntnis genommen, dass es für eine gut funktionierende Solawi essentiell ist, die mit meiner Mitgliedschaft verbundenen Mitarbeitsstunden zu erfüllen und dies zu dokumentieren. Die Bedingungen der Beteiligung und Konsequenzen bei fehlender Beteiligung und Dokumentation sind mir bewusst.",
         },
@@ -303,7 +303,7 @@ export const language = {
         },
         sendConfirmationEmail: {
           title:
-            "Eine Kopie der Bedarfsanmeldung an meine hinterlegte E-Mail-Adresse schicken.",
+            "Eine Kopie der Bedarfsmeldung an meine hinterlegte E-Mail-Adresse schicken.",
           notAvailable:
             "E-Mail-Versand nicht möglich, da für dein Konto keine E-Mail-Adresse hinterlegt ist.",
         },
@@ -353,8 +353,8 @@ export const language = {
         subtitle: "Mitarbeiter",
       },
       action: {
-        createShipment: "Verteilung erstellen",
-        createForecastShipment: "Prognose-Verteilung erstellen",
+        createShipment: "Verteilung",
+        createForecastShipment: "Prognose-Verteilung",
         createShipmentItem: "Verteilung",
         createAdditionalShipmentItem: "Verteilung",
       },
@@ -368,7 +368,7 @@ export const language = {
       },
     },
     product: {
-      title: "Nahrungsmittel",
+      title: "Lebensmittel",
       subtitle: "Beiträge: {offers} €",
       navigation: {
         subtitle: "Admin",
@@ -389,9 +389,9 @@ export const language = {
         productCategoryType: "Art der enthaltenen Produkte",
         sold: "Verkauft [{unit}]",
         delivered: "Geliefert",
-        deliveries: "Verteilungen",
+        deliveries: "Lieferungen an Depots",
         description: "Beschreibung",
-        msrp: "Orientierungswert [ct/{unit}]",
+        msrp: "Richtwert [ct/{unit}]",
         msrpHint: "Der Wert gilt für engagierte Mitglieder",
         frequency: "Verteilhäufigkeit",
         quantity: "Gesamtmenge [{unit}]",
@@ -455,9 +455,9 @@ export const language = {
           "Festlegung ab wann Nutzer ihren Bedarf für die Saison anmelden können (Start der Bedarfsanmeldung). Ab dem Zeitpunkt der Bieterrunde kann der Bedarf nur noch nach oben angepasst werden. Zum Ende der Bieterrunde wird der Bedarf verbindlich.",
       },
       startOrder: "Start der Bedarfsmeldung",
-      startBiddingRound: "Start der Bieterrunde",
-      endBiddingRound: "Ende der Bieterrunde",
-      budget: "Geplantes Budget [€]",
+      startBiddingRound: "Start der Beitragsrunde",
+      endBiddingRound: "Ende der Beitragsrunde",
+      budget: "Budget [€]",
       validFrom: "Start der Saison",
       validTo: "Ende der Saison",
       newSeason: {
@@ -466,7 +466,7 @@ export const language = {
       },
     },
     content: {
-      title: "Textelemente",
+      title: "Text",
       navigation: {
         subtitle: "Admin",
       },
@@ -494,7 +494,7 @@ export const language = {
       navigation: {
         subtitle: "Admin",
       },
-      text: 'Bei Click auf "Übersicht herunterladen" wird eine aktuelle Übersicht der Bedarfsanmeldung als csv heruntergeladen und generiert. Das kann eine Weile dauern und sollte mit Rücksicht auf die Nutzer nicht zur Hauptnutzungszeit erfolgen.',
+      text: 'Bei Klick auf "Übersicht herunterladen" wird eine aktuelle Übersicht der Bedarfsmeldung als csv heruntergeladen und generiert. Das kann eine Weile dauern und sollte mit Rücksicht auf die Nutzer nicht zur Hauptnutzungszeit erfolgen.',
       action: "Übersicht Herunterladen",
       documents: {
         user: {
@@ -517,7 +517,7 @@ export const language = {
       },
       productsCard: {
         title: "Produkte nach monatlichem Umsatz",
-        text: "In Bedarfsanmeldungen enthaltene Produkte mit durchschnittlichem Monatsumsatz in Klammern.",
+        text: "In Bedarfsmeldungen enthaltene Produkte mit durchschnittlichem Monatsumsatz in Klammern.",
       },
       ordersCard: {
         title: "Bedarfsanmeldungen in der gewählten",
@@ -528,11 +528,11 @@ export const language = {
   },
   components: {
     seasonSelector: {
-      label: "Saison-Auswahl",
+      label: "Saison",
       description:
         "Hier kannst du festlegen, für welche Saison du deinen Bedarf anmelden und Einstellungen vornehmen möchtest.",
       notYetAvailable:
-        "Hier kann die nächste Saison für die Bedarfsanmeldung ausgewählt werden, sobald diese freigeschaltet wurde.",
+        "Hier kann die nächste Saison für die Bedarfsmeldung ausgewählt werden, sobald diese freigeschaltet wurde.",
     },
   },
   email: {
@@ -544,7 +544,7 @@ export const language = {
       defaultOrderConfirmationFullSeason: [
         "Liebe(r) {userName},",
 
-        "vielen Dank für Deine Bedarfsanmeldung für die {season} im {solawiName}. Deine Angaben wurden erfolgreich gespeichert.",
+        "vielen Dank für Deine Bedarfsmeldung für die {season} im {solawiName}. Deine Angaben wurden erfolgreich gespeichert.",
 
         "Im Anhang befindet sich ein PDF-Dokument mit einer Übersicht der von Dir angemeldeten Mengen für Gemüse und Kooperationsprodukte für die kommende Saison. Die Saison startet am {seasonStart} und endet am {seasonEnd}.",
 
@@ -554,9 +554,9 @@ export const language = {
 
         "**Verbindlichkeit Deiner Bedarfsmeldung:**",
 
-        "Solange die Anmeldefrist für die laufende Bieterunde (auf der [Home-Seite der Bedarfsanmeldung]({appUrl}/) sichtbar) noch nicht verstrichen ist, bleiben Deine angemeldeten Bedarfsmengen unverbindlich. Das heißt, Du kannst diese jederzeit bis zum Ende der Anmeldefrist ändern, also sowohl Deine Nahrungsmittelmengen als auch Deinen Solawi-Beitrag nach oben oder unten justieren. In folgenden Bieterunden, mit verlängerten Anmeldefristen, kannst Du Deinen Solawi-Beitrag ausschließlich nach oben justieren.",
+        "Solange die Anmeldefrist für die laufende Bieterunde (auf der [Home-Seite der Bedarfsmeldung]({appUrl}/) sichtbar) noch nicht verstrichen ist, bleiben Deine angemeldeten Bedarfsmengen unverbindlich. Das heißt, Du kannst diese jederzeit bis zum Ende der Anmeldefrist ändern, also sowohl Deine Nahrungsmittelmengen als auch Deinen Solawi-Beitrag nach oben oder unten justieren. In folgenden Bieterunden, mit verlängerten Anmeldefristen, kannst Du Deinen Solawi-Beitrag ausschließlich nach oben justieren.",
 
-        "Mit Ablauf der Anmeldefrist wird der zuletzt von Dir gespeicherte Stand Deiner Bedarfsanmeldung verbindlich. In diesem Moment gehst Du automatisch eine rechtsverbindliche Zusage mit dem Träger des Solawi-Projektes ein, woran Du bis zum Ende der Solawi-Saison am 31.03. des Folgejahres gebunden bist.",
+        "Mit Ablauf der Anmeldefrist wird der zuletzt von Dir gespeicherte Stand Deiner Bedarfsmeldung verbindlich. In diesem Moment gehst Du automatisch eine rechtsverbindliche Zusage mit dem Träger des Solawi-Projektes ein, woran Du bis zum Ende der Solawi-Saison am 31.03. des Folgejahres gebunden bist.",
 
         "**Diese Bedingungen akzeptierst Du mit der Anmeldung Deines Bedarfs:**",
 
@@ -564,7 +564,7 @@ export const language = {
 
         "Dafür kannst Du die von Dir als Bedarf angemeldeten Nahrungsmittel in dem von Dir gewählten Depot abholen (8). Dir ist dabei bewusst, dass die Häufigkeit der Verteilung je Gemüse erntebedingt schwanken kann. Du trägst sowohl Überschüsse als auch Mindererträge mit.",
 
-        "Die Information zur voraussichtlichen Häufigkeit der Verteilung erhältst Du wöchentlich per E-Mail oder über die Seite der Bedarfsanmeldung.",
+        "Die Information zur voraussichtlichen Häufigkeit der Verteilung erhältst Du wöchentlich per E-Mail oder über die Seite der Bedarfsmeldung.",
 
         "Du kannst darauf vertrauen, dass das angebaute Gemüse höhere Ansprüche erfüllt, als es die EU-Bio-Verordnung verlangt, das Gemüse zu Deiner nährstoff- sowie vitaminreichen Ernährung beiträgt und der genutzte Boden – gemäß dem Leitbild dieses Solawi-Projektes – ökologisch, naturnah, schonend bewirtschaftet und gepflegt wird. Die Pflege der organischen Bodensubstanz (wie Bodenlebewesen, Humus) und die Förderung der Artenvielfalt ist dabei wichtig.",
 
@@ -576,7 +576,7 @@ export const language = {
 
         "Dir ist bewusst, dass bei mangelnder Beteiligung oder fehlendem Nachweis der im Rahmen Deiner Art der Mitgliedschaft zugesicherten Stunden, der entsprechende Ausgleich nachgezahlt werden muss. Diese Zahlung ist nach Aufforderung durch die Solawi entweder als Einmalzahlung zu erstatten, oder Du erteilst Deine Zustimmung für den Einzug des entsprechend höheren Monatsbeitrags für den Rest der Saison.",
 
-        "**Folgende Angaben sind auf Grundlage deiner Bedarfsanmeldung bei uns hinterlegt:**",
+        "**Folgende Angaben sind auf Grundlage deiner Bedarfsmeldung bei uns hinterlegt:**",
 
         "* Benutzername: {userId}\n* Monatlicher Beitrag: {offer}\n* Mitgliedschaftsmodell: {contributionModel}\n{contributionKindBulletPoint}* Bestellte Lebensmittel und Depot: siehe PDF im Anhang",
 
