@@ -98,11 +98,11 @@ const getContributionLabel = (category: UserCategory) => {
         </v-col>
       </v-row>
 
-      <!-- Orientierungswerte -->
+      <!-- Richtwerte -->
       <v-row class="mb-1" dense>
         <v-col cols="12">
           <div class="text-subtitle-1 font-weight-medium mb-2">
-            Orientierungswerte (je {{ baseUnit }})
+            Richtwerte (je {{ baseUnit }})
           </div>
           <v-row>
             <v-col

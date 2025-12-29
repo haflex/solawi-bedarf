@@ -121,14 +121,14 @@ const onRowClick = async (
             <p class="pt-1">
               Zweck der Prognose-Verteilungen ist es, neuen Ernteteilern, die
               während des Zylkus dazu kommen, eine sinnvolle Abschätzung ihres
-              Orientierungswertes zu geben. Speziell für den Fall, dass zwischen
+              Richtwertes zu geben. Speziell für den Fall, dass zwischen
               Abgabe des Bedarfs und der ersten Verteilung noch mehrere Wochen
               liegen.
             </p>
             <p class="pt-1">
               Die hier angegebenen Produkte werden im genannten Zeitraum so
               behandelt, als wären sie bereits verteilt und kommen daher bei der
-              Berechnung des Orientierungswerts des neuen Ernteteilers nicht zum
+              Berechnung des Richtwertes des neuen Ernteteilers nicht zum
               Tragen. Tatsächlich verteilte Produkte in diesem Zeitraum werden
               von der Prognose-Verteilung automatisch abgezogen, um eine
               möglichst realitätsnahe Berechnung zu ermöglichen.

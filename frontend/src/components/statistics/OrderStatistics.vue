@@ -73,7 +73,7 @@ const headers = [
   { title: "Benutzer", key: "userName" },
   { title: "Gewählter Monatsbeitrag", key: "offer" },
   {
-    title: "Orientierungswert",
+    title: "Richtwert",
     key: "msrp",
     sortRaw(a: OrderExt, b: OrderExt) {
       return a.offer / a.msrp.monthly.total - b.offer / b.msrp.monthly.total;
@@ -437,7 +437,7 @@ const updatedAtDistribution = computed(
           </span>
           <br />
           <v-tooltip
-            text="Der Orientierungswert kann hier nicht korrekt berechnet werden, wenn der Ernteteiler nicht die vollen 12 Monate teilnimmt. Der genaue Orientierungswert kann auf der Bedarfsanmeldung des Ernteteilers eingesehen werden (Button in der Benutzer-Spalte)"
+            text="Der Richtwert kann hier nicht korrekt berechnet werden, wenn der Ernteteiler nicht die vollen 12 Monate teilnimmt. Der genaue Richtwert kann auf der Bedarfsanmeldung des Ernteteilers eingesehen werden (Button in der Benutzer-Spalte)"
             open-on-click
             v-if="item.validMonths != 12"
           >
@@ -494,7 +494,7 @@ const updatedAtDistribution = computed(
                 <tr>
                   <th>Monat</th>
                   <th>Beiträge (Durchschnitt)</th>
-                  <th>Orientierungswerte (Durchschnitt)</th>
+                  <th>Richtwerte (Durchschnitt)</th>
                   <th>Differenz</th>
                   <th>Anzahl</th>
                 </tr>

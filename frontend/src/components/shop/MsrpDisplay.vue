@@ -32,7 +32,7 @@ import {
   UserCategory,
 } from "@lebenswurzel/solawi-bedarf-shared/src/enum";
 import { validateModificationMsrp } from "@lebenswurzel/solawi-bedarf-shared/src/validation/requisition";
-import { interpolate } from "@lebenswurzel/solawi-bedarf-shared/src/lang/template";
+//import { interpolate } from "@lebenswurzel/solawi-bedarf-shared/src/lang/template";
 
 const biStore = useBIStore();
 const orderStore = useOrderStore();
@@ -141,13 +141,6 @@ const msrpValidation = computed(() => {
         </v-row>
       </v-container>
     </v-card-text>
-    <v-card-subtitle class="pt-1 text-wrap"
-      >
-        <template v-slot:activator="{ props }">
-          <v-icon v-bind="props">mdi-information-outline</v-icon>
-        </template>
-      </v-tooltip>
-    </v-card-subtitle>
     <v-card-text class="py-0">
       <Markdown
         :markdown="t.cards.products.msrp"
@@ -155,6 +148,7 @@ const msrpValidation = computed(() => {
           total: msrp?.monthly.total.toString(),
         }"
       />
+      <!--
       <div class="pl-5">
         {{
           interpolate(t.cards.products.msrpSelfgrown, {
@@ -176,6 +170,7 @@ const msrpValidation = computed(() => {
           })
         }}
       </div>
+      -->
       <div class="py-1" v-if="!props.hideOffer">
         {{ t.cards.products.offer }}
         <strong class="mr-1">{{ relevantOffer.toString() }} € pro Monat</strong>

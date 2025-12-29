@@ -102,17 +102,17 @@ export const language = {
       orderUserCategories: {
         [UserCategory.CAT130]: {
           title: "stilles Solawi-Mitglied",
-          subtitle: "Keine Mitarbeit, Orientierungswert ca. 15% erhöht.",
+          subtitle: "Keine Mitarbeit, Richtwert ca. 15% erhöht.",
         },
         [UserCategory.CAT115]: {
           title: "aktives Mitglied",
           subtitle:
-            "Mitarbeit mindestens 5 h/Monat, regulärer Orientierungswert.",
+            "Mitarbeit mindestens 5 h/Monat, regulärer Richtwert.",
         },
         [UserCategory.CAT100]: {
           title: "engagiertes Mitglied",
           subtitle:
-            "Mitarbeit mindestens 10 h/Monat, Orientierungswert ca. 15% reduziert.",
+            "Mitarbeit mindestens 10 h/Monat, Richtwert ca. 15% reduziert.",
         },
       },
       productCategoryTyps: {
@@ -205,20 +205,20 @@ export const language = {
           "Die von Dir für ein Lebensmittel eingegebene Menge bezieht sich immer auf eine Verteilungswoche. Wie oft das Lebensmittel innerhalb des Planungszeitraums verteilt werden soll, wird durch die Zahl neben dem LKW angegeben. Achtung: Es handelt sich um eine Planung. Das Wetter und die verfügbaren Ressourcen auf dem ›Weiten Feld‹ schaffen ihre eigene Realität. CSA heißt - Wir teilen das Anbaurisiko.<br/>Wenn die Anzahl der Verteilungen (LKW-Symbol) auf 0 gesetzt wurde, dann war die Wirtschaftlichkeit möglicher Weise nicht gegeben oder uns stehen nicht genug Ressourcen zur Verfügung. Es sind dann keine Verteilungen mehr geplant. In der Plantage ist es nicht vorgesehen, Lebensmittel nach der Bedarfsmeldung zu löschen. Dein Richtwert berücksichtigt aber nur Lebensmittel, für die wir abschließend eine Verteilung geplant haben. Vergiss nicht, Deinen finanziellen Beitrag entsprechend anzupassen!",
           faq: "Informationen und Grundlagen",
           orderDuringSeason:
-            "Für Ernteteiler, die erst während des Zylkus dazustoßen und die daher nicht die vollen zwölf Monate dabei sind, wird zusätzlich angezeigt, wieviel eines Produkts bereits verteilt wurde (hellgraues Lastwagensymbol mit Prozentangabe). Bei der Berechnung des Orientierungswerts sind die bereits verteilten Produkte bereits herausgerechnet.",
+            "Für Ernteteiler, die erst während des Zylkus dazustoßen und die daher nicht die vollen zwölf Monate dabei sind, wird zusätzlich angezeigt, wieviel eines Produkts bereits verteilt wurde (hellgraues Lastwagensymbol mit Prozentangabe). Bei der Berechnung des Richtwertes sind die bereits verteilten Produkte bereits herausgerechnet.",
         },
         products: {
           title: "Bedarfsmeldung",
-          msrp: "Dein Richtwert: **{total} € pro Monat**, davon",
+          msrp: "Dein Richtwert: **{total} € pro Monat**",
           msrpSelfgrown: "{selfgrown} € für selbst angebaute Produkte",
           msrpCooperation: "{cooperation} € für Kooperationsprodukte",
           msrpCompensation:
             "{compensation} € Differenz für Verringerung selbst angebauter Produkte",
           msrpTooltip:
-            "Der Orientierungswert errechnet sich aus den von Dir gewählten Lebensmitteln sowie Mengen und entspricht dem durchschnittlichen Solawi-Beitrag für Deine Auswahl.",
+            "Der Richtwert errechnet sich aus den von Dir gewählten Lebensmitteln sowie Mengen und entspricht dem durchschnittlichen Solawi-Beitrag für Deine Auswahl.",
           msrpCompensationTooltip:
             "Ausgleichsbeitrag, da die Verringerung des Gemüses aus Eigenanbau nicht auf eine Erhöhung der Kooperationsprodukte angerechnet werden kann",
-          offer: "Dein gewählter Solawi-Beitrag:",
+          offer: "Dein gewählter Beitrag:",
           item: {
             freq: "{freq} vorraussichtliche Häufigkeit (in Wochen)",
             deliveryPercentage:

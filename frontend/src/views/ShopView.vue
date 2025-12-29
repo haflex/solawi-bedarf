@@ -190,7 +190,7 @@ const disableSaveButton = computed(() => {
       {{
         interpolate(t.cards.header.explaination, {
           season: config?.name || "KEIN ZYKLUS",
-        })
+        }, false)
       }}
       <a
         style="color: #6750a4; cursor: pointer"
@@ -207,7 +207,7 @@ const disableSaveButton = computed(() => {
           rawMsrpByOrderId[modificationOrderId].months < 12
         "
       >
-        {{ t.cards.header.orderDuringSeason }}
+      <!--{{ t.cards.header.orderDuringSeason }}-->
       </div>
       <SeasonStatusElement :phase="orderPhase" no-button class="mt-3" />
     </v-card-text>

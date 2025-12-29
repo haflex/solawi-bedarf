@@ -205,7 +205,7 @@ const getMsrpValidationMessages = (
   // Rule 2: previous self grown <= modification self grown
   if (!selfgrownValid) {
     errors.push([
-      "Der neue Orientierungswert für selbst angebaute Produkte ist geringer als der alte. Daher wurde der Differenzbetrag hinzugefügt.",
+      "Der neue Richtwert für selbst angebaute Produkte ist geringer als der alte. Daher wurde der Differenzbetrag hinzugefügt.",
       "Hintergrund ist, dass der bisherige Beitrag bereits in das Jahresbudget für den Gemüseanbau eingerechnet ist und daher eine Verringerung dieses Beitrags nicht möglich ist.",
     ]);
   }
@@ -215,14 +215,14 @@ const getMsrpValidationMessages = (
 
   if (!cooperationValid) {
     errors.push([
-      "Der neue Orientierungswert für Kooperationsprodukte ist geringer als der alte.",
+      "Der neue Richtwert für Kooperationsprodukte ist geringer als der alte.",
       "Das ist zulässig, jedoch darf dein monatlicher Solawi-Beitrag nicht verringert werden.",
     ]);
   }
 
   if (!totalValid) {
     errors.push([
-      "Dein neuer Orientierungswert liegt unter dem Orientierungswert der ursprünglichen Bedarfsanmeldung. Du kannst die Bedarfsanmeldung trotzdem speichern, wenn du darauf achtest, dass dein neuer Solawi-Beitrag nicht geringer ist als der alte (" +
+      "Dein neuer Richtwert liegt unter dem Richtwert der ursprünglichen Bedarfsanmeldung. Du kannst die Bedarfsanmeldung trotzdem speichern, wenn du darauf achtest, dass dein neuer Solawi-Beitrag nicht geringer ist als der alte (" +
         previousOffer.toString() +
         "€)",
       "",
