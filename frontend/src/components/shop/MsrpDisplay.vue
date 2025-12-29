@@ -26,9 +26,9 @@ import {
 import { computed } from "vue";
 import { useOrderStore } from "../../store/orderStore";
 import OrderRangeDisplay from "./OrderRangeDisplay.vue";
-import ContributionSelect from "./ContributionSelect.vue";
+//import ContributionSelect from "./ContributionSelect.vue";
 import {
-  OrderPaymentType,
+  //OrderPaymentType,
   UserCategory,
 } from "@lebenswurzel/solawi-bedarf-shared/src/enum";
 import { validateModificationMsrp } from "@lebenswurzel/solawi-bedarf-shared/src/validation/requisition";
@@ -192,7 +192,7 @@ const msrpValidation = computed(() => {
           >
         </template>
       </div>
-      <ContributionSelect
+      <!--<ContributionSelect
         class="mt-2"
         compact
         :contribution="
@@ -202,15 +202,15 @@ const msrpValidation = computed(() => {
             ? undefined
             : msrp.contribution
         "
-      />
-      <div class="mb-2 text-caption">
+      />-->
+      <!--<div class="mb-2 text-caption">
         Zahlungsmethode:
         {{
           language.app.options.paymentTypes[
             props.order.paymentInfo?.paymentType ?? OrderPaymentType.UNCONFIRMED
           ]
         }}
-      </div>
+      </div>-->
       <template v-if="!props.order.confirmGTC">
         <v-alert
           class="py-2 text-caption font-weight-bold mb-2"

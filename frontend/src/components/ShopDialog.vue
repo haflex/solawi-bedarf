@@ -36,14 +36,14 @@ import SeasonText from "./styled/SeasonText.vue";
 import { useUiFeedback } from "../store/uiFeedbackStore.ts";
 import { UserCategory } from "@lebenswurzel/solawi-bedarf-shared/src/enum.ts";
 import {
-  OrderPayment,
+  //OrderPayment,
   UserWithOrders,
 } from "@lebenswurzel/solawi-bedarf-shared/src/types.ts";
 import { useTextContentStore } from "../store/textContentStore.ts";
 import MsrpDisplay from "./shop/MsrpDisplay.vue";
 import { useUserStore } from "../store/userStore.ts";
-import ContributionSelect from "./shop/ContributionSelect.vue";
-import OrderPaymentComponent from "./shop/OrderPayment.vue";
+//import ContributionSelect from "./shop/ContributionSelect.vue";
+//import OrderPaymentComponent from "./shop/OrderPayment.vue";
 import DebugOnly from "./debug/DebugOnly.vue";
 
 const props = defineProps<{ open: boolean; requestUser: UserWithOrders }>();
@@ -78,7 +78,7 @@ const confirmContribution = ref(false);
 const openFAQ = ref(false);
 const loading = ref(false);
 const showDepotNote = ref(false);
-const paymentValidationValid = ref(false);
+//const paymentValidationValid = ref(false);
 
 const sendConfirmationEmail = ref(false);
 
@@ -129,9 +129,9 @@ const modelInt = computed(() => {
   return tmp;
 });
 
-const alternateDepot = computed(() => {
+/*const alternateDepot = computed(() => {
   return depots.value.find((d) => d.id == alternateDepotId.value);
-});
+});*/
 
 const effectiveMsrp = computed(() => {
   return biStore.getEffectiveMsrpByOrderId(modificationOrderId.value!);
@@ -180,12 +180,12 @@ const offerHint = computed((): string | undefined => {
   return undefined;
 });
 
-const alternateDepotHint = computed(() => {
+/*const alternateDepotHint = computed(() => {
   return alternateDepot.value
     ? depotOptions.value.find((co) => co.value == alternateDepot.value!.id)
         ?.subtitle
     : t.alternateDepot.hint;
-});
+});*/
 
 const disableSubmit = computed(() => {
   return (
@@ -193,11 +193,11 @@ const disableSubmit = computed(() => {
     !depotId.value ||
     needsHigherOffer.value ||
     offerReasonHint.value ||
-    categoryReasonHint.value ||
-    (requireConfirmContribution.value && !confirmContribution.value) ||
-    !paymentValidationValid.value
+    (requireConfirmContribution.value && !confirmContribution.value)
   );
 });
+//categoryReasonHint.value ||
+//!paymentValidationValid.value
 
 const requireConfirmContribution = computed(() => {
   return category.value != UserCategory.CAT130;
@@ -211,13 +211,13 @@ const onDepotChanged = (val: number) => {
   depotId.value.actual = val;
 };
 
-const onAlternateDepotChanged = (val: number) => {
+/*const onAlternateDepotChanged = (val: number) => {
   alternateDepotId.value = val;
 };
 
 const clearAlternateDepot = () => {
   alternateDepotId.value = null;
-};
+};*/
 
 const onClose = async () => {
   emit("close");
@@ -308,7 +308,7 @@ const onSave = () => {
           persistent-hint
           :label="t.depot.label"
         />
-        <v-select
+        <!--<v-select
           class="mb-5"
           v-if="true"
           :model-value="alternateDepotId"
@@ -320,7 +320,7 @@ const onSave = () => {
           :hint="alternateDepotHint"
           persistent-hint
           :label="t.alternateDepot.label"
-        />
+        />-->
         <v-alert class="mb-5" color="info" density="compact" variant="outlined">
           {{ t.depotNote.title }}
           <v-btn
@@ -346,7 +346,7 @@ const onSave = () => {
             </div>
           </v-expand-transition>
         </v-alert>
-        <ContributionSelect />
+        <!-- <ContributionSelect /> -->
         <v-text-field
           class="mb-5"
           v-if="enableCategoryReason"
@@ -397,7 +397,7 @@ const onSave = () => {
           density="compact"
         />
 
-        <OrderPaymentComponent
+        <!--<OrderPaymentComponent
           v-if="modificationOrder"
           :paymentInfo="paymentInfo"
           :modification-order="modificationOrder"
@@ -409,7 +409,7 @@ const onSave = () => {
           :request-user="props.requestUser"
           @update:paymentInfo="(p: OrderPayment) => (paymentInfo = p)"
           @update:validationValid="(v: boolean) => (paymentValidationValid = v)"
-        />
+        />-->
 
         <v-switch
           v-model="sendConfirmationEmail"
