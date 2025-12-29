@@ -83,7 +83,7 @@ export const appConfig = {
     },
   },
   meta: {
-    sourceCodeUrl: "https://github.com/lebenswurzel/solawi-bedarf",
+    sourceCodeUrl: "https://github.com/haflex/solawi-bedarf",
   },
 };
 
