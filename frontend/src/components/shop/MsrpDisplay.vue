@@ -225,8 +225,8 @@ const msrpValidation = computed(() => {
           Diese Bedarfsanmeldung ist noch nicht bestätigt und wird erst aktiv,
           wenn sie gespeichert wurde.
           <template v-if="props.order.predecessorId !== null"
-            >Bis dahin bleibt die bisherige Bedarfsanmeldung bis zum Ende der
-            Saison gültig.</template
+            >Bis dahin bleibt die bisherige Bedarfsanmeldung bis zum Ende des
+            Zyklus gültig.</template
           >
         </v-alert>
       </template>

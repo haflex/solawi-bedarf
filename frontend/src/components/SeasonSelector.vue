@@ -91,7 +91,7 @@ const showNewSeasonHint = computed(() => {
     @click="openDialog"
     :prepend-icon="config?.public ? '' : 'mdi-eye-off-outline'"
   >
-    {{ config?.name || "Saison ?" }}
+    {{ config?.name || "Zyklus ?" }}
   </v-btn>
 
   <v-overlay
@@ -111,8 +111,7 @@ const showNewSeasonHint = computed(() => {
       title="Hinweis"
     >
       <v-card-text>
-        Über diesen Schalter kann die Ansicht zwischen der aktuellen und der
-        nächsten Saison umgeschaltet werden.
+        Über diesen Schalter kann die Ansicht zwischen den Zyklen umgeschaltet werden.
       </v-card-text>
       <v-card-actions class="justify-center">
         <v-btn variant="elevated" color="primary" @click="onConfirmTooltip"

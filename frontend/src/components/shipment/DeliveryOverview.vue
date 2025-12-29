@@ -40,7 +40,7 @@ const onDateChange = () => {
   <v-alert class="mb-2" type="info" variant="tonal">
     <h4>Wie verwende ich diese Übersicht?</h4>
     Übersichten über bereits erfolgte Verteilungen in der jeweiligen Kategorie.
-    In die Berechnung mit einbezogen sind alle Verteilungen dieser Saison, die
+    In die Berechnung mit einbezogen sind alle Verteilungen dieses Zyklus, die
     veröffentlicht sind und deren Lieferdatum in der Vergangenheit liegt.
     Hervorgehobenene Werte zeigen an, dass das jeweilige Produkt in dem
     entsprechenden Depot bisher seltener geliefert wurde als in anderen Depots.
@@ -55,11 +55,11 @@ const onDateChange = () => {
   </v-alert>
   <v-alert class="mb-2" type="info" variant="tonal">
     <h4>
-      Hinweis zur Berücksichtigung von Bedarfsänderungen während der Saison
+      Hinweis zur Berücksichtigung von Bedarfsänderungen während des Zylkus
     </h4>
     <p>
       Insbesondere bei selten bestellten Produkten kann es vorkommen, dass durch
-      Bedarfsänderungen während der Saison in einem Depot ein Produkt anfangs
+      Bedarfsänderungen während des Zylkus in einem Depot ein Produkt anfangs
       nicht, in ab einem späteren Monat jedoch schon bestellt wird.
     </p>
     <p>

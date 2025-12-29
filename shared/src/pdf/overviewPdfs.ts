@@ -339,7 +339,7 @@ export function generateUserData(
       ).sort(byKey((table) => table.name, inLocaleOrder)),
       additionalContent: [
         {
-          text: "*) geplante Häufigkeit bezogen auf Gesamtsaison",
+          text: "*) geplante Häufigkeit bezogen auf den Zyklus",
           fontSize: 10,
           alignment: "right",
           margin: [0, 20, 0, 5],
@@ -442,7 +442,7 @@ export function generateDepotData(
         ).sort(byKey((table) => table.name, inLocaleOrder)),
         additionalContent: [
           {
-            text: "*) geplante Häufigkeit bezogen auf Gesamtsaison",
+            text: "*) geplante Häufigkeit bezogen auf den Zyklus",
             fontSize: 10,
             alignment: "right",
             margin: [0, 20, 0, 5],

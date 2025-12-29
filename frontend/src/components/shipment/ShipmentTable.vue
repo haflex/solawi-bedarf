@@ -120,7 +120,7 @@ const onRowClick = async (
           <div class="text-caption" v-if="showHelp">
             <p class="pt-1">
               Zweck der Prognose-Verteilungen ist es, neuen Ernteteilern, die
-              während der Saison dazu kommen, eine sinnvolle Abschätzung ihres
+              während des Zylkus dazu kommen, eine sinnvolle Abschätzung ihres
               Orientierungswertes zu geben. Speziell für den Fall, dass zwischen
               Abgabe des Bedarfs und der ersten Verteilung noch mehrere Wochen
               liegen.

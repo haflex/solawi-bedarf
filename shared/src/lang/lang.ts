@@ -188,7 +188,7 @@ export const language = {
           text: "Hier erscheinen zu gegebener Zeit die Lebensmittel, die Du entsprechend Deiner Bedarfsmeldung in Deinem Depot abholen kannst.",
           shipment: "Nach der Bedarfsmeldung gibt es ab {from}",
           additionalShipment: "Zusätzlich gibt es:",
-          seasonBefore: "Die Saison ist zur Zeit noch nicht aktiv.",
+          seasonBefore: "Der Zyklus ist zur Zeit noch nicht aktiv.",
         },
       },
     },
@@ -202,12 +202,10 @@ export const language = {
           depot: "Dein Depot:",
           openingHours: "Abholzeiten:",
           explaination:
-          "Die von Dir für ein Lebensmittel eingegebene Menge bezieht sich immer auf eine Verteilungswoche. Wie oft das Lebensmittel innerhalb des Planungszeitraums verteilt werden soll, wird durch die Zahl neben dem LKW angegeben. Achtung: Es handelt sich um eine Planung. Das Wetter und die verfügbaren Ressourcen auf dem ›Weiten Feld‹ schaffen ihre eigene Realität. CSA heißt - Wir teilen das Anbaurisiko.
-          <br/>
-          Wenn die Anzahl der Verteilungen (LKW-Symbol) auf 0 gesetzt wurde, dann war die Wirtschaftlichkeit möglicher Weise nicht gegeben oder uns stehen nicht genug Ressourcen zur Verfügung. Es sind dann keine Verteilungen mehr geplant. In der Plantage ist es nicht vorgesehen, Lebensmittel nach der Bedarfsmeldung zu löschen. Dein Richtwert berücksichtigt aber nur Lebensmittel, für die wir abschließend eine Verteilung geplant haben. Vergiss nicht, Deinen finanziellen Beitrag entsprechend anzupassen!",
+          "Die von Dir für ein Lebensmittel eingegebene Menge bezieht sich immer auf eine Verteilungswoche. Wie oft das Lebensmittel innerhalb des Planungszeitraums verteilt werden soll, wird durch die Zahl neben dem LKW angegeben. Achtung: Es handelt sich um eine Planung. Das Wetter und die verfügbaren Ressourcen auf dem ›Weiten Feld‹ schaffen ihre eigene Realität. CSA heißt - Wir teilen das Anbaurisiko.<br/>Wenn die Anzahl der Verteilungen (LKW-Symbol) auf 0 gesetzt wurde, dann war die Wirtschaftlichkeit möglicher Weise nicht gegeben oder uns stehen nicht genug Ressourcen zur Verfügung. Es sind dann keine Verteilungen mehr geplant. In der Plantage ist es nicht vorgesehen, Lebensmittel nach der Bedarfsmeldung zu löschen. Dein Richtwert berücksichtigt aber nur Lebensmittel, für die wir abschließend eine Verteilung geplant haben. Vergiss nicht, Deinen finanziellen Beitrag entsprechend anzupassen!",
           faq: "Informationen und Grundlagen",
           orderDuringSeason:
-            "Für Ernteteiler, die erst während der Saison dazustoßen und die daher nicht die vollen zwölf Monate dabei sind, wird zusätzlich angezeigt, wieviel eines Produkts bereits verteilt wurde (hellgraues Lastwagensymbol mit Prozentangabe). Bei der Berechnung des Orientierungswerts sind die bereits verteilten Produkte bereits herausgerechnet.",
+            "Für Ernteteiler, die erst während des Zylkus dazustoßen und die daher nicht die vollen zwölf Monate dabei sind, wird zusätzlich angezeigt, wieviel eines Produkts bereits verteilt wurde (hellgraues Lastwagensymbol mit Prozentangabe). Bei der Berechnung des Orientierungswerts sind die bereits verteilten Produkte bereits herausgerechnet.",
         },
         products: {
           title: "Bedarfsmeldung",
@@ -264,7 +262,7 @@ export const language = {
         confirm: {
           title: "Deine Zustimmung zu den Bedingungen",
           label:
-          "Ich habe die »Fragen & Antworten« (F&A) gelesen. Mir ist bewusst, dass meine Bedarfsmeldung bis zum Beginn der Beitragsrunde unverbindlich bleibt und jederzeit änderbar ist. Erst mit Beginn der Beitragsrunde werden meine zuletzt ausgewählten Lebensmittel und Mengen sowie mein finanzieller Beitrag verbindlich. Ich verpflichte mich, mit meinem verbindlichen finanziellen Beitrag für die gesamte Saison {season} das ›Weite Feld‹ mitzufinanzieren.",
+          "Ich habe die »Fragen & Antworten« (F&A) gelesen. Mir ist bewusst, dass meine Bedarfsmeldung bis zum Beginn der Beitragsrunde unverbindlich bleibt und jederzeit änderbar ist. Erst mit Beginn der Beitragsrunde werden meine zuletzt ausgewählten Lebensmittel und Mengen sowie mein finanzieller Beitrag verbindlich. Ich verpflichte mich, mit meinem verbindlichen finanziellen Beitrag für den gesamten Zyklus {season} das ›Weite Feld‹ mitzufinanzieren.",
         },
         confirmContribution: {
           title: "Bestätigung deines Mitgliedschaftsmodells als {model}",
@@ -298,7 +296,7 @@ export const language = {
           title: "Hinweis zu Depots mit (*)",
           show: "Anzeigen",
           paragraphs: [
-            "Depots, die mit einem Sternchen (*) gekennzeichnet sind, befinden sich aktuell noch in der Planungs- und Abstimmungsphase. Es kann daher sein, dass diese Depots zu Beginn der Saison noch nicht verfügbar sind.",
+            "Depots, die mit einem Sternchen (*) gekennzeichnet sind, befinden sich aktuell noch in der Planungs- und Abstimmungsphase. Es kann daher sein, dass diese Depots zu Beginn des Zylkus noch nicht verfügbar sind.",
             "Solltest Du eines dieser Depots wählen, könnte es notwendig sein, dass Du Dein Gemüse doch in einem anderen Depot abholen musst. Wir informieren Dich rechtzeitig und geben unser Bestes, die Planung so schnell wie möglich abzuschließen, damit alle gelisteten Depots nutzbar werden. Bitte gib daher ein zweites Wunschdepot an, welches kein Sternchen hat.",
             "Wenn du die Depotkoordination in deinem Wunschdepot unterstützen möchtest, leistest du einen wertvollen Beitrag zur Sicherstellung des Depots. Melde dich hierfür gern im Forum bei {forumContact} oder bei der Mitgliederbetreuung unter {email}.",
           ],
@@ -437,7 +435,7 @@ export const language = {
     config: {
       title: "Konfiguration",
       subtitle:
-        "Hier können Einstellungen für die jeweils ausgewählte Saison vorgenommen werden.",
+        "Hier können Einstellungen für die jeweils ausgewählten Zylkus vorgenommen werden.",
       navigation: {
         subtitle: "Admin",
       },
@@ -447,24 +445,24 @@ export const language = {
         no: "Nicht veröffentlicht: sichtbar nur für Administratoren und Mitarbeiter",
       },
       validity: {
-        title: "Zeitraum der Saison",
+        title: "Zeitraum des Zylkus",
         description:
-          "Gültigkeitszeitraum der Saison. Üblicherweise 12 Monate vom 1.4. eines Jahres bis zum 31.3. des Folgejahres.",
+          "Gültigkeitszeitraum des Zylkus. Üblicherweise 12 Monate vom 1.4. eines Jahres bis zum 31.3. des Folgejahres.",
       },
       bidding: {
         title: "Bedarfsanmeldung und Bieterrunde",
         description:
-          "Festlegung ab wann Nutzer ihren Bedarf für die Saison anmelden können (Start der Bedarfsanmeldung). Ab dem Zeitpunkt der Bieterrunde kann der Bedarf nur noch nach oben angepasst werden. Zum Ende der Bieterrunde wird der Bedarf verbindlich.",
+          "Festlegung ab wann Nutzer ihren Bedarf für den Zylkus anmelden können (Start der Bedarfsanmeldung). Ab dem Zeitpunkt der Bieterrunde kann der Bedarf nur noch nach oben angepasst werden. Zum Ende der Bieterrunde wird der Bedarf verbindlich.",
       },
       startOrder: "Start der Bedarfsmeldung",
       startBiddingRound: "Start der Beitragsrunde",
       endBiddingRound: "Ende der Beitragsrunde",
       budget: "Budget [€]",
-      validFrom: "Start der Saison",
-      validTo: "Ende der Saison",
+      validFrom: "Start des Zylkus",
+      validTo: "Ende des Zylkus",
       newSeason: {
-        title: "Neue Saison anlegen",
-        copyFromPrevious: "Kopiere Produktkonfiguration von vorheriger Saison",
+        title: "Neuen Zyklus anlegen",
+        copyFromPrevious: "Kopiere Produktkonfiguration von vorherigem Zyklus",
       },
     },
     content: {
@@ -523,18 +521,18 @@ export const language = {
       },
       ordersCard: {
         title: "Bedarfsanmeldungen in der gewählten",
-        text: "Alle Bedarfsanmeldung, die für die gewählte Saison relevant sind.",
+        text: "Alle Bedarfsanmeldung, die für den gewählten Zyklus relevant sind.",
         distributions: "Verteilungen",
       },
     },
   },
   components: {
     seasonSelector: {
-      label: "Saison",
+      label: "Zyklus",
       description:
-        "Hier kannst du festlegen, für welche Saison du deinen Bedarf anmelden und Einstellungen vornehmen möchtest.",
+        "Hier kannst du festlegen, für welchen Zyklus du deinen Bedarf anmelden und Einstellungen vornehmen möchtest.",
       notYetAvailable:
-        "Hier kann die nächste Saison für die Bedarfsmeldung ausgewählt werden, sobald diese freigeschaltet wurde.",
+        "Hier kann den nächsten Zyklus für die Bedarfsmeldung ausgewählt werden, sobald diese freigeschaltet wurde.",
     },
   },
   email: {
@@ -546,9 +544,9 @@ export const language = {
       defaultOrderConfirmationFullSeason: [
         "Liebe(r) {userName},",
 
-        "vielen Dank für Deine Bedarfsmeldung für die {season} im {solawiName}. Deine Angaben wurden erfolgreich gespeichert.",
+        "vielen Dank für Deine Bedarfsmeldung für den Zyklus {season} im {solawiName}. Deine Angaben wurden erfolgreich gespeichert.",
 
-        "Im Anhang befindet sich ein PDF-Dokument mit einer Übersicht der von Dir angemeldeten Mengen für Gemüse und Kooperationsprodukte für die kommende Saison. Die Saison startet am {seasonStart} und endet am {seasonEnd}.",
+        "Im Anhang befindet sich ein PDF-Dokument mit einer Übersicht der von Dir angemeldeten Mengen für Gemüse und Kooperationsprodukte für den kommenden Zyklus. Der Zyklus startet am {seasonStart} und endet am {seasonEnd}.",
 
         "Beim Speichern der Bedarfsmeldung hast Du bestätigt, dass Du die „[Grundlagen und Informationen]({appUrl}/#/faq)“ der Solawi gelesen und verstanden hast. Sollten dennoch Unklarheiten bestehen, kannst Du Dich bei Rückfragen jederzeit an die Mitgliederbetreuung unter {solawiEmail} wenden.",
 
@@ -558,11 +556,11 @@ export const language = {
 
         "Solange die Anmeldefrist für die laufende Bieterunde (auf der [Home-Seite der Bedarfsmeldung]({appUrl}/) sichtbar) noch nicht verstrichen ist, bleiben Deine angemeldeten Bedarfsmengen unverbindlich. Das heißt, Du kannst diese jederzeit bis zum Ende der Anmeldefrist ändern, also sowohl Deine Nahrungsmittelmengen als auch Deinen Solawi-Beitrag nach oben oder unten justieren. In folgenden Bieterunden, mit verlängerten Anmeldefristen, kannst Du Deinen Solawi-Beitrag ausschließlich nach oben justieren.",
 
-        "Mit Ablauf der Anmeldefrist wird der zuletzt von Dir gespeicherte Stand Deiner Bedarfsmeldung verbindlich. In diesem Moment gehst Du automatisch eine rechtsverbindliche Zusage mit dem Träger des Solawi-Projektes ein, woran Du bis zum Ende der Solawi-Saison am 31.03. des Folgejahres gebunden bist.",
+        "Mit Ablauf der Anmeldefrist wird der zuletzt von Dir gespeicherte Stand Deiner Bedarfsmeldung verbindlich. In diesem Moment gehst Du automatisch eine rechtsverbindliche Zusage mit dem Träger des Solawi-Projektes ein, woran Du bis zum Ende des Zyklus gebunden bist.",
 
         "**Diese Bedingungen akzeptierst Du mit der Anmeldung Deines Bedarfs:**",
 
-        "Du trägst das Ernterisiko für die Solawi-{season} (vom {seasonStart} bis zum {seasonEnd}) gemeinsam mit allen anderen Solawi-Mitgliedern.",
+        "Du trägst das Ernterisiko für den Zyklus {season} (vom {seasonStart} bis zum {seasonEnd}) gemeinsam mit allen anderen Solawi-Mitgliedern.",
 
         "Dafür kannst Du die von Dir als Bedarf angemeldeten Nahrungsmittel in dem von Dir gewählten Depot abholen (8). Dir ist dabei bewusst, dass die Häufigkeit der Verteilung je Gemüse erntebedingt schwanken kann. Du trägst sowohl Überschüsse als auch Mindererträge mit.",
 
@@ -570,13 +568,13 @@ export const language = {
 
         "Du kannst darauf vertrauen, dass das angebaute Gemüse höhere Ansprüche erfüllt, als es die EU-Bio-Verordnung verlangt, das Gemüse zu Deiner nährstoff- sowie vitaminreichen Ernährung beiträgt und der genutzte Boden – gemäß dem Leitbild dieses Solawi-Projektes – ökologisch, naturnah, schonend bewirtschaftet und gepflegt wird. Die Pflege der organischen Bodensubstanz (wie Bodenlebewesen, Humus) und die Förderung der Artenvielfalt ist dabei wichtig.",
 
-        "Für die Dauer der Solawi-Saison zahlst Du Deinen monatlichen Solawi-Beitrag, oder zahlst die Gesamtsumme aller Monatsbeiträge im Voraus zu Beginn der Saison.",
+        "Für die Dauer des Zyklus zahlst Du Deinen monatlichen Solawi-Beitrag, oder zahlst die Gesamtsumme aller Monatsbeiträge im Voraus zu Beginn des Zyklus.",
 
         "Du verpflichtest Dich, die mit der Wahl Deiner Art der Mitgliedschaft einhergehenden Bedingungen einzuhalten:",
 
         "* **stilles Mitglied** | keine Mitarbeit\n* **aktives Mitglied** | Mitarbeit mindestens 5 h/Monat\n* **engagiertes Mitglied** | Mitarbeit mindestens 10 h/Monat",
 
-        "Dir ist bewusst, dass bei mangelnder Beteiligung oder fehlendem Nachweis der im Rahmen Deiner Art der Mitgliedschaft zugesicherten Stunden, der entsprechende Ausgleich nachgezahlt werden muss. Diese Zahlung ist nach Aufforderung durch die Solawi entweder als Einmalzahlung zu erstatten, oder Du erteilst Deine Zustimmung für den Einzug des entsprechend höheren Monatsbeitrags für den Rest der Saison.",
+        "Dir ist bewusst, dass bei mangelnder Beteiligung oder fehlendem Nachweis der im Rahmen Deiner Art der Mitgliedschaft zugesicherten Stunden, der entsprechende Ausgleich nachgezahlt werden muss. Diese Zahlung ist nach Aufforderung durch die Solawi entweder als Einmalzahlung zu erstatten, oder Du erteilst Deine Zustimmung für den Einzug des entsprechend höheren Monatsbeitrags für den Rest des Zyklus.",
 
         "**Folgende Angaben sind auf Grundlage deiner Bedarfsmeldung bei uns hinterlegt:**",
 
@@ -593,7 +591,7 @@ export const language = {
 
         "vielen Dank für die Änderung Deiner Bedarfsanmeldung für die {season} im {solawiName}. Deine Angaben wurden erfolgreich gespeichert.",
 
-        "Im Anhang befindet sich ein PDF-Dokument mit einer Übersicht der von Dir angemeldeten Mengen für Gemüse und Kooperationsprodukte für die kommende Saison. Die Saison läuft vom {seasonStart} bis zum {seasonEnd}. Deine Änderung gilt ab {orderStartMonth}.",
+        "Im Anhang befindet sich ein PDF-Dokument mit einer Übersicht der von Dir angemeldeten Mengen für Gemüse und Kooperationsprodukte für den kommende Zyklus. Der Zyklus läuft vom {seasonStart} bis zum {seasonEnd}. Deine Änderung gilt ab {orderStartMonth}.",
 
         "Beim Speichern der Bedarfsmeldung hast Du bestätigt, dass Du die „[Grundlagen und Informationen]({appUrl}/#/faq)“ der Solawi gelesen und verstanden hast. Sollten dennoch Unklarheiten bestehen, kannst Du Dich bei Rückfragen jederzeit an die Mitgliederbetreuung unter {solawiEmail} wenden.",
 
@@ -603,7 +601,7 @@ export const language = {
 
         "Solange die Anmeldefrist für die laufende Bieterunde (auf der [Home-Seite der Bedarfsanmeldung]({appUrl}/) sichtbar) noch nicht verstrichen ist, bleiben Deine angemeldeten Bedarfsmengen unverbindlich. Das heißt, Du kannst diese jederzeit bis zum Ende der Anmeldefrist ändern, also sowohl Deine Nahrungsmittelmengen als auch Deinen Solawi-Beitrag nach oben oder unten justieren. In folgenden Bieterunden, mit verlängerten Anmeldefristen, kannst Du Deinen Solawi-Beitrag ausschließlich nach oben justieren.",
 
-        "Mit Ablauf der Anmeldefrist wird der zuletzt von Dir gespeicherte Stand Deiner Bedarfsanmeldung verbindlich. In diesem Moment gehst Du automatisch eine rechtsverbindliche Zusage mit dem Träger des Solawi-Projektes ein, woran Du bis zum Ende der Solawi-Saison am 31.03. des Folgejahres gebunden bist.",
+        "Mit Ablauf der Anmeldefrist wird der zuletzt von Dir gespeicherte Stand Deiner Bedarfsanmeldung verbindlich. In diesem Moment gehst Du automatisch eine rechtsverbindliche Zusage mit dem Träger des Solawi-Projektes ein, woran Du bis zum Ende des Zyklus gebunden bist.",
 
         "**Diese Bedingungen akzeptierst Du mit der Anmeldung Deines Bedarfs:**",
 
@@ -619,7 +617,7 @@ export const language = {
 
         "* **stilles Mitglied** | keine Mitarbeit\n* **aktives Mitglied** | Mitarbeit mindestens 5 h/Monat\n* **engagiertes Mitglied** | Mitarbeit mindestens 10 h/Monat",
 
-        "Dir ist bewusst, dass bei mangelnder Beteiligung oder fehlendem Nachweis der im Rahmen Deiner Art der Mitgliedschaft zugesicherten Stunden, der entsprechende Ausgleich nachgezahlt werden muss. Diese Zahlung ist nach Aufforderung durch die Solawi entweder als Einmalzahlung zu erstatten, oder Du erteilst Deine Zustimmung für den Einzug des entsprechend höheren Monatsbeitrags für den Rest der Saison.",
+        "Dir ist bewusst, dass bei mangelnder Beteiligung oder fehlendem Nachweis der im Rahmen Deiner Art der Mitgliedschaft zugesicherten Stunden, der entsprechende Ausgleich nachgezahlt werden muss. Diese Zahlung ist nach Aufforderung durch die Solawi entweder als Einmalzahlung zu erstatten, oder Du erteilst Deine Zustimmung für den Einzug des entsprechend höheren Monatsbeitrags für den Rest des Zyklus.",
 
         "**Folgende Angaben sind auf Grundlage deiner geänderten Bedarfsanmeldung ab {orderStartMonth} bei uns hinterlegt:**",
 
@@ -686,7 +684,7 @@ export const langPdfTexts: Record<PdfTextsKeys, string> = {
 };
 
 export const langEmailTextLabels: Record<EmailTextsKeys, string> = {
-  orderConfirmationFullSeason: "Bestätigungsmail für die gesamte Saison",
+  orderConfirmationFullSeason: "Bestätigungsmail für den gesamten Zyklus",
   orderConfirmationChangedOrder:
     "Bestätigungsmail für die geänderte Bedarfsmeldung",
 };

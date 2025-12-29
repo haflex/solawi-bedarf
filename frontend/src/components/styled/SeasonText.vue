@@ -34,7 +34,7 @@ const colorClass = computed(() => {
 <template>
   <span :class="colorClass" class="season_text">
     <v-icon v-if="!config?.public" size="x-small">mdi-eye-off-outline</v-icon>
-    {{ config?.name || "SAISON??" }}</span
+    {{ config?.name || "ZYKLUS??" }}</span
   >
 </template>
 

@@ -189,7 +189,7 @@ const disableSaveButton = computed(() => {
     <v-card-text>
       {{
         interpolate(t.cards.header.explaination, {
-          season: config?.name || "KEINE SAISON",
+          season: config?.name || "KEIN ZYKLUS",
         })
       }}
       <a

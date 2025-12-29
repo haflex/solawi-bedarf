@@ -82,7 +82,7 @@ const newSeasonNameRules = [
   },
   (value: string) => {
     if (configStore.availableConfigs.map((v) => v.name).includes(value)) {
-      return "Es existiert bereits eine Saison mit dieser Bezeichnung";
+      return "Es existiert bereits ein Zyklus mit dieser Bezeichnung";
     }
     return true;
   },

@@ -76,15 +76,15 @@ const isDarkTheme = computed(() => theme.global.current.value.dark);
   <v-card class="ma-2">
 
     <v-card-title>
-      Information für die Saison
+      Information für din Zylkus
       <SeasonText />!
     </v-card-title>
 
     <v-card-subtitle>
-      Hier siehst du eine Übersicht über den aktuellen Status der gewählten
-      Saison und ob eine Bedarfsanpassung möglich ist. Bei laufender Saison
+      Hier siehst du eine Übersicht über den aktuellen Status ders gewählten
+      Zylkus und ob eine Bedarfsanpassung möglich ist. Bei laufendem Zylkus
       findest du weiter unten Informationen über die Verteilungen. Bitte achte
-      darauf, dass du oben rechts die gewünschte Saison ausgewählt hast.
+      darauf, dass du oben rechts den gewünschten Zylkus ausgewählt hast.
     </v-card-subtitle>
     <v-card-text>
       <SeasonStatusElement

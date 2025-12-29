@@ -94,9 +94,9 @@ const status = computed((): SeasonStatusElement => {
     },
     {
       phase: SeasonPhase.ORDER_CLOSED,
-      title: "Bedarfsanmeldung geschlossen",
+      title: "Bedarfsmeldung geschlossen",
       description:
-        "Aktuell kann der Bedarf in der gewählten Saison nicht angepasst werden. Du wirst per E-Mail von deiner Solawi darüber informiert, sobald bekannt ist wann eine Bedarfsanpassung möglich ist. Bei Fragen melde dich gerne bei uns.",
+        "Aktuell kann der Bedarf im gewählten Zyklus nicht angepasst werden. Du wirst per E-Mail von deiner Solawi darüber informiert, sobald bekannt ist wann eine Bedarfsanpassung möglich ist. Bei Fragen melde dich gerne bei uns.",
       dateBegin: startBiddingRound,
       dateEnd: endBiddingRound,
       addGotoOrderButton: false,
@@ -106,8 +106,8 @@ const status = computed((): SeasonStatusElement => {
     },
     {
       phase: SeasonPhase.BEFORE_SEASON,
-      title: "Saison steht bevor",
-      description: "Die Saison beginnt am {dateBegin}",
+      title: "Zylkus steht bevor",
+      description: "Die Zylklus beginnt am {dateBegin}",
       dateBegin: startSeason,
       dateEnd: endSeason,
       addGotoOrderButton: false,
@@ -117,7 +117,7 @@ const status = computed((): SeasonStatusElement => {
     },
     {
       phase: SeasonPhase.ACTIVE_SEASON,
-      title: "Die Saison läuft",
+      title: "Dir Zyklus läuft",
       description:
         "Von {dateBegin} bis {dateEnd} bekommst du jeden Donnerstag deinen angemeldeten Bedarf (je nach Verfügbarkeit) in dein Depot geliefert (siehe unten).",
       dateBegin: startSeason,
@@ -129,9 +129,9 @@ const status = computed((): SeasonStatusElement => {
     },
     {
       phase: SeasonPhase.AFTER_SEASON,
-      title: "Die Saison ist beendet",
+      title: "Der Zyklus ist beendet",
       description:
-        "Die gewählte Saison liegt in der Vergangenheit. Bitte wähle oben rechts die aktuelle Saison aus.",
+        "Der gewählte Zyklus liegt in der Vergangenheit. Bitte wähle oben rechts einen anderen Zyklus aus.",
       dateBegin: startSeason,
       dateEnd: endSeason,
       addGotoOrderButton: false,

@@ -122,7 +122,7 @@ const onDepotPdfClick = async () => {
     const dataByDepotAndProductCategory = generateDepotData(
       overview,
       productCategories,
-      configStore.config?.name ?? "SAISON?",
+      configStore.config?.name ?? "ZYKLUS?",
       dateOfInterest.value,
     );
     const zip = new Zip();
@@ -158,7 +158,7 @@ const onUserPdfClick = async () => {
     const dataByUserAndProductCategory = generateUserData(
       overview,
       productCategories,
-      configStore.config?.name ?? "SAISON?",
+      configStore.config?.name ?? "ZYKLUS?",
     );
     const zip = new Zip();
     for (const pdf of dataByUserAndProductCategory) {
@@ -186,7 +186,7 @@ const onUserPdfClick = async () => {
         <v-row dense>
           <v-col cols="12">
             <v-alert type="info" variant="tonal">
-              Durch Anpassungen der Bedarfsanmeldungen während der Saison hängen
+              Durch Anpassungen der Bedarfsmeldungen während des Zylkus hängen
               die hier erzeugten Übersichten und PDFs vom gewählten Stichtag ab.
               Dieser kann hier geändert werden und wirkt sich auf alle erzeugten
               Übersichten und PDFs aus.
@@ -259,7 +259,7 @@ const onUserPdfClick = async () => {
           <v-select
             :items="orderOverviewSeasons"
             v-model="orderOverviewSelectedSeasons"
-            label="Saison(s)"
+            label="Zyklen"
             chips
             multiple
             persistent-hint

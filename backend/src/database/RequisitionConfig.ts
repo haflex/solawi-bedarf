@@ -18,7 +18,7 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 import { BaseEntity } from "./BaseEntity";
 import { ProductCategory } from "./ProductCategory";
 
-export const RequisitionConfigName = "Saison 24/25";
+export const RequisitionConfigName = "Zyklus 26-1";
 
 @Entity()
 export class RequisitionConfig extends BaseEntity {

@@ -51,7 +51,7 @@ onMounted(async () => {
 
 const onConfigUpdated = () => {
   const orderConfig = configStore.config;
-  seasonName.value = orderConfig?.name || "Saison-Bezeichnung";
+  seasonName.value = orderConfig?.name || "Zyklus-Bezeichnung";
   startOrder.value = orderConfig?.startOrder || new Date();
   endBiddingRound.value = orderConfig?.endBiddingRound || new Date();
   startBiddingRound.value = orderConfig?.startBiddingRound || new Date();

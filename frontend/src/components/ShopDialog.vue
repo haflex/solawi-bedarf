@@ -363,7 +363,7 @@ const onSave = () => {
           v-model="confirmGTC"
           :label="
             interpolate(t.confirm.label, {
-              season: config?.name ?? 'SAISON?',
+              season: config?.name ?? 'ZYKLUS?',
               solawiName: organizationInfo.address.name,
             })
           "
