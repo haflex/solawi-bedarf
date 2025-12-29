@@ -93,11 +93,9 @@ const isFirstDeliveryInThePast = computed(() => {
 <template>
   <div>
     <strong>
-      <template v-if="isPastOrder"> Vergangene Bedarfsanmeldung </template>
-      <template v-else-if="isFutureOrder">
-        Zukünftige Bedarfsanmeldung
-      </template>
-      <template v-else>Aktuelle Bedarfsanmeldung</template>
+      <template v-if="isPastOrder"> Bedarfsmeldung für Zyklus</template>
+      <template v-else-if="isFutureOrder">Bedarfsmeldung für Zyklus</template>
+      <template v-else>Bedarfsmeldung für Zyklus</template>
     </strong>
     <DebugOnly>{{ order?.id }}</DebugOnly>
   </div>

@@ -183,7 +183,7 @@ export const language = {
           action: "Zur Bedarfsmeldung",
         },
         list: {
-          title: "Nahrungsmittel entsprechend Deiner Bedarfsmeldung für",
+          title: "Packzettel / Lieferschein für",
           subtitle: "KW {kw}",
           text: "Hier erscheinen zu gegebener Zeit die Lebensmittel, die Du entsprechend Deiner Bedarfsmeldung in Deinem Depot abholen kannst.",
           shipment: "Nach der Bedarfsmeldung gibt es ab {from}",
@@ -202,7 +202,9 @@ export const language = {
           depot: "Dein Depot:",
           openingHours: "Abholzeiten:",
           explaination:
-          "Bitte wähle in den entsprechenden Kategorien die Lebensmittel (Gemüse, Eier, Backwaren, Getreide, Lupinenkaffee) aus, die Du in der Saison {season} im Rahmen der solidarischen kooperativen Selbstversorgung vom ›Weiten Feld‹ beziehen möchtest. Lege dafür Deine individuelle Menge je <u>geplanter</u> Verteilung \u26df fest. Bitte beachte die zusätzlichen Infor&shy;matio&shy;nen für manche Nahrungs&shy;mittel (abrufbar über das Information-Symbol \u24d8 hinter dem Namen des Lebensmittels) sowie den",
+          "Die von Dir für ein Lebensmittel eingegebene Menge bezieht sich immer auf eine Verteilungswoche. Wie oft das Lebensmittel innerhalb des Planungszeitraums verteilt werden soll, wird durch die Zahl neben dem LKW angegeben. Achtung: Es handelt sich um eine Planung. Das Wetter und die verfügbaren Ressourcen auf dem ›Weiten Feld‹ schaffen ihre eigene Realität. CSA heißt - Wir teilen das Anbaurisiko.
+          <br/>
+          Wenn die Anzahl der Verteilungen (LKW-Symbol) auf 0 gesetzt wurde, dann war die Wirtschaftlichkeit möglicher Weise nicht gegeben oder uns stehen nicht genug Ressourcen zur Verfügung. Es sind dann keine Verteilungen mehr geplant. In der Plantage ist es nicht vorgesehen, Lebensmittel nach der Bedarfsmeldung zu löschen. Dein Richtwert berücksichtigt aber nur Lebensmittel, für die wir abschließend eine Verteilung geplant haben. Vergiss nicht, Deinen finanziellen Beitrag entsprechend anzupassen!",
           faq: "Informationen und Grundlagen",
           orderDuringSeason:
             "Für Ernteteiler, die erst während der Saison dazustoßen und die daher nicht die vollen zwölf Monate dabei sind, wird zusätzlich angezeigt, wieviel eines Produkts bereits verteilt wurde (hellgraues Lastwagensymbol mit Prozentangabe). Bei der Berechnung des Orientierungswerts sind die bereits verteilten Produkte bereits herausgerechnet.",

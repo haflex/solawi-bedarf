@@ -60,7 +60,23 @@ const isDarkTheme = computed(() => theme.global.current.value.dark);
 <template>
   <v-card class="ma-2">
     <v-card-title>
-      Herzlich willkommen zur Bedarfsanmeldung des Solawi-Projektes in der
+      Unsere Plantage · Von der Planung bis zur Ernte!
+    </v-card-title>
+    <v-card-text>
+      <ul>
+        <li>Um welchen Zeitraum geht es Dir? Rechts oben kannst Du ihn auswählen. NEU: Ein Jahr hat für uns zukünftig 5 Zyklen mit jeweils 10 Wochen - mehr Flexibilität für Dich und uns! Ein Zyklus ist ein Zeitraum für Planung und Abrechnung.</li>
+        <li>im Zeitraum der Bedarfsmeldung: Was soll auf Deinem Teller landen? Unser Ziel: Anbauen nach Bedarf. Der Richtwert ist aktuell nur eine grobe Schätzung. Bevor wir rechnen können, benötigen wir Futter für die Planung, also Deinen Bedarf.</li>
+        <li>im Zeitraum der Beitragsrunde: Was kannst Du geben? Gemeinsam beschaffen wir die notwendigen Ressourcen (Geld / Zeit) für unsere kooperative Landwirtschaft. Wir haben den Aufwand für den gewählten Zeitraum geplant und ein Budget ermittelt. Der Richtwert basiert jetzt, im Vergleich zum Zeitpunkt der Bedarfsmeldung auf realistischen Einschätzungen.</li>
+        <li>nach der Beitragsrunde und vor dem Verteilungszeitraum: Kannst Du es kaum erwarten? Schon bald kannst Du hier den Packzettel oder Lieferschein einsehen, welche Ernte Du in der jeweiligen Woche in Empfang nehmen wirst. Bis dahin kannst Du in der "Bedarfsmeldung" einsehen, was Dich erwartet.</li>
+        <li>während des Verteilungszeitraumes: Was kommt diese Woche auf den Teller? Sobald der Lieferwagen das ›Weite Feld‹ verlässt, aktualisiert sich hier Dein Packzettel oder Lieferschein.</li>
+        <li>Sofern Du Deine Ernte in einem Depot entgegennimmst, mache Dir bitte bewusst, dass Deine Zufriedenheit im direkten Zusammenhang mit der aller anderen steht (Prinzip: Verteilungsgerechtigkeit)</li>
+      </ul>
+    </v-card-text>
+  </v-card>
+  <v-card class="ma-2">
+
+    <v-card-title>
+      Information für die Saison
       <SeasonText />!
     </v-card-title>
 

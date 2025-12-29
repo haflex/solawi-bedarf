@@ -84,7 +84,7 @@ onMounted(() => {
         <v-text-field
           v-model="username"
           label="Anmeldename"
-          placeholder="LW23042"
+          placeholder="vorname.nachname"
           :rules="[(v) => !!v || 'Anmeldename ist erforderlich']"
         ></v-text-field>
         <v-text-field

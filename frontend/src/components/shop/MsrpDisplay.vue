@@ -142,14 +142,6 @@ const msrpValidation = computed(() => {
       </v-container>
     </v-card-text>
     <v-card-subtitle class="pt-1 text-wrap"
-      ><strong>Zusammensetzung des Orientierungswerts</strong> (Werte auf volle
-      Euros gerundet, bezogen auf {{ msrp?.months }}
-      Kalendermonate)
-
-      <v-tooltip
-        :text="t.cards.products.msrpTooltip"
-        open-on-click
-        location="bottom"
       >
         <template v-slot:activator="{ props }">
           <v-icon v-bind="props">mdi-information-outline</v-icon>
