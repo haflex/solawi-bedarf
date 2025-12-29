@@ -60,7 +60,7 @@ const isDarkTheme = computed(() => theme.global.current.value.dark);
 <template>
   <v-card class="ma-2">
     <v-card-title>
-      Unsere Plantage · Von der Planung bis zur Ernte!
+      Herzlich Willkommen in der Plantage des ›Weiten Feldes‹ · Von der Planung bis zur Ernte!
     </v-card-title>
     <v-card-text>
       <ul>
@@ -76,15 +76,13 @@ const isDarkTheme = computed(() => theme.global.current.value.dark);
   <v-card class="ma-2">
 
     <v-card-title>
-      Information für din Zylkus
+      Information für den Zyklus
       <SeasonText />!
     </v-card-title>
 
     <v-card-subtitle>
-      Hier siehst du eine Übersicht über den aktuellen Status ders gewählten
-      Zylkus und ob eine Bedarfsanpassung möglich ist. Bei laufendem Zylkus
-      findest du weiter unten Informationen über die Verteilungen. Bitte achte
-      darauf, dass du oben rechts den gewünschten Zylkus ausgewählt hast.
+      Ein Jahr hat für uns 5 Zyklen mit jeweils 10 Wochen - mehr Flexibilität für dich und uns!
+      Ein Zyklus ist ein Zeitraum für Planung und Abrechnung.
     </v-card-subtitle>
     <v-card-text>
       <SeasonStatusElement

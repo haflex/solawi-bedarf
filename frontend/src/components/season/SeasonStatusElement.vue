@@ -67,9 +67,9 @@ const status = computed((): SeasonStatusElement => {
   const elements = [
     {
       phase: SeasonPhase.FREE_ORDER,
-      title: "Bedarfsanmeldung läuft",
+      title: "Bedarf melden!",
       description:
-        "Der Bedarf kann angemeldet und bis zum {dateEnd} beliebig angepasst werden.",
+        "Was soll auf deinem Teller landen? Unser Ziel: Anbauen nach Bedarf. Bevor wir wir aufs Feld gehen, benötigen wir Futter für die Planung. Bis zum {dateEnd} kannst du deinen Bedarf melden oder anpassen.",
       dateBegin: startOrder,
       dateEnd: startBiddingRound,
       addGotoOrderButton: true,
@@ -79,9 +79,9 @@ const status = computed((): SeasonStatusElement => {
     },
     {
       phase: SeasonPhase.INCREASE_ONLY,
-      title: "Bieterrunde läuft",
+      title: "Beitrag festlegen",
       description:
-        "Vom {dateBegin} bis zum {dateEnd} kann der Bedarf nach oben angepasst werden." +
+        "Was kannst du geben? Gemeinsam beschaffen wir die notwendigen Ressourcen (Geld / Zeit) für unsere kooperative Landwirtschaft. Wir haben den Aufwand für den gewählten Zeitraum anhand der gemeldeten Bedarfe eingeschätzt und ein Budget ermittelt. Der Richtwert basiert jetzt, im Vergleich zum Zeitpunkt der Bedarfsmeldung auf realistischen Einschätzungen." +
         (mustAddOrder.value
           ? " Bitte wende dich an die Mitgliederbetreung der Solawi, wenn du deine Bedarfsanmeldung anpassen möchtest."
           : ""),
@@ -94,9 +94,9 @@ const status = computed((): SeasonStatusElement => {
     },
     {
       phase: SeasonPhase.ORDER_CLOSED,
-      title: "Bedarfsmeldung geschlossen",
+      title: "Bedarfsmeldung und Beitragsrunde abgeschlossen!",
       description:
-        "Aktuell kann der Bedarf im gewählten Zyklus nicht angepasst werden. Du wirst per E-Mail von deiner Solawi darüber informiert, sobald bekannt ist wann eine Bedarfsanpassung möglich ist. Bei Fragen melde dich gerne bei uns.",
+        "Für den gewählten Zyklus können keine Änderungen vorgenommen werden. Kannst du es kaum erwarten? Schon bald kannst du hier den Packzettel oder Lieferschein einsehen, welche Ernte du in der jeweiligen Woche in Empfang nehmen wirst. Bis dahin kannst du in deiner 'Bedarfsmeldung' einsehen, was dich erwartet.",
       dateBegin: startBiddingRound,
       dateEnd: endBiddingRound,
       addGotoOrderButton: false,
@@ -106,8 +106,8 @@ const status = computed((): SeasonStatusElement => {
     },
     {
       phase: SeasonPhase.BEFORE_SEASON,
-      title: "Zylkus steht bevor",
-      description: "Die Zylklus beginnt am {dateBegin}",
+      title: "Zyklus beginnt bald",
+      description: "Die Zyklus beginnt am {dateBegin}",
       dateBegin: startSeason,
       dateEnd: endSeason,
       addGotoOrderButton: false,
@@ -117,7 +117,7 @@ const status = computed((): SeasonStatusElement => {
     },
     {
       phase: SeasonPhase.ACTIVE_SEASON,
-      title: "Dir Zyklus läuft",
+      title: "Dir Zyklus ist grade aktiv",
       description:
         "Von {dateBegin} bis {dateEnd} bekommst du jeden Donnerstag deinen angemeldeten Bedarf (je nach Verfügbarkeit) in dein Depot geliefert (siehe unten).",
       dateBegin: startSeason,
@@ -129,7 +129,7 @@ const status = computed((): SeasonStatusElement => {
     },
     {
       phase: SeasonPhase.AFTER_SEASON,
-      title: "Der Zyklus ist beendet",
+      title: "Der Zyklus ist abgeschlossen",
       description:
         "Der gewählte Zyklus liegt in der Vergangenheit. Bitte wähle oben rechts einen anderen Zyklus aus.",
       dateBegin: startSeason,
