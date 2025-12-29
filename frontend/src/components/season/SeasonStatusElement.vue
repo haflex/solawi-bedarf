@@ -119,7 +119,8 @@ const status = computed((): SeasonStatusElement => {
       phase: SeasonPhase.ACTIVE_SEASON,
       title: "Dir Zyklus ist grade aktiv",
       description:
-        "Von {dateBegin} bis {dateEnd} bekommst du jeden Donnerstag deinen angemeldeten Bedarf (je nach Verfügbarkeit) in dein Depot geliefert (siehe unten).",
+        "Was kommt diese Woche auf den Teller? Sobald der Lieferwagen das ›Weite Feld‹ verlässt, aktualisiert sich hier dein Packzettel oder Lieferschein.\
+        Sofern du deine Ernte in einem Depot entgegennimmst, mache dir bitte bewusst, dass deine Zufriedenheit im direkten Zusammenhang mit der aller anderen steht (Prinzip: Verteilungsgerechtigkeit)",
       dateBegin: startSeason,
       dateEnd: endSeason,
       addGotoOrderButton: false,
@@ -131,7 +132,7 @@ const status = computed((): SeasonStatusElement => {
       phase: SeasonPhase.AFTER_SEASON,
       title: "Der Zyklus ist abgeschlossen",
       description:
-        "Der gewählte Zyklus liegt in der Vergangenheit. Bitte wähle oben rechts einen anderen Zyklus aus.",
+        "Dieser Zyklus liegt in der Vergangenheit. In einen anderen Zyklus gelangst du über die Schaltfläche oben rechts neben dem Zahnradsymbol.",
       dateBegin: startSeason,
       dateEnd: endSeason,
       addGotoOrderButton: false,

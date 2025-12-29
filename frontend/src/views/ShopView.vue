@@ -177,7 +177,7 @@ const disableSaveButton = computed(() => {
       ></v-select>
     </v-card-title>
     <v-card-title v-else>
-      {{ t.cards.header.hello }} {{ userStore.currentUser?.name }}
+      {{ t.cards.header.hello }}
     </v-card-title>
     <v-card-subtitle v-if="depot">
       {{ t.cards.header.depot }} <br /><br />

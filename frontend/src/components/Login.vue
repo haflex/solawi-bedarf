@@ -118,7 +118,7 @@ onMounted(() => {
       <v-card-text>
         <v-card-subtitle class="text-center">
           Passwort vergessen?
-          <router-link to="/requestpassword">Passwort zurücksetzen</router-link>
+          <a href="https://pw.weites-feld.org/index.php?action=sendtoken">Passwort zurücksetzen</a>
         </v-card-subtitle>
       </v-card-text>
     </v-form>

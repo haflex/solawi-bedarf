@@ -178,14 +178,14 @@ export const language = {
             "Herzlich willkommen zur Bedarfsmeldung des ›Weiten Feldes‹",
           subtitle:
             'Hier kannst Du Deine <a href="/#/shop">Bedarfsmeldung</a> abgeben.',
-          offers: "{offers} € erreichtes monatliches Budget",
-          food: "{food} % verteilte Nahrungsmittel aus Selbstanbau",
+          offers: "{offers} € erreichtes wöchentliches Budget",
+          food: "{food} % verteilte Nahrungsmittel",
           action: "Zur Bedarfsmeldung",
         },
         list: {
           title: "Packzettel / Lieferschein für",
           subtitle: "KW {kw}",
-          text: "Hier erscheinen zu gegebener Zeit die Lebensmittel, die Du entsprechend Deiner Bedarfsmeldung in Deinem Depot abholen kannst.",
+          text: "Hier erscheinen zu gegebener Zeit die Lebensmittel, die Du entsprechend Deiner Bedarfsmeldung in Deinem Depot abholen werden kannst.",
           shipment: "Nach der Bedarfsmeldung gibt es ab {from}",
           additionalShipment: "Zusätzlich gibt es:",
           seasonBefore: "Der Zyklus ist zur Zeit noch nicht aktiv.",
@@ -198,8 +198,8 @@ export const language = {
       },
       cards: {
         header: {
-          hello: "Hallo",
-          depot: "Dein Depot:",
+          hello: "Bedarf melden!",
+          depot: "Lieferung an:",
           openingHours: "Abholzeiten:",
           explaination:
           "Die von Dir für ein Lebensmittel eingegebene Menge bezieht sich immer auf eine Verteilungswoche. Wie oft das Lebensmittel innerhalb des Planungszeitraums verteilt werden soll, wird durch die Zahl neben dem LKW angegeben. Achtung: Es handelt sich um eine Planung. Das Wetter und die verfügbaren Ressourcen auf dem ›Weiten Feld‹ schaffen ihre eigene Realität. CSA heißt - Wir teilen das Anbaurisiko.<br/>Wenn die Anzahl der Verteilungen (LKW-Symbol) auf 0 gesetzt wurde, dann war die Wirtschaftlichkeit möglicher Weise nicht gegeben oder uns stehen nicht genug Ressourcen zur Verfügung. Es sind dann keine Verteilungen mehr geplant. In der Plantage ist es nicht vorgesehen, Lebensmittel nach der Bedarfsmeldung zu löschen. Dein Richtwert berücksichtigt aber nur Lebensmittel, für die wir abschließend eine Verteilung geplant haben. Vergiss nicht, Deinen finanziellen Beitrag entsprechend anzupassen!",

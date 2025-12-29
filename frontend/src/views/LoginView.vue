@@ -36,6 +36,6 @@ onMounted(() => {
 
 <template>
   <div class="mx-auto" style="max-width: 800px">
-    <Login show-register-link use-redirect />
+    <Login use-redirect />
   </div>
 </template>
