@@ -58,10 +58,10 @@ export const appConfig = {
       relative: 1.0, // multiplier for the given category
     },
     [UserCategory.CAT115]: {
-      relative: 1.15, // multiplier for the given category
+      relative: 1.0, // multiplier for the given category
     },
     [UserCategory.CAT130]: {
-      relative: 1.3, // multiplier for the given category
+      relative: 1.0, // multiplier for the given category
     },
   },
   offerLimit: 0.6, // 0.75

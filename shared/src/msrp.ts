@@ -147,10 +147,10 @@ export const calculateOrderValidMonths = (
     let firstShipment = getSameOrNextThursday(orderValidFrom, timezone);
     return Math.min(
       countCalendarMonths(firstShipment, seasonValidTo, timezone),
-      12
+      52
     );
   }
-  return 12;
+  return 52;
 };
 
 /**
@@ -179,10 +179,10 @@ export const calculateEffectiveOrderValidMonths = (
     );
     return Math.min(
       countCalendarMonths(firstShipment, lastShipment, timezone),
-      12
+      52
     );
   }
-  return 12;
+  return 52;
 };
 
 /**

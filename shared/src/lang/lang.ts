@@ -209,7 +209,7 @@ export const language = {
         },
         products: {
           title: "Bedarfsmeldung",
-          msrp: "Dein Richtwert: **{total} € pro Monat**",
+          msrp: "Dein Richtwert: **{total} € pro KW**",
           msrpSelfgrown: "{selfgrown} € für selbst angebaute Produkte",
           msrpCooperation: "{cooperation} € für Kooperationsprodukte",
           msrpCompensation:
@@ -230,13 +230,13 @@ export const language = {
         },
       },
       dialog: {
-        title: "Bedarfsmledung",
+        title: "Bedarfsmeldung",
         alert: {
           title: "Wichtige Eingabehinweise",
           text: '<p class="my-2"> In Abhängigkeit davon, was Du eingibst, erscheinen möglicherweise zusätzliche Eingabefelder.</p> <p class="mb-2">Bitte fülle alle Eingabefelder, auch die gegebenenfalls zusätzlich erscheinenden, aus und stimme den Bedingungen am Ende dieses Formulars zu. Erst wenn diese Voraus­setzungen erfüllt sind, wird der »Speichern«-Button aktiviert.</p><p>Danke!</p>',
         },
         offer: {
-          label: "Finanzieller Beitrag pro Monat [€]",
+          label: "Finanzieller Beitrag pro KW [€]",
           hint: "Mindestwert für Deinen finanziellen Beitrag: {msrp}€. Wird dieser unterschritten ist es nicht möglich deine Bedarfsmeldung zu speichern",
           lowOfferHint: "Begründung für Deinen Solawi-Beitrag erforderlich",
         },
