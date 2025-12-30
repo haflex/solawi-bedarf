@@ -1,7 +1,7 @@
 {src, buildNpmPackage, runtimeShell, nodejs, bash, git}:
 buildNpmPackage {
     pname = "solawi-bedarf";
-    version = "0.15.1";
+    version = "0.15.2";
 
     inherit src;
     npmDepsHash = "sha256-YyORz6ytyYZWNTI87GI/yKk7mX5m2KcV1LhfjSLJIV4=";
