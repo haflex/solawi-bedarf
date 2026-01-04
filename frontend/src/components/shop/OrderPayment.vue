@@ -322,12 +322,12 @@ const onBankNameUpdate = (value: string) => {
         hide-details
         density="compact"
       />
-      <p
+      <!--<p
         class="text-body-2 pl-10"
         v-for="text in bankTransferMessage.accountDetails.split('\n')"
       >
         {{ text }}
-      </p>
+      </p>-->
     </div>
   </div>
 </template>

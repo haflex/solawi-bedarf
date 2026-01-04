@@ -68,8 +68,11 @@ const percentageSold = computed(() => {
 <template>
   <v-card class="ma-2">
     <v-card-title>
-      Auswertung für <SeasonText plain />
+      <SeasonText plain />
     </v-card-title>
+    <v-card-subtitle>
+      Angebot und Nachfrage: Wie passt das im gewählten Zeitraum zusammen?
+    </v-card-subtitle>
     <v-card-text>
       <v-row dense>
         <v-col cols="12" sm="6">

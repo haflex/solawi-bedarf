@@ -233,11 +233,11 @@ export const language = {
         title: "Bedarfsmeldung",
         alert: {
           title: "Wichtige Eingabehinweise",
-          text: '<p class="my-2"> In Abhängigkeit davon, was Du eingibst, erscheinen möglicherweise zusätzliche Eingabefelder.</p> <p class="mb-2">Bitte fülle alle Eingabefelder, auch die gegebenenfalls zusätzlich erscheinenden, aus und stimme den Bedingungen am Ende dieses Formulars zu. Erst wenn diese Voraus­setzungen erfüllt sind, wird der »Speichern«-Button aktiviert.</p><p>Danke!</p>',
+          text: '<p class="my-2">Die Schaltfläche ›Speichern‹ wird erst aktiv, wenn alle erforderlichen Angaben getätigt wurden.</p>',
         },
         offer: {
           label: "Finanzieller Beitrag pro KW [€]",
-          hint: "Mindestwert für Deinen finanziellen Beitrag: {msrp}€. Wird dieser unterschritten ist es nicht möglich deine Bedarfsmeldung zu speichern",
+          hint: "Der Richtwert errechnet sich aus den von Dir gewählten Lebensmitteln und Mengen, sowie aus der geplanten Verteilhäufigkeit. Während der Bedarfsmeldung ist er vorläufig.",
           lowOfferHint: "Begründung für Deinen Solawi-Beitrag erforderlich",
         },
         offerReason: {
@@ -262,7 +262,7 @@ export const language = {
         confirm: {
           title: "Deine Zustimmung zu den Bedingungen",
           label:
-          "Ich habe die »Fragen & Antworten« (F&A) gelesen. Mir ist bewusst, dass meine Bedarfsmeldung bis zum Beginn der Beitragsrunde unverbindlich bleibt und jederzeit änderbar ist. Erst mit Beginn der Beitragsrunde werden meine zuletzt ausgewählten Lebensmittel und Mengen sowie mein finanzieller Beitrag verbindlich. Ich verpflichte mich, mit meinem verbindlichen finanziellen Beitrag für den gesamten Zyklus {season} das ›Weite Feld‹ mitzufinanzieren.",
+          "Wir rechnen fest mit der durch dich erklärten Abnahme der Lebensmittel und Deinem finanziellen Beitrag. Dennoch tritt erst durch Annahme des per E-Mail an dich gesendeten Vertrages eine Verbindlichkeit ein. Wir unterstützen dich gern über unser Service-Telefon unter 01556/6380806. Mehr Informationen und Bedienungshilfen findest du unter: https://wflink.de/mycsa"
         },
         confirmContribution: {
           title: "Bestätigung deines Mitgliedschaftsmodells als {model}",
@@ -272,33 +272,29 @@ export const language = {
         confirmPaymentMethod: {
           title: "Bitte wähle eine Zahlungsmethode:",
           subtitleModificationOrder: "",
-          subtitleNewOrder:
-            "(Diese Angabe ist optional, hilft uns aber sehr bei der organisatorischen Abwicklung.)",
+          subtitleNewOrder:"",
         },
         confirmSepaUpdate: {
           title: "Bestätigung der SEPA-Lastschrift",
           labelModificationOrder:
-            "Ich ermächtige den {organization.name}, ab {from} bis {to} den monatlichen Beitrag in Höhe von {total}€ (statt bisher {previousOffer}€) per SEPA-Lastschrift von meinem Konto einzuziehen.",
+            "Ich zahle in 2 Raten [Richtwert €/KW x Anzahl KW : 2] und ermächtige das ›Weite Feld‹ offene Beträge von meinem Konto einzuziehen.",
           labelNewOrder:
-            "Ich ermächtige den {organization.name}, ab {from} bis {to} den monatlichen Beitrag in Höhe von {total}€ per SEPA-Lastschrift von meinem Konto einzuziehen.",
+            "Ich zahle in 2 Raten [Richtwert €/KW x Anzahl KW : 2] und ermächtige das ›Weite Feld‹ offene Beträge von meinem Konto einzuziehen.",
         },
         confirmBankTransfer: {
           title: "Bestätigung der Überweisung",
           labelModificationOrder:
-            "Ich überweise den zusätzlichen Gesamtbetrag von {difference}€ bis zum {date} auf folgendes Konto:",
+            "Ich überweise den Gesamtbetrag von [Richtwert €/KW x Anzahl KW] bis zum [Start-Saison - 7 Tage]",
           labelNewOrder:
-            "Ich überweise den Jahresgesamtbetrag von {difference}€ bis zum {date} auf folgendes Konto:",
-          referenceModificationOrder:
-            "Verwendungszweck: Bedarfsanpassung {userName}",
-          referenceNewOrder: "Verwendungszweck: Jahresbeitrag {userName}",
+            "Ich überweise den Gesamtbetrag von [Richtwert €/KW x Anzahl KW] bis zum [Start-Saison - 7 Tage]",
+          referenceModificationOrder:"",
+          referenceNewOrder: "",
         },
         depotNote: {
           title: "Hinweis zu Depots mit (*)",
           show: "Anzeigen",
           paragraphs: [
-            "Depots, die mit einem Sternchen (*) gekennzeichnet sind, befinden sich aktuell noch in der Planungs- und Abstimmungsphase. Es kann daher sein, dass diese Depots zu Beginn des Zylkus noch nicht verfügbar sind.",
-            "Solltest Du eines dieser Depots wählen, könnte es notwendig sein, dass Du Dein Gemüse doch in einem anderen Depot abholen musst. Wir informieren Dich rechtzeitig und geben unser Bestes, die Planung so schnell wie möglich abzuschließen, damit alle gelisteten Depots nutzbar werden. Bitte gib daher ein zweites Wunschdepot an, welches kein Sternchen hat.",
-            "Wenn du die Depotkoordination in deinem Wunschdepot unterstützen möchtest, leistest du einen wertvollen Beitrag zur Sicherstellung des Depots. Melde dich hierfür gern im Forum bei {forumContact} oder bei der Mitgliederbetreuung unter {email}.",
+            "Ein Depot ist eine von den Mitgliedern selbst organisierte Abholstation mit mindestens 5 Mitgliedern. Die Belieferung durch uns, erfolgt ohne weitere Kosten. Ein durch (*) gekennzeichnetes Depot ist zum aktuellen Zeitpunkt noch in der Planungs- und Abstimmungsphase. Für eine gesicherte Lieferung wird empfohlen, ein Ausweichdepot anzugeben oder sich für die Lieferung an eine 'eigene Adresse' zu entscheiden."
           ],
         },
         sendConfirmationEmail: {
