@@ -69,7 +69,7 @@ const status = computed((): SeasonStatusElement => {
       phase: SeasonPhase.FREE_ORDER,
       title: "Bedarf melden!",
       description:
-        "Was soll auf deinem Teller landen? Unser Ziel: Anbauen nach Bedarf. Bevor wir wir aufs Feld gehen, benötigen wir Futter für die Planung. Bis zum {dateEnd} kannst du deinen Bedarf melden oder anpassen.",
+        "Was soll auf deinem Teller landen? Unser Ziel: Anbauen nach Bedarf. Bevor wir aufs Feld gehen, benötigen wir Futter für die Planung. Bis zum {dateEnd} kannst du deinen Bedarf melden oder anpassen.",
       dateBegin: startOrder,
       dateEnd: startBiddingRound,
       addGotoOrderButton: true,
@@ -117,7 +117,7 @@ const status = computed((): SeasonStatusElement => {
     },
     {
       phase: SeasonPhase.ACTIVE_SEASON,
-      title: "Dir Zyklus ist grade aktiv",
+      title: "Der Zyklus ist grade aktiv",
       description:
         "Was kommt diese Woche auf den Teller? Sobald der Lieferwagen das ›Weite Feld‹ verlässt, aktualisiert sich hier dein Packzettel oder Lieferschein.\
         Sofern du deine Ernte in einem Depot entgegennimmst, mache dir bitte bewusst, dass deine Zufriedenheit im direkten Zusammenhang mit der aller anderen steht (Prinzip: Verteilungsgerechtigkeit)",

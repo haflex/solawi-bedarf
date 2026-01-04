@@ -187,11 +187,7 @@ const disableSaveButton = computed(() => {
       {{ depot?.comment }}
     </v-card-subtitle>
     <v-card-text>
-      {{
-        interpolate(t.cards.header.explaination, {
-          season: config?.name || "KEIN ZYKLUS",
-        }, false)
-      }}
+      <p v-html="interpolate(t.cards.header.explaination, { season: config?.name || 'KEIN ZYKLUS'}, false)" />
       <a
         style="color: #6750a4; cursor: pointer"
         @click="() => (faqOpen = true)"

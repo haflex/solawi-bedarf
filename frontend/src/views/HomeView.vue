@@ -77,9 +77,12 @@ const isDarkTheme = computed(() => theme.global.current.value.dark);
     <v-card-text>
       <SeasonStatusElement
         :phase="phase.orderPhase"
-        v-if="phase.seasonPhase != SeasonPhase.AFTER_SEASON"
+        v-if="phase.orderPhase != SeasonPhase.ORDER_CLOSED"
       />
-      <SeasonStatusElement :phase="phase.seasonPhase" class="mt-3" />
+      <SeasonStatusElement
+        :phase="phase.seasonPhase" class="mt-3"
+        v-if="phase.orderPhase == SeasonPhase.ORDER_CLOSED"
+      />
     </v-card-text>
   </v-card>
   <v-card
