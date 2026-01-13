@@ -460,21 +460,26 @@ export type OrderOverviewWithApplicantItem = OrderOverviewItem &
   OrderPayment;
 
 export interface Msrp {
-  monthly: {
+  weekly: {
+    total: number;
+  }
+  /*monthly: {
     total: number;
     selfgrown: number;
     cooperation: number;
     selfgrownCompensation: number | undefined;
-  };
-  yearly: {
+  };*/
+  season: { //yearly
     total: number;
-    selfgrown: number;
-    cooperation: number;
-    selfgrownCompensation: number | undefined;
+    //selfgrown: number;
+    //cooperation: number;
+    //selfgrownCompensation: number | undefined;
   };
-  months: number;
+  weeks: number;
+  //months: number;
   contribution: UserCategory;
-  effectiveMonths?: number;
+  //effectiveMonths?: number;
+  effectiveWeeks?: number;
 }
 
 export interface OrganizationInfo {

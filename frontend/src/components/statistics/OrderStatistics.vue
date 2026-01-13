@@ -34,11 +34,12 @@ import DistributionPlot, {
 } from "./DistributionPlot.vue";
 import SeasonText from "../styled/SeasonText.vue";
 import {
-  calculateEffectiveOrderValidMonths,
+  //calculateEffectiveOrderValidMonths,
   getMsrp,
 } from "@lebenswurzel/solawi-bedarf-shared/src/msrp.ts";
 import { useBIStore } from "../../store/biStore.ts";
 import { useVersionInfoStore } from "../../store/versionInfoStore.ts";
+import { addWeeks, getWeekNumber, addDays, countCalendarWeeks } from "@lebenswurzel/solawi-bedarf-shared/src/util/dateHelper.ts";
 
 const t = language.pages.statistics;
 const userStore = useUserStore();
@@ -51,11 +52,11 @@ interface OrderExt extends SavedOrder {
   userName: string;
   depotName: string;
   msrp: Msrp;
-  validMonths: number;
+  validWeeks: number;
 }
 
-interface OrdersGroupedByMonth {
-  month: string;
+interface OrdersGroupedByWeek {
+  week: string;
   orders: OrderExt[];
   offerSum: number;
   msrpSum: number;
@@ -76,7 +77,7 @@ const headers = [
     title: "Richtwert",
     key: "msrp",
     sortRaw(a: OrderExt, b: OrderExt) {
-      return a.offer / a.msrp.monthly.total - b.offer / b.msrp.monthly.total;
+      return a.offer / a.msrp.weekly.total - b.offer / b.msrp.weekly.total;
     },
   },
   { title: "Angelegt", key: "createdAt" },
@@ -112,11 +113,12 @@ onMounted(async () => {
           return undefined;
         }
         const depot = depots.value.filter((d) => d.id == order.depotId);
-        const validMonths = calculateEffectiveOrderValidMonths(
+        /*const validMonths = calculateEffectiveOrderValidMonths(
           configStore.config!,
           order,
           versionInfoStore.versionInfo?.serverTimeZone,
-        );
+        );*/
+        const validWeeks = countCalendarWeeks(configStore.config!.validFrom, configStore.config!.validTo)
         allOrderExts.push({
           ...order,
           msrp: getMsrp(
@@ -125,7 +127,7 @@ onMounted(async () => {
             biStore.productsById,
             12,
           ),
-          validMonths,
+          validWeeks,
           userName: u.title,
           depotName: depot.length ? depot[0].name : "unbekannt",
         });
@@ -140,47 +142,47 @@ onMounted(async () => {
 /**
  * Group orders by month. Uses all months between validFrom and validTo of the current config.
  */
-const ordersGroupedByMonth = computed((): OrdersGroupedByMonth[] => {
+const ordersGroupedByWeek = computed((): OrdersGroupedByWeek[] => {
   if (!configStore.config?.validFrom || !configStore.config?.validTo) {
     return [];
   }
-  const months: { middleOfMonth: Date; name: string }[] = [];
+  const weeks: { middleOfWeek: Date; name: string }[] = [];
   for (
     let i = new Date(configStore.config?.validFrom);
     i <= configStore.config?.validTo;
-    i.setMonth(i.getMonth() + 1)
+    i = addWeeks(i, 1)
   ) {
-    months.push({
-      middleOfMonth: new Date(i.getFullYear(), i.getMonth(), 15),
-      name: format(i, "yyyy-MM"),
+    weeks.push({
+      middleOfWeek: addDays(i, 3 - i.getDay()),
+      name: "KW" + getWeekNumber(i).join("/"),
     });
   }
   const result = Object.values(
     relevantOrders.value.reduce(
       (acc, o) => {
-        months.forEach((month) => {
-          if (o.validFrom && o.validFrom > month.middleOfMonth) {
+        weeks.forEach((week) => {
+          if (o.validFrom && o.validFrom > week.middleOfWeek) {
             return;
           }
-          if (o.validTo && o.validTo < month.middleOfMonth) {
+          if (o.validTo && o.validTo < week.middleOfWeek) {
             return;
           }
-          acc[month.name] = acc[month.name] || {
+          acc[week.name] = acc[week.name] || {
             orders: [],
             offerSum: 0,
             msrpSum: 0,
             differenceSum: 0,
             count: 0,
-            month: month.name,
+            week: week.name,
           };
-          acc[month.name] = {
-            orders: [...acc[month.name].orders, o],
-            offerSum: o.offer + acc[month.name].offerSum,
-            msrpSum: o.msrp.monthly.total + acc[month.name].msrpSum,
+          acc[week.name] = {
+            orders: [...acc[week.name].orders, o],
+            offerSum: o.offer + acc[week.name].offerSum,
+            msrpSum: o.msrp.weekly.total + acc[week.name].msrpSum,
             differenceSum:
-              o.offer - o.msrp.monthly.total + acc[month.name].differenceSum,
-            count: 1 + acc[month.name].count,
-            month: month.name,
+              o.offer - o.msrp.weekly.total + acc[week.name].differenceSum,
+            count: 1 + acc[week.name].count,
+            week: week.name,
             isSumOrAverage: false,
           };
         });
@@ -193,7 +195,7 @@ const ordersGroupedByMonth = computed((): OrdersGroupedByMonth[] => {
           msrpSum: number;
           differenceSum: number;
           count: number;
-          month: string;
+          week: string;
           isSumOrAverage: boolean;
         };
       },
@@ -209,7 +211,7 @@ const ordersGroupedByMonth = computed((): OrdersGroupedByMonth[] => {
     msrpSum: result.reduce((acc, r) => acc + r.msrpSum, 0),
     differenceSum: result.reduce((acc, r) => acc + r.differenceSum, 0),
     count: result.reduce((acc, r) => acc + r.count, 0) / count,
-    month: "Summe",
+    week: "Summe",
     isSumOrAverage: true,
   };
 
@@ -220,7 +222,7 @@ const ordersGroupedByMonth = computed((): OrdersGroupedByMonth[] => {
     msrpSum: sumRow.msrpSum / count,
     differenceSum: sumRow.differenceSum / count,
     count: sumRow.count,
-    month: "Durchschnitt",
+    week: "Durchschnitt",
     isSumOrAverage: true,
   };
 
@@ -236,7 +238,7 @@ const categoriesDistribution = computed((): DistributionData => {
     (acc, cur) => {
       return acc.map((c) => {
         if (c.label == cur.category) {
-          return { ...c, value: c.value + cur.validMonths / 12 };
+          return { ...c, value: c.value + cur.validWeeks / 10 }; //FIXME dunno what is happening: validMonth / 12
         } else {
           return c;
         }
@@ -264,7 +266,7 @@ const offerRanges = computed(
       (acc, cur) => {
         return acc.map((c) => {
           if (cur.offer >= c.offerMin && cur.offer < c.offerMax) {
-            return { ...c, count: c.count + cur.validMonths / 12 };
+            return { ...c, count: c.count + cur.validWeeks / 10 }; //FIXME dunno what is happening: validMonth / 12
           } else {
             return c;
           }
@@ -288,12 +290,12 @@ const offerRanges = computed(
         })),
       },
       offersSum: relevantOrders.value.reduce(
-        (acc, cur) => acc + (cur.offer * cur.validMonths) / 12,
+        (acc, cur) => acc + (cur.offer * cur.validWeeks) / 10,
         0,
       ),
       offersMean:
         relevantOrders.value.reduce(
-          (acc, cur) => acc + (cur.offer * cur.validMonths) / 12,
+          (acc, cur) => acc + (cur.offer * cur.validWeeks) / 10,
           0,
         ) / relevantOrders.value.length,
     };
@@ -307,7 +309,7 @@ const depotDistribution = computed((): DistributionData => {
         (acc, order) => {
           return acc.map((c) => {
             if (c.label == order.depotName) {
-              return { ...c, value: c.value + order.validMonths / 12 };
+              return { ...c, value: c.value + order.validWeeks / 10 };
             } else {
               return c;
             }
@@ -414,7 +416,7 @@ const updatedAtDistribution = computed(
         </template>
         <template v-slot:item.offer="{ item }">
           {{ item.offer }} €<br />
-          <span class="opacity-70"> {{ item.validMonths }} Monate </span>
+          <span class="opacity-70"> {{ item.validWeeks }} Wochen </span>
 
           <v-tooltip
             :text="item.offerReason"
@@ -427,30 +429,31 @@ const updatedAtDistribution = computed(
           </v-tooltip>
         </template>
         <template v-slot:item.msrp="{ item }">
-          {{ item.msrp.monthly.total }} € =
+          {{ item.msrp.weekly.total }} €
+          <!-- =
           <span class="opacity-70">
             <v-icon style="font-size: 0.7rem">mdi-sprout-outline</v-icon
-            >{{ item.msrp.monthly.selfgrown }} € +
+            >{{ item.msrp.weekly.selfgrown }} € +
 
             <v-icon style="font-size: 0.7rem">mdi-truck-delivery-outline</v-icon
             >{{ item.msrp.monthly.cooperation }} €
-          </span>
+          </span>-->
           <br />
           <v-tooltip
             text="Der Richtwert kann hier nicht korrekt berechnet werden, wenn der Ernteteiler nicht die vollen 12 Monate teilnimmt. Der genaue Richtwert kann auf der Bedarfsanmeldung des Ernteteilers eingesehen werden (Button in der Benutzer-Spalte)"
             open-on-click
-            v-if="item.validMonths != 12"
+            v-if="item.validWeeks != 10"
           >
             <template v-slot:activator="{ props }">
               <v-icon v-bind="props" color="orange">mdi-alert</v-icon>
             </template>
           </v-tooltip>
           <span class="text-bold" v-else>
-            {{ item.offer >= item.msrp.monthly.total ? "+" : "-" }}
+            {{ item.offer >= item.msrp.weekly.total ? "+" : "-" }}
             {{
               Math.abs(
                 Math.round(
-                  (1000 * item.offer) / item.msrp.monthly.total - 1000,
+                  (1000 * item.offer) / item.msrp.weekly.total - 1000,
                 ) / 10,
               )
             }}%
@@ -501,29 +504,29 @@ const updatedAtDistribution = computed(
               </thead>
               <tbody>
                 <tr
-                  v-for="monthly in ordersGroupedByMonth"
-                  :key="monthly.month"
+                  v-for="weekly in ordersGroupedByWeek"
+                  :key="weekly.week"
                 >
-                  <td :class="{ 'font-weight-bold': monthly.isSumOrAverage }">
-                    {{ monthly.month }}
+                  <td :class="{ 'font-weight-bold': weekly.isSumOrAverage }">
+                    {{ weekly.week }}
                   </td>
-                  <td :class="{ 'font-weight-bold': monthly.isSumOrAverage }">
-                    {{ monthly.offerSum.toFixed(0) }} € (⌀{{
-                      (monthly.offerSum / monthly.count).toFixed(0)
+                  <td :class="{ 'font-weight-bold': weekly.isSumOrAverage }">
+                    {{ weekly.offerSum.toFixed(0) }} € (⌀{{
+                      (weekly.offerSum / weekly.count).toFixed(0)
                     }}
                     €)
                   </td>
-                  <td :class="{ 'font-weight-bold': monthly.isSumOrAverage }">
-                    {{ monthly.msrpSum.toFixed(0) }} € (⌀{{
-                      (monthly.msrpSum / monthly.count).toFixed(0)
+                  <td :class="{ 'font-weight-bold': weekly.isSumOrAverage }">
+                    {{ weekly.msrpSum.toFixed(0) }} € (⌀{{
+                      (weekly.msrpSum / weekly.count).toFixed(0)
                     }}
                     €)
                   </td>
-                  <td :class="{ 'font-weight-bold': monthly.isSumOrAverage }">
-                    {{ (monthly.offerSum - monthly.msrpSum).toFixed(0) }} €
+                  <td :class="{ 'font-weight-bold': weekly.isSumOrAverage }">
+                    {{ (weekly.offerSum - weekly.msrpSum).toFixed(0) }} €
                   </td>
-                  <td :class="{ 'font-weight-bold': monthly.isSumOrAverage }">
-                    {{ monthly.count.toFixed(0) }}
+                  <td :class="{ 'font-weight-bold': weekly.isSumOrAverage }">
+                    {{ weekly.count.toFixed(0) }}
                   </td>
                 </tr>
               </tbody>

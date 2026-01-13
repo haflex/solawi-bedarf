@@ -245,19 +245,19 @@ export const useBIStore = defineStore("bi", () => {
       return effectiveMsrpByOrderId.value[orderId];
     }
     return {
-      monthly: {
+      weekly: { //monthly
         total: 0,
-        selfgrown: 0,
-        cooperation: 0,
-        selfgrownCompensation: undefined,
+        //selfgrown: 0,
+        //cooperation: 0,
+        //selfgrownCompensation: undefined,
       },
-      yearly: {
+      season: { //yearly: {
         total: 0,
-        selfgrown: 0,
-        cooperation: 0,
-        selfgrownCompensation: undefined,
+        //selfgrown: 0,
+        //cooperation: 0,
+        //selfgrownCompensation: undefined,
       },
-      months: 0,
+      weeks: 0,
       contribution: UserCategory.CAT130,
     };
   };

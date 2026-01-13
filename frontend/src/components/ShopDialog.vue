@@ -138,20 +138,20 @@ const effectiveMsrp = computed(() => {
 });
 
 const enableOfferReason = computed(() =>
-  needsOfferReason(modelInt.value, effectiveMsrp.value.monthly.total),
+  needsOfferReason(modelInt.value, effectiveMsrp.value.weekly.total),
 );
 
 const offerReasonHint = computed(
   () =>
     !isOfferReasonValid(
       modelInt.value,
-      effectiveMsrp.value.monthly.total,
+      effectiveMsrp.value.weekly.total,
       offerReason.value,
     ),
 );
 
 const needsHigherOffer = computed(
-  () => !isOfferValid(modelInt.value, effectiveMsrp.value.monthly.total),
+  () => !isOfferValid(modelInt.value, effectiveMsrp.value.weekly.total),
 );
 
 const enableCategoryReason = computed(() =>
@@ -171,7 +171,7 @@ const depotHint = computed(() => {
 const offerHint = computed((): string | undefined => {
   if (needsHigherOffer.value) {
     return interpolate(t.offer.hint, {
-      msrp: Math.ceil(minOffer(effectiveMsrp.value.monthly.total)).toString(),
+      msrp: Math.ceil(minOffer(effectiveMsrp.value.weekly.total)).toString(),
     });
   }
   if (enableOfferReason.value && offerReasonHint.value) {

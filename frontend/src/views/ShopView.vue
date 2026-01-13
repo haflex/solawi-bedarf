@@ -200,7 +200,7 @@ const disableSaveButton = computed(() => {
         v-if="
           modificationOrderId &&
           rawMsrpByOrderId[modificationOrderId] &&
-          rawMsrpByOrderId[modificationOrderId].months < 12
+          rawMsrpByOrderId[modificationOrderId].weeks < 12 //NOTE we don't have change order
         "
       >
       <!--{{ t.cards.header.orderDuringSeason }}-->

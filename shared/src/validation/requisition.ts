@@ -149,36 +149,39 @@ export const validateModificationMsrp = (
 ): {
   errors: [string, string][] | null;
   offerValid: boolean;
-  selfgrownValid: boolean;
-  cooperationValid: boolean;
+  //selfgrownValid: boolean;
+  //cooperationValid: boolean;
   totalValid: boolean;
   allValid: boolean;
 } => {
-  const selfgrownDifference =
+  /*const selfgrownDifference =
     modification.msrp.monthly.selfgrown - previous.msrp.monthly.selfgrown;
   const cooperationDifference =
     modification.msrp.monthly.cooperation - previous.msrp.monthly.cooperation;
+  */
 
   const offerValid = previous.offer <= modification.offer;
-  const selfgrownValid =
+  /*const selfgrownValid =
     previous.msrp.monthly.selfgrown <= modification.msrp.monthly.selfgrown;
   const cooperationValid =
     cooperationDifference >= 0 || cooperationDifference >= -selfgrownDifference;
+  */
   const totalValid =
-    previous.msrp.monthly.total <= modification.msrp.monthly.total;
+    previous.msrp.season.total <= modification.msrp.season.total;
   const allValid =
-    offerValid && selfgrownValid && cooperationValid && totalValid;
+  //offerValid && selfgrownValid && cooperationValid && totalValid;
+    offerValid && totalValid;
 
   return {
     offerValid,
-    selfgrownValid,
-    cooperationValid,
+    //selfgrownValid,
+    //cooperationValid,
     totalValid,
     allValid,
     errors: getMsrpValidationMessages(
       offerValid,
-      selfgrownValid,
-      cooperationValid,
+      //selfgrownValid,
+      //cooperationValid,
       totalValid,
       previous.offer
     ),
@@ -187,8 +190,8 @@ export const validateModificationMsrp = (
 
 const getMsrpValidationMessages = (
   offerValid: boolean,
-  selfgrownValid: boolean,
-  cooperationValid: boolean,
+  //selfgrownValid: boolean,
+  //cooperationValid: boolean,
   totalValid: boolean,
   previousOffer: number
 ) => {
@@ -203,7 +206,7 @@ const getMsrpValidationMessages = (
   }
 
   // Rule 2: previous self grown <= modification self grown
-  if (!selfgrownValid) {
+  /*if (!selfgrownValid) {
     errors.push([
       "Der neue Richtwert für selbst angebaute Produkte ist geringer als der alte. Daher wurde der Differenzbetrag hinzugefügt.",
       "Hintergrund ist, dass der bisherige Beitrag bereits in das Jahresbudget für den Gemüseanbau eingerechnet ist und daher eine Verringerung dieses Beitrags nicht möglich ist.",
@@ -218,7 +221,7 @@ const getMsrpValidationMessages = (
       "Der neue Richtwert für Kooperationsprodukte ist geringer als der alte.",
       "Das ist zulässig, jedoch darf dein monatlicher Solawi-Beitrag nicht verringert werden.",
     ]);
-  }
+  }*/
 
   if (!totalValid) {
     errors.push([

@@ -308,7 +308,7 @@ export const getValidToMonth = (date: Date, timezone?: string): Date => {
 };
 
 //actually we are counting weeks
-function getWeekNumber(arg: Date): [number, number] {
+export const getWeekNumber = (arg: Date): [number, number] => {
     // Copy date so don't modify original
     var d = new Date(Date.UTC(arg.getFullYear(), arg.getMonth(), arg.getDate()));
     // Set to nearest Thursday: current date + 4 - current day number
@@ -317,8 +317,9 @@ function getWeekNumber(arg: Date): [number, number] {
     // Get first day of year
     var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
     // Calculate full weeks to nearest Thursday
-    var weekNo = Math.ceil(( ( (d.getTime() - yearStart.getTime()) / 86400000) + 1)/7);
+    var weekNo = Math.ceil(( ( (d.getTime() - yearStart.getTime() ) / 86400000) + 1)/7);
     // Return array of year and week number
+    console.log("Week number for date "+arg.toISOString()+" is "+weekNo+" of year "+d.getUTCFullYear());
     return [d.getUTCFullYear(), weekNo];
 }
 
@@ -334,19 +335,43 @@ export const countCalendarMonths = (
     laterDate = toZonedTime(laterDate, timezone);
   }
 
+  const earlierYear = earlierDate.getFullYear();
+  const earlierMonth = earlierDate.getMonth(); 
+
+  const laterYear = laterDate.getFullYear();
+  const laterMonth = laterDate.getMonth();
+
+  const monthDiff =
+    (laterYear - earlierYear) * 12 + (laterMonth - earlierMonth) + 1;
+
+  return monthDiff;
+};
+
+export const countCalendarWeeks = (
+  date1: Date,
+  date2: Date,
+  timezone?: string
+) => {
+  let earlierDate = date1.getTime() < date2.getTime() ? date1 : date2;
+  let laterDate = date1.getTime() < date2.getTime() ? date2 : date1;
+  if (timezone) {
+    earlierDate = toZonedTime(earlierDate, timezone);
+    laterDate = toZonedTime(laterDate, timezone);
+  }
+
   //const earlierYear, earlierMonth = earlierDate.getFullYear();
   const earlier = getWeekNumber(earlierDate);
   const earlierYear = earlier[0];
-  const earlierMonth = earlier[1]; //weeks actually 
+  const earlierWeek = earlier[1]; //weeks actually 
 
   const later = getWeekNumber(laterDate);
   const laterYear = later[0];
-  const laterMonth = later[1]; //weeks actually
+  const laterWeek = later[1]; //weeks actually
 
-  const monthDiff =
-    (laterYear - earlierYear) * 52 + (laterMonth - earlierMonth) + 1;
+  const weekDiff =
+    (laterYear - earlierYear) * 52 + (laterWeek - earlierWeek) + 1;
 
-  return monthDiff;
+  return weekDiff;
 };
 
 /**

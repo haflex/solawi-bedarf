@@ -32,7 +32,8 @@ import {
   getSameOrPreviousThursday,
 } from "./util/dateHelper";
 
-const getYearlyBaseMsrp = (orderItem: OrderItem, product: Product) => {
+//const getYearlyBaseMsrp = (orderItem: OrderItem, product: Product) => {
+const getBaseMsrp = (orderItem: OrderItem, product: Product) => {
   if (product) {
     const conversion = product.unit == Unit.PIECE ? 100 : 100000; // convert ct/kg & ct/pcs too €/g & €/pcs
     return (
@@ -57,7 +58,7 @@ export const adjustMsrp = (
   return 0;
 };
 
-export const getOrderItemAdjustedMonthlyMsrp = (
+/*export const getOrderItemAdjustedMonthlyMsrp = (
   contribution: UserCategory,
   orderItem: OrderItem,
   productById: ProductsById,
@@ -70,30 +71,41 @@ export const getOrderItemAdjustedMonthlyMsrp = (
   const baseMsrp =
     getYearlyBaseMsrp(orderItem, productById[orderItem.productId]) * weight;
   return adjustMsrp(baseMsrp, contribution, months);
-};
+};*/
+
+export const getOrderItemWeightedMsrp = (
+  orderItem: OrderItem,
+  productsById: ProductsById,
+  productMsrpWeights?: { [key: ProductId]: number }
+): number => {
+  const weight = productMsrpWeights
+    ? (productMsrpWeights[orderItem.productId] ?? 1)
+    : 1;
+  return getBaseMsrp(orderItem, productsById[orderItem.productId]) * weight;
+}
 
 export const getMsrp = (
   contribution: UserCategory,
   orderItems: OrderItem[],
   productsById: ProductsById,
-  months: number,
+  weeks: number,
   productMsrpWeights?: { [key: ProductId]: number }
 ): Msrp => {
-  const adjustedMonthlyTotal = Math.ceil(
+  //const adjustedMonthlyTotal = Math.ceil(
+  const weightedTotal = Math.ceil(
     orderItems.reduce(
       (acc, orderItem) =>
         acc +
-        getOrderItemAdjustedMonthlyMsrp(
-          contribution,
+        getOrderItemWeightedMsrp(
           orderItem,
           productsById,
-          months,
           productMsrpWeights
         ),
       0
     )
   );
-  const adjustedMonthlySelfgrown = Math.ceil(
+  const weightedWeeklyTotal = weightedTotal / weeks;
+  /*const adjustedMonthlySelfgrown = Math.ceil(
     orderItems
       .filter(
         (oi) =>
@@ -112,22 +124,27 @@ export const getMsrp = (
           ),
         0
       )
-  );
+  );*/
 
   return {
-    monthly: {
+    weekly: {
+      total: weightedWeeklyTotal
+    },
+    /*monthly: {
       total: adjustedMonthlyTotal,
       selfgrown: adjustedMonthlySelfgrown,
       cooperation: adjustedMonthlyTotal - adjustedMonthlySelfgrown,
       selfgrownCompensation: undefined,
-    },
-    yearly: {
-      total: adjustedMonthlyTotal * months,
+    },*/
+    season: {
+      total: weightedTotal
+      /*total: adjustedMonthlyTotal * months,
       selfgrown: adjustedMonthlySelfgrown * months,
       cooperation: (adjustedMonthlyTotal - adjustedMonthlySelfgrown) * months,
-      selfgrownCompensation: undefined,
+      selfgrownCompensation: undefined,*/
     },
-    months,
+    weeks: weeks,
+    //months,
     contribution,
   };
 };
@@ -159,7 +176,7 @@ export const calculateOrderValidMonths = (
  * If the first shipment is after the end of the order, the number of months is 12.
  * If the first shipment is before the start of the order, the number of months is 0.
  */
-export const calculateEffectiveOrderValidMonths = (
+/*export const calculateEffectiveOrderValidMonths = (
   seasonRange: ValidRange,
   orderRange: ValidRange,
   timezone?: string
@@ -183,7 +200,7 @@ export const calculateEffectiveOrderValidMonths = (
     );
   }
   return 52;
-};
+};*/
 
 /**
  * Calculate the selfgrown compensation for a modified order and adapt the msrp accordingly
@@ -196,7 +213,7 @@ export const calculateEffectiveOrderValidMonths = (
  * @param modifiedMsrp
  * @returns the adapted msrp
  */
-const adaptSelfgrownCompensation = (
+/*const adaptSelfgrownCompensation = (
   currentMsrp: Msrp,
   modifiedMsrp: Msrp
 ): Msrp => {
@@ -229,7 +246,7 @@ const adaptSelfgrownCompensation = (
     };
   }
   return modifiedMsrp;
-};
+};*/
 
 type ProductKey = string;
 const productKey = (
@@ -257,7 +274,7 @@ export const calculateEffectiveMsrpChain = (
   }
 
   // Track cumulative values per product
-  const cumulativeYearlyMsrpByProduct: { [key: ProductKey]: number } = {};
+  const cumulativeSeasonMsrpByProduct: { [key: ProductKey]: number } = {};
   const cumulativePaidByProduct: { [key: ProductKey]: number } = {};
 
   const results: Msrp[] = [];
@@ -269,9 +286,9 @@ export const calculateEffectiveMsrpChain = (
     const nextOrder = i + 1 < orders.length ? orders[i + 1] : null;
 
     // Calculate effective months and weight for current order
-    const currentMonths = rawMsrpByOrderId[currentOrder.id].months;
-    const nextMonths = nextOrder ? rawMsrpByOrderId[nextOrder.id].months : 0;
-    const effectiveMonths = currentMonths - nextMonths;
+    const currentWeeks = rawMsrpByOrderId[currentOrder.id].weeks;
+    const nextWeeks = nextOrder ? rawMsrpByOrderId[nextOrder.id].weeks : 0;
+    const effectiveWeeks = currentWeeks - nextWeeks;
 
     // Track effective MSRP per product for this order
     const effectiveMsrpByProduct: {
@@ -306,7 +323,7 @@ export const calculateEffectiveMsrpChain = (
       // Calculate total MSRP for this product (yearly value)
       const totalMsrp = orderItem
         ? applyContribution(
-            getYearlyBaseMsrp(orderItem, product),
+            getBaseMsrp(orderItem, product),
             currentOrder.category
           )
         : 0;
@@ -314,76 +331,77 @@ export const calculateEffectiveMsrpChain = (
       const remainingValue = totalMsrp * currentWeight;
 
       // Initialize cumulative values if not present
-      if (cumulativeYearlyMsrpByProduct[pk] === undefined) {
-        cumulativeYearlyMsrpByProduct[pk] = 0;
+      if (cumulativeSeasonMsrpByProduct[pk] === undefined) {
+        cumulativeSeasonMsrpByProduct[pk] = 0;
       }
       if (cumulativePaidByProduct[pk] === undefined) {
         cumulativePaidByProduct[pk] = 0;
       }
 
       // Calculate relevant yearly MSRP (cumulative + remaining value)
-      const relevantYearlyMsrp =
-        cumulativeYearlyMsrpByProduct[pk] + remainingValue;
+      const relevantSeasonMsrp =
+        cumulativeSeasonMsrpByProduct[pk] + remainingValue;
 
       // Calculate monthly due effective
-      const monthlyDueEffective =
-        currentMonths > 0
-          ? (relevantYearlyMsrp - cumulativePaidByProduct[pk]) / currentMonths
+      const weeklyDueEffective =
+        currentWeeks > 0
+          ? (relevantSeasonMsrp - cumulativePaidByProduct[pk]) / currentWeeks
           : 0;
 
       // Update cumulative paid
-      cumulativePaidByProduct[pk] += monthlyDueEffective * effectiveMonths;
+      cumulativePaidByProduct[pk] += weeklyDueEffective * effectiveWeeks;
 
       // Update cumulative yearly MSRP
-      cumulativeYearlyMsrpByProduct[pk] += totalValueInRange;
+      cumulativeSeasonMsrpByProduct[pk] += totalValueInRange;
 
       // Store effective monthly MSRP for this product
       effectiveMsrpByProduct[pk] = {
-        value: monthlyDueEffective,
+        value: weeklyDueEffective,
         category: product.productCategoryType,
       };
     }
 
     // Aggregate effective MSRP across all products
-    const effectiveMonthlyTotal = Math.ceil(
+    const effectiveWeeklyTotal = Math.ceil(
       Object.values(effectiveMsrpByProduct).reduce(
         (acc, value) => acc + value.value,
         0
       )
     );
-    const effectiveMonthlySelfgrown = Math.ceil(
+    /*const effectiveMonthlySelfgrown = Math.ceil(
       Object.values(effectiveMsrpByProduct)
         .filter((v) => v.category == ProductCategoryType.SELFGROWN)
         .reduce((acc, value) => acc + value.value, 0)
     );
     const effectiveMonthlyCooperation =
       effectiveMonthlyTotal - effectiveMonthlySelfgrown;
+    */
 
     // Build result MSRP
     const result: Msrp = {
       ...rawMsrpByOrderId[currentOrder.id],
-      monthly: {
-        total: effectiveMonthlyTotal,
-        selfgrown: effectiveMonthlySelfgrown,
-        cooperation: effectiveMonthlyCooperation,
-        selfgrownCompensation: undefined,
+      weekly: {
+        total: effectiveWeeklyTotal,
+        //selfgrown: effectiveMonthlySelfgrown,
+        //cooperation: effectiveMonthlyCooperation,
+        //selfgrownCompensation: undefined,
       },
-      yearly: {
-        total: effectiveMonthlyTotal * currentMonths,
-        selfgrown: effectiveMonthlySelfgrown * currentMonths,
-        cooperation: effectiveMonthlyCooperation * currentMonths,
-        selfgrownCompensation: undefined,
+      season: {
+        total: effectiveWeeklyTotal * currentWeeks,
+        //selfgrown: effectiveMonthlySelfgrown * currentMonths,
+        //cooperation: effectiveMonthlyCooperation * currentMonths,
+        //selfgrownCompensation: undefined,
       },
-      effectiveMonths,
+      effectiveWeeks,
     };
 
     // Apply selfgrown compensation if this is not the first order
-    if (i > 0) {
+    /*if (i > 0) {
       const adaptedMsrp = adaptSelfgrownCompensation(results[i - 1], result);
       results.push(adaptedMsrp);
-    } else {
+    } else {*/
       results.push(result);
-    }
+    //}
   }
 
   return results;

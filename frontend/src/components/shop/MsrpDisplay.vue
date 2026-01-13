@@ -62,19 +62,13 @@ const relevantOffer = computed(() => {
 const msrp = computed((): Msrp => {
   if (!props.order) {
     return {
-      monthly: {
+      weekly: {
         total: 0,
-        selfgrown: 0,
-        cooperation: 0,
-        selfgrownCompensation: undefined,
       },
-      yearly: {
+      season: {
         total: 0,
-        selfgrown: 0,
-        cooperation: 0,
-        selfgrownCompensation: undefined,
       },
-      months: 0,
+      weeks: 0,
       contribution: UserCategory.CAT130,
     };
   }
@@ -145,7 +139,7 @@ const msrpValidation = computed(() => {
       <Markdown
         :markdown="t.cards.products.msrp"
         :values="{
-          total: msrp?.monthly.total.toString(),
+          total: msrp?.weekly.total.toString(),
         }"
       />
       <!--
@@ -182,7 +176,7 @@ const msrpValidation = computed(() => {
         <template v-if="msrpValidation">
           <v-icon
             v-if="
-              msrpValidation.offerValid && relevantOffer >= msrp.monthly.total
+              msrpValidation.offerValid && relevantOffer >= msrp.weekly.total
             "
             color="success"
             >mdi-check-circle</v-icon
