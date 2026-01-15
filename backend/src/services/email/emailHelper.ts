@@ -122,7 +122,7 @@ export const buildOrderEmail = async (
       userId: orderUser.name,
       paymentMessage: paymentMessage,
       orderStartMonth: startMonth,
-      orderValidMonths: effectiveMsrp.months.toString(),
+      orderValidMonths: effectiveMsrp.weeks.toString(),
     },
     true,
   );

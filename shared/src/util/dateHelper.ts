@@ -359,17 +359,20 @@ export const countCalendarWeeks = (
     laterDate = toZonedTime(laterDate, timezone);
   }
 
+  
   //const earlierYear, earlierMonth = earlierDate.getFullYear();
   const earlier = getWeekNumber(earlierDate);
   const earlierYear = earlier[0];
   const earlierWeek = earlier[1]; //weeks actually 
-
+  
   const later = getWeekNumber(laterDate);
   const laterYear = later[0];
   const laterWeek = later[1]; //weeks actually
-
+  
   const weekDiff =
-    (laterYear - earlierYear) * 52 + (laterWeek - earlierWeek) + 1;
+  (laterYear - earlierYear) * 52 + (laterWeek - earlierWeek) + 1;
+  
+  console.log("Counting weeks between "+earlierDate.toISOString()+" and "+laterDate.toISOString()+": "+weekDiff);
 
   return weekDiff;
 };

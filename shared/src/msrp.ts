@@ -24,12 +24,13 @@ import {
   ProductId,
   ProductsById,
   SavedOrder,
-  ValidRange,
+  //ValidRange,
 } from "./types";
 import {
-  countCalendarMonths,
-  getSameOrNextThursday,
-  getSameOrPreviousThursday,
+  countCalendarWeeks
+  //countCalendarMonths,
+  //getSameOrNextThursday,
+  //getSameOrPreviousThursday,
 } from "./util/dateHelper";
 
 //const getYearlyBaseMsrp = (orderItem: OrderItem, product: Product) => {
@@ -155,7 +156,7 @@ export const getMsrp = (
  * If the first shipment is after the end of the season, the number of months is 12.
  * If the first shipment is before the start of the season, the number of months is 0.
  */
-export const calculateOrderValidMonths = (
+/*export const calculateOrderValidMonths = (
   orderValidFrom: Date,
   seasonValidTo?: Date,
   timezone?: string
@@ -168,7 +169,17 @@ export const calculateOrderValidMonths = (
     );
   }
   return 52;
-};
+};*/
+export const calculateOrderValidWeeks = (
+  orderValidFrom: Date,
+  seasonValidTo?: Date,
+  timezone?: string
+): number => {
+  if (seasonValidTo) {
+    return countCalendarWeeks(orderValidFrom, seasonValidTo, timezone);
+  }
+  return 10;
+}
 
 /**
  * Calculate the effective number of months of an order.

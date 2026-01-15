@@ -21,7 +21,8 @@ import { appConfig } from "@lebenswurzel/solawi-bedarf-shared/src/config";
 import { validatePayment } from "@lebenswurzel/solawi-bedarf-shared/src/util/ibanHelper";
 import {
   calculateEffectiveMsrpChain,
-  calculateOrderValidMonths,
+  //calculateOrderValidMonths,
+  calculateOrderValidWeeks,
   getMsrp,
 } from "@lebenswurzel/solawi-bedarf-shared/src/msrp";
 import {
@@ -203,13 +204,13 @@ export const saveOrder = async (
     requisitionConfig,
     relevantOrders.map(unpackOrderPayment),
   );
-  if (!isOfferValid(body.offer, effectiveMsrp.monthly.total)) {
+  if (!isOfferValid(body.offer, effectiveMsrp.weekly.total)) {
     ctx.throw(http.bad_request, "bid too low");
   }
   if (
     !isOfferReasonValid(
       body.offer,
-      effectiveMsrp.monthly.total,
+      effectiveMsrp.weekly.total,
       body.offerReason,
     )
   ) {
@@ -334,8 +335,8 @@ const determineEffectiveMsrp = async (
         order.category,
         order.orderItems,
         productsById,
-        calculateOrderValidMonths(
-          order.validFrom,
+        calculateOrderValidWeeks(
+          requisitionConfig.validFrom, //order.validFrom,
           requisitionConfig.validTo,
           config.timezone,
         ),

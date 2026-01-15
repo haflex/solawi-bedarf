@@ -22,6 +22,7 @@ import { computed } from "vue";
 import { useBIStore } from "../store/biStore";
 import { ProductCategoryType } from "@lebenswurzel/solawi-bedarf-shared/src/enum.ts";
 import SeasonText from "../components/styled/SeasonText.vue";
+import { countCalendarWeeks } from "@lebenswurzel/solawi-bedarf-shared/src/util/dateHelper.ts";
 
 const t = language.pages.home;
 const configStore = useConfigStore();
@@ -29,7 +30,8 @@ const biStore = useBIStore();
 
 const percentageBudget = computed(() => {
   if (biStore.offers && configStore.config?.budget) {
-    return Math.round((1200 * biStore.offers) / configStore.config?.budget);
+    const weeks = countCalendarWeeks(configStore.config!.validFrom, configStore.config!.validTo);
+    return Math.round((100 * weeks * biStore.offers) / configStore.config?.budget);
   }
   return 0;
 });

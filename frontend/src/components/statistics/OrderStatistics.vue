@@ -38,7 +38,7 @@ import {
   getMsrp,
 } from "@lebenswurzel/solawi-bedarf-shared/src/msrp.ts";
 import { useBIStore } from "../../store/biStore.ts";
-import { useVersionInfoStore } from "../../store/versionInfoStore.ts";
+//import { useVersionInfoStore } from "../../store/versionInfoStore.ts";
 import { addWeeks, getWeekNumber, addDays, countCalendarWeeks } from "@lebenswurzel/solawi-bedarf-shared/src/util/dateHelper.ts";
 
 const t = language.pages.statistics;
@@ -46,7 +46,7 @@ const userStore = useUserStore();
 const configStore = useConfigStore();
 const { depots } = storeToRefs(configStore);
 const biStore = useBIStore();
-const versionInfoStore = useVersionInfoStore();
+//const versionInfoStore = useVersionInfoStore();
 
 interface OrderExt extends SavedOrder {
   userName: string;

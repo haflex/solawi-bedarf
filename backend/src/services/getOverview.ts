@@ -26,7 +26,8 @@ import {
   UserRole,
 } from "@lebenswurzel/solawi-bedarf-shared/src/enum";
 import {
-  calculateOrderValidMonths,
+  //calculateOrderValidMonths,
+  calculateOrderValidWeeks,
   getMsrp,
 } from "@lebenswurzel/solawi-bedarf-shared/src/msrp";
 import { bi } from "./bi/bi";
@@ -213,8 +214,8 @@ export const getUserOrderOverview = async (
         order.category,
         order.orderItems,
         productsById,
-        calculateOrderValidMonths(
-          order.validFrom,
+        calculateOrderValidWeeks(
+          order.requisitionConfig.validFrom,
           order.requisitionConfig.validTo,
           config.timezone,
         ),
@@ -274,8 +275,8 @@ export const getUserOrderOverview = async (
         ),
         depot: order.depot.name,
         alternateDepot: order.alternateDepot?.name,
-        msrp: msrp.monthly.total,
-        months: msrp.months,
+        msrp: msrp.weekly.total,
+        weeks: msrp.weeks,
         startMonth,
         offer: order.offer,
         offerReason: order.offerReason || "",

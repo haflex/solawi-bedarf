@@ -33,7 +33,8 @@ import { getAvailabilityWeights, getBI } from "../requests/bi.ts";
 import { useUserStore } from "./userStore.ts";
 import {
   calculateEffectiveMsrpChain,
-  calculateOrderValidMonths,
+  calculateOrderValidWeeks,
+  //calculateOrderValidMonths,
   getMsrp,
 } from "@lebenswurzel/solawi-bedarf-shared/src/msrp.ts";
 import {
@@ -186,8 +187,8 @@ export const useBIStore = defineStore("bi", () => {
         productId: item.productId,
         value: item.value,
       }));
-      const validMonths = calculateOrderValidMonths(
-        o.validFrom,
+      const validWeeks = calculateOrderValidWeeks(
+        config.value!.validFrom, //o.validFrom,
         config.value?.validTo,
         "Europe/Berlin",
       );
@@ -200,7 +201,7 @@ export const useBIStore = defineStore("bi", () => {
         relevantCategory,
         actualOrderItems,
         productsById.value,
-        validMonths,
+        validWeeks,
         productMsrpWeightsByOrderId.value[o.id],
       );
       msrpsMap[o.id] = msrp;

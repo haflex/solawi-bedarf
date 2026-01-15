@@ -21,28 +21,29 @@ import { computed } from "vue";
 import { useConfigStore } from "../../store/configStore";
 import { storeToRefs } from "pinia";
 import {
-  countThursdaysBetweenDates,
-  dayDifference,
-  getSameOrNextThursday,
+  countCalendarWeeks,
+  //countThursdaysBetweenDates,
+  //dayDifference,
+  //getSameOrNextThursday,
 } from "../../../../shared/src/util/dateHelper";
 import { SavedOrder } from "@lebenswurzel/solawi-bedarf-shared/src/types";
 import DebugOnly from "../debug/DebugOnly.vue";
-import { deliveryPauseRange } from "@lebenswurzel/solawi-bedarf-shared/src/config";
+//import { deliveryPauseRange } from "@lebenswurzel/solawi-bedarf-shared/src/config";
 
 const configStore = useConfigStore();
 const { config } = storeToRefs(configStore);
 
 const props = defineProps<{
   order: SavedOrder | undefined;
-  plain?: boolean;
+  //plain?: boolean;
 }>();
 
-const validFrom = computed(() => {
+/*const validFrom = computed(() => {
   return props.order?.validFrom;
 });
 const validTo = computed(() => {
   return props.order?.validTo;
-});
+});*/
 
 /*const isPastOrder = computed(() => {
   return props.order && props.order?.validTo.getTime() < new Date().getTime();
@@ -58,7 +59,7 @@ const prettyDate = (date?: Date | string | null): string => {
   return "nie";
 };
 
-const firstThursdayOfDelivery = computed(() => {
+/*const firstThursdayOfDelivery = computed(() => {
   if (
     validFrom.value &&
     validFrom.value.getTime() > (config.value?.validFrom?.getTime() || 0)
@@ -66,29 +67,32 @@ const firstThursdayOfDelivery = computed(() => {
     return getSameOrNextThursday(validFrom.value);
   }
   return config.value?.validFrom;
-});
+});*/
 
 const endDate = computed(() => {
-  return validTo.value || config.value?.validTo;
+  return config.value?.validTo;
+});
+
+const startDate = computed(() => {
+  return config.value?.validFrom;
 });
 
 const deliveries = computed(() => {
-  if (endDate.value && firstThursdayOfDelivery.value) {
-    return countThursdaysBetweenDates(
-      firstThursdayOfDelivery.value,
-      endDate.value,
-      deliveryPauseRange,
+  if (endDate.value && startDate.value) {
+    return countCalendarWeeks(
+      startDate.value,
+      endDate.value
     );
   }
   return 0;
 });
 
-const isFirstDeliveryInThePast = computed(() => {
+/*const isFirstDeliveryInThePast = computed(() => {
   if (!firstThursdayOfDelivery.value) {
     return false;
   }
   return new Date().getTime() - firstThursdayOfDelivery.value.getTime() > 0;
-});
+});*/
 </script>
 <template>
   <div>
@@ -101,16 +105,16 @@ const isFirstDeliveryInThePast = computed(() => {
   </div>
 
   <div>
-    {{ prettyDate(firstThursdayOfDelivery) }} bis {{ prettyDate(endDate) }} ({{
+    {{ prettyDate(startDate) }} bis {{ prettyDate(endDate) }} ({{
       deliveries
     }}
     Verteilungen)
   </div>
-  <template v-if="!isFirstDeliveryInThePast">
+  <!--<template v-if="!isFirstDeliveryInThePast">
     <div class="py-1">
       Noch
-      {{ dayDifference(new Date(), firstThursdayOfDelivery || new Date()) }}
+      {{ dayDifference(new Date(), startDate || new Date()) }}
       Tage bis zur ersten Verteilung.
     </div>
-  </template>
+  </template>-->
 </template>
