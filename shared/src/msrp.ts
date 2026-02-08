@@ -38,7 +38,8 @@ const getBaseMsrp = (orderItem: OrderItem, product: Product) => {
   if (product) {
     const conversion = product.unit == Unit.PIECE ? 100 : 100000; // convert ct/kg & ct/pcs too €/g & €/pcs
     return (
-      ((product.frequency || 1) * product.msrp * orderItem.value) / conversion
+      //((product.frequency || 1) * product.msrp * orderItem.value) / conversion
+      (product.frequency * product.msrp * orderItem.value) / conversion //we want to be able to set 0 "Verteilungen"
     );
   }
   return 0;
