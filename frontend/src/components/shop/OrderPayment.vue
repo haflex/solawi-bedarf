@@ -100,24 +100,27 @@ const isModificationOrder = computed(() => {
 });
 
 const sepaLabel = computed(() => {
+  console.log("order", props.modificationOrder);
   return getSepaUpdateMessage(
-    props.modificationOrder.validFrom,
-    props.modificationOrder.validTo,
-    props.offer,
-    predecessorOffer.value,
-    props.organizationInfoFlat,
-    isModificationOrder.value,
-  );
-});
-
-const bankTransferMessage = computed(() => {
-  return getBankTransferMessage(
     props.modificationOrder.validFrom,
     props.modificationOrder.validTo,
     config.value?.validFrom ?? new Date(),
     config.value?.validTo ?? new Date(),
     props.offer,
     predecessorOffer.value,
+    props.organizationInfoFlat
+    //isModificationOrder.value,
+  );
+});
+
+const bankTransferMessage = computed(() => {
+  return getBankTransferMessage(
+    //props.modificationOrder.validFrom,
+    //props.modificationOrder.validTo,
+    config.value?.validFrom ?? new Date(),
+    config.value?.validTo ?? new Date(),
+    props.offer,
+    //predecessorOffer.value,
     props.requestUser.name,
     props.organizationInfoFlat["organization.bankAccount"],
     isModificationOrder.value,

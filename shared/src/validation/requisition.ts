@@ -27,12 +27,14 @@ import {
   SavedOrder,
 } from "../types";
 import {
+  addDays,
   countCalendarMonths,
   getSameOrNextThursday,
   getValidFromMonth,
   getValidToMonth,
   prettyDateWithMonthAndYear,
 } from "../util/dateHelper";
+import { countCalendarWeeks } from "../util/dateHelper";
 
 export const isRequisitionActive = (
   userRole: UserRole,
@@ -271,21 +273,24 @@ export const determinePredecessorOrder = <T extends SavedOrder>(
 export const getSepaUpdateMessage = (
   validFrom: Date,
   validTo: Date,
+  requisitionConfigValidFrom: Date,
+  requisitionConfigValidTo: Date,
   offer: number,
   previousOffer: number,
-  organizationInfo: OrganizationInfoFlat,
-  hasPreviousOrder: boolean
+  organizationInfo: OrganizationInfoFlat
+  //hasPreviousOrder: boolean
 ) => {
   return interpolate(
-    hasPreviousOrder
-      ? language.pages.shop.dialog.confirmSepaUpdate.labelModificationOrder
-      : language.pages.shop.dialog.confirmSepaUpdate.labelNewOrder,
+    //hasPreviousOrder ?
+      language.pages.shop.dialog.confirmSepaUpdate.labelModificationOrder,
+      //: language.pages.shop.dialog.confirmSepaUpdate.labelNewOrder,
     {
       ...organizationInfo,
       from: prettyDateWithMonthAndYear(getSameOrNextThursday(validFrom)),
       to: prettyDateWithMonthAndYear(validTo),
       total: offer.toString() || "?",
       previousOffer: previousOffer.toString() || "?",
+      fullHalf: (offer * countCalendarWeeks(requisitionConfigValidFrom, requisitionConfigValidTo) / 2).toString() || "?",
     }
   );
 };
@@ -315,22 +320,22 @@ export const getRequiredBankTransferAmount = (
 };
 
 export const getBankTransferMessage = (
-  orderValidFrom: Date,
-  orderValidTo: Date,
+  //orderValidFrom: Date,
+  //orderValidTo: Date,
   requisitionConfigValidFrom: Date,
   requisitionConfigValidTo: Date,
   offer: number,
-  previousOffer: number,
+  //previousOffer: number,
   userName: string,
   accountDetails: string,
   hasPreviousOrder: boolean,
-  timezone?: string
+  //timezone?: string
 ): {
   message: string;
   accountDetails: string;
   amount: number;
 } => {
-  const { startMonth, amount } = getRequiredBankTransferAmount(
+  /*const { startMonth, amount } = getRequiredBankTransferAmount(
     offer,
     previousOffer,
     orderValidFrom,
@@ -338,16 +343,17 @@ export const getBankTransferMessage = (
     requisitionConfigValidFrom,
     requisitionConfigValidTo,
     timezone
-  );
+  );*/
+  const amount = offer * countCalendarWeeks(requisitionConfigValidFrom, requisitionConfigValidTo);
   return {
     message: interpolate(
-      hasPreviousOrder
-        ? language.pages.shop.dialog.confirmBankTransfer.labelModificationOrder
-        : language.pages.shop.dialog.confirmBankTransfer.labelNewOrder,
+      //hasPreviousOrder
+        language.pages.shop.dialog.confirmBankTransfer.labelModificationOrder,
+        //: language.pages.shop.dialog.confirmBankTransfer.labelNewOrder,
       {
-        difference: amount.toString(),
+        total: amount.toString(),
         date: format(
-          new Date(startMonth.getFullYear(), startMonth.getMonth(), 14),
+          addDays(requisitionConfigValidFrom, -7),
           "dd.MM.yyyy"
         ),
       }

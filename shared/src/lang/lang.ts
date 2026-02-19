@@ -202,7 +202,7 @@ export const language = {
           depot: "Lieferung an:",
           openingHours: "Abholzeiten:",
           explaination:
-          "Die von Dir für ein Lebensmittel eingegebene Menge bezieht sich immer auf eine Verteilungswoche. Wie oft das Lebensmittel innerhalb des Planungszeitraums verteilt werden soll, wird durch die Zahl neben dem LKW angegeben. Achtung: Es handelt sich um eine Planung. Das Wetter und die verfügbaren Ressourcen auf dem ›Weiten Feld‹ schaffen ihre eigene Realität. CSA heißt - Wir teilen das Anbaurisiko.<br/>Wenn die Anzahl der Verteilungen <v-icon>mdi-truck-fast-outline</v-icon> auf 0 gesetzt wurde, dann war die Wirtschaftlichkeit möglicher Weise nicht gegeben oder uns stehen nicht genug Ressourcen zur Verfügung. Es sind dann keine Verteilungen mehr geplant. In der Plantage ist es nicht vorgesehen, Lebensmittel nach der Bedarfsmeldung zu löschen. Dein Richtwert berücksichtigt aber nur Lebensmittel, für die wir abschließend eine Verteilung geplant haben. Vergiss nicht, Deinen finanziellen Beitrag entsprechend anzupassen!",
+          "Die von Dir für ein Lebensmittel eingegebene Menge bezieht sich immer auf eine Verteilungswoche. Wie oft das Lebensmittel innerhalb des Planungszeitraums verteilt werden soll, wird durch die Zahl neben dem LKW angegeben. Achtung: Es handelt sich um eine Planung. Das Wetter und die verfügbaren Ressourcen auf dem ›Weiten Feld‹ schaffen ihre eigene Realität. CSA heißt - Wir teilen das Anbaurisiko.<br/>Wenn die Anzahl der Verteilungen <i class='mdi-truck-fast-outline mdi v-icon notranslate v-theme-light v-cion--size-default'></i> auf 0 gesetzt wurde, dann war die Wirtschaftlichkeit möglicher Weise nicht gegeben oder uns stehen nicht genug Ressourcen zur Verfügung. Es sind dann keine Verteilungen mehr geplant. In der Plantage ist es nicht vorgesehen, Lebensmittel nach der Bedarfsmeldung zu löschen. Dein Richtwert berücksichtigt aber nur Lebensmittel, für die wir abschließend eine Verteilung geplant haben. Vergiss nicht, Deinen finanziellen Beitrag entsprechend anzupassen!",
           faq: "Informationen und Grundlagen",
           orderDuringSeason:
             "Für Ernteteiler, die erst während des Zylkus dazustoßen und die daher nicht die vollen zwölf Monate dabei sind, wird zusätzlich angezeigt, wieviel eines Produkts bereits verteilt wurde (hellgraues Lastwagensymbol mit Prozentangabe). Bei der Berechnung des Richtwertes sind die bereits verteilten Produkte bereits herausgerechnet.",
@@ -277,16 +277,16 @@ export const language = {
         confirmSepaUpdate: {
           title: "Bestätigung der SEPA-Lastschrift",
           labelModificationOrder:
-            "Ich zahle in 2 Raten [Richtwert €/KW x Anzahl KW : 2] und ermächtige das ›Weite Feld‹ offene Beträge von meinem Konto einzuziehen.",
+            "Ich zahle in 2 Raten von jeweils {fullHalf}€ und ermächtige das ›Weite Feld‹ offene Beträge von meinem Konto einzuziehen.",
           labelNewOrder:
-            "Ich zahle in 2 Raten [Richtwert €/KW x Anzahl KW : 2] und ermächtige das ›Weite Feld‹ offene Beträge von meinem Konto einzuziehen.",
+            "Ich zahle in 2 Raten von jeweils {fullHalf}€ und ermächtige das ›Weite Feld‹ offene Beträge von meinem Konto einzuziehen.",
         },
         confirmBankTransfer: {
           title: "Bestätigung der Überweisung",
           labelModificationOrder:
-            "Ich überweise den Gesamtbetrag von [Richtwert €/KW x Anzahl KW] bis zum [Start-Saison - 7 Tage]",
+            "Ich überweise den Gesamtbetrag von {total}€ bis zum {date}",
           labelNewOrder:
-            "Ich überweise den Gesamtbetrag von [Richtwert €/KW x Anzahl KW] bis zum [Start-Saison - 7 Tage]",
+            "Ich überweise den Gesamtbetrag von {total} bis zum [Start-Saison - 7 Tage]",
           referenceModificationOrder:"",
           referenceNewOrder: "",
         },
