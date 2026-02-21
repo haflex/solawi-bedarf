@@ -226,8 +226,8 @@ const isSepaSelected = computed(() => {
 const validationResult = computed(() => {
   const result = validatePayment(
     props.paymentInfo,
-    props.offer,
-    bankTransferMessage.value.amount,
+    props.offer
+    //bankTransferMessage.value.amount,
   );
   return result;
 });

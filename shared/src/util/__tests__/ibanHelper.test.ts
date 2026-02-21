@@ -39,8 +39,8 @@ describe("validatePayment", () => {
 
       const result = validatePayment(
         payment,
-        requiredSepaAmount,
-        requiredBankTransferAmount
+        requiredSepaAmount
+        //requiredBankTransferAmount
       );
 
       expect(result.valid).toBe(true);
@@ -64,8 +64,8 @@ describe("validatePayment", () => {
 
       const result = validatePayment(
         payment,
-        requiredSepaAmount,
-        requiredBankTransferAmount
+        requiredSepaAmount
+        //requiredBankTransferAmount
       );
 
       expect(result.valid).toBe(false);
@@ -86,8 +86,8 @@ describe("validatePayment", () => {
 
       const result = validatePayment(
         payment,
-        requiredSepaAmount,
-        requiredBankTransferAmount
+        requiredSepaAmount
+        //requiredBankTransferAmount
       );
 
       expect(result.valid).toBe(false);
@@ -109,8 +109,8 @@ describe("validatePayment", () => {
 
       const result = validatePayment(
         payment,
-        requiredSepaAmount,
-        requiredBankTransferAmount
+        requiredSepaAmount
+        //requiredBankTransferAmount
       );
 
       expect(result.valid).toBe(false);
@@ -131,8 +131,8 @@ describe("validatePayment", () => {
 
       const result = validatePayment(
         payment,
-        requiredSepaAmount,
-        requiredBankTransferAmount
+        requiredSepaAmount
+        //requiredBankTransferAmount
       );
 
       expect(result.valid).toBe(true);
@@ -153,8 +153,8 @@ describe("validatePayment", () => {
 
       const result = validatePayment(
         payment,
-        requiredSepaAmount,
-        requiredBankTransferAmount
+        requiredSepaAmount
+        //requiredBankTransferAmount
       );
 
       expect(result.valid).toBe(false);
@@ -175,8 +175,8 @@ describe("validatePayment", () => {
 
       const result = validatePayment(
         payment,
-        requiredSepaAmount,
-        requiredBankTransferAmount
+        requiredSepaAmount
+        //requiredBankTransferAmount
       );
 
       expect(result.valid).toBe(false);
@@ -199,8 +199,8 @@ describe("validatePayment", () => {
 
       const result = validatePayment(
         payment,
-        requiredSepaAmount,
-        requiredBankTransferAmount
+        requiredSepaAmount
+        //requiredBankTransferAmount
       );
 
       expect(result.valid).toBe(false);
@@ -226,8 +226,8 @@ describe("validatePayment", () => {
 
       const result = validatePayment(
         payment,
-        requiredSepaAmount,
-        requiredBankTransferAmount
+        requiredSepaAmount
+        //requiredBankTransferAmount
       );
 
       expect(result.valid).toBe(true);
@@ -248,8 +248,8 @@ describe("validatePayment", () => {
 
       const result = validatePayment(
         payment,
-        requiredSepaAmount,
-        requiredBankTransferAmount
+        requiredSepaAmount
+        //requiredBankTransferAmount
       );
 
       expect(result.valid).toBe(false);
@@ -274,8 +274,8 @@ describe("validatePayment", () => {
 
       const result = validatePayment(
         payment,
-        requiredSepaAmount,
-        requiredBankTransferAmount
+        requiredSepaAmount
+        //requiredBankTransferAmount
       );
 
       expect(result.valid).toBe(false);
@@ -298,8 +298,8 @@ describe("validatePayment", () => {
 
       const result = validatePayment(
         payment,
-        requiredSepaAmount,
-        requiredBankTransferAmount
+        requiredSepaAmount
+        //requiredBankTransferAmount
       );
 
       expect(result.valid).toBe(true);
@@ -320,7 +320,7 @@ describe("validatePayment", () => {
         },
       };
 
-      const result = validatePayment(payment, 0, 0);
+      const result = validatePayment(payment, 0);//, 0);
 
       expect(result.valid).toBe(true);
     });
@@ -339,8 +339,8 @@ describe("validatePayment", () => {
 
       const result = validatePayment(
         payment,
-        requiredSepaAmount,
-        requiredBankTransferAmount
+        requiredSepaAmount
+        //requiredBankTransferAmount
       );
 
       expect(result.valid).toBe(false);
@@ -361,8 +361,8 @@ describe("validatePayment", () => {
 
       const result = validatePayment(
         payment,
-        requiredSepaAmount,
-        requiredBankTransferAmount
+        requiredSepaAmount
+        //requiredBankTransferAmount
       );
 
       expect(result.valid).toBe(true);
@@ -385,8 +385,8 @@ describe("validatePayment", () => {
 
       const result = validatePayment(
         payment,
-        requiredSepaAmount,
-        requiredBankTransferAmount
+        requiredSepaAmount
+        //requiredBankTransferAmount
       );
 
       expect(result.valid).toBe(true);

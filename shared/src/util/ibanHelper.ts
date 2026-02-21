@@ -51,8 +51,8 @@ export type ValidationErrors = {
 
 export const validatePayment = (
   payment: OrderPayment,
-  requiredSepaAmount: number,
-  requiredBankTransferAmount: number
+  requiredSepaAmount: number
+  //requiredBankTransferAmount: number
 ): {
   valid: boolean;
   errors: ValidationErrors;
@@ -86,7 +86,7 @@ export const validatePayment = (
         ` (${requiredSepaAmount}€ statt ${payment.amount}€)`
     );
   }
-  if (
+  /*if (
     payment.paymentType === OrderPaymentType.BANK_TRANSFER &&
     payment.amount !== requiredBankTransferAmount
   ) {
@@ -94,7 +94,7 @@ export const validatePayment = (
       "Die Banküberweisung muss der geforderten Höhe entsprechen" +
         ` (${requiredBankTransferAmount}€ statt ${payment.amount}€)`
     );
-  }
+  }*/
   return {
     valid: Object.keys(errors).length === 1 && errors.general.length === 0,
     errors,
