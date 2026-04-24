@@ -172,26 +172,24 @@ const validateValue = (value: number) => {
   return error === null;
 };
 
-const onBlur = (blur: boolean) => {
-  if (!blur) {
-    let value = parseInt(model.value || "0");
-    let minValue = minValueAvailable.value;
-    if (
-      config.value &&
-      !isIncreaseOnly(currentUser.value?.role, config.value, now.value)
-    ) {
-      minValue = 0;
-    }
-    value = sanitizeOrderItem({
-      value,
-      minValue: minValue,
-      maxValue: maxValueAvailable.value,
-      step: product.value.quantityStep,
-    });
-    model.value = value.toString();
-    validateValue(value);
-    orderStore.updateOrderItem(product.value.id, value);
+const onCommit = () => {
+  let value = parseInt(model.value || "0");
+  let minValue = minValueAvailable.value;
+  if (
+    config.value &&
+    !isIncreaseOnly(currentUser.value?.role, config.value, now.value)
+  ) {
+    minValue = 0;
   }
+  value = sanitizeOrderItem({
+    value,
+    minValue: minValue,
+    maxValue: maxValueAvailable.value,
+    step: product.value.quantityStep,
+  });
+  model.value = value.toString();
+  validateValue(value);
+  orderStore.updateOrderItem(product.value.id, value);
 };
 
 watch([productsById, savedOrderItemsByProductId], () => {
@@ -312,7 +310,7 @@ onMounted(() => {
               validateValue(parseInt(v || '0'));
             }
           "
-          @update:focused="onBlur"
+          @change="onCommit"
           variant="outlined"
           :class="{ 'highlighted-field': shouldHighlightMainField }"
         >
