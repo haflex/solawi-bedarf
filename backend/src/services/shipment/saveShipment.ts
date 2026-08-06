@@ -32,6 +32,7 @@ import {
   AdditionalShipmentItem as AdditionalShipmentItemType,
   ShipmentRequest,
 } from "@lebenswurzel/solawi-bedarf-shared/src/types";
+import { assertShipmentEditable } from "./shipmentEditGuard";
 
 export const saveShipment = async (
   ctx: Koa.ParameterizedContext<any, Router.IRouterParamContext<any, {}>, any>,
@@ -72,20 +73,13 @@ export const saveShipment = async (
       ) {
         ctx.throw(http.bad_request, "outdated shipment");
       }
-      if (
-        requestShipment.type != ShipmentType.FORECAST &&
-        shipment.active &&
-        shipment.validFrom < new Date()
-      ) {
-        // allow to update active shipment but only if a revision message is provided
-        if (
-          role !== UserRole.ADMIN ||
-          !requestShipment.revisionMessage ||
-          requestShipment.revisionMessage.trim() === ""
-        ) {
-          ctx.throw(http.bad_request, "shipment is active");
-        }
-      }
+      assertShipmentEditable(
+        ctx,
+        shipment,
+        requestShipment.type,
+        role,
+        requestShipment.revisionMessage,
+      );
       if (shipment.type !== requestShipment.type) {
         ctx.throw(
           http.bad_request,

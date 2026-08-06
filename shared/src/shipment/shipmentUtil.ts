@@ -25,12 +25,31 @@ import {
 import { isDateEqual } from "../util/dateHelper";
 
 /**
+ * Converts a required order value into the quantity that should actually be
+ * shipped, applying the item's multiplicator (percentage of the required
+ * amount) and unit conversion factors.
+ */
+export const valueToDelivered = ({
+  value,
+  multiplicator,
+  conversionFrom,
+  conversionTo,
+}: {
+  value: number;
+  multiplicator: number;
+  conversionFrom: number;
+  conversionTo: number;
+}): number => {
+  return (value * multiplicator * conversionTo) / (100 * conversionFrom);
+};
+
+/**
  * Efficiently compares two shipment items for equality
  * Returns true if items are different, false if they are equal
  */
 const isShipmentItemDifferent = (
   item1: ShipmentItem,
-  item2: EditShipmentItem
+  item2: EditShipmentItem,
 ): boolean => {
   // Quick checks for primitive values first
   if (item1.productId !== item2.productId) return true;
@@ -56,7 +75,7 @@ const isShipmentItemDifferent = (
  */
 const isAdditionalShipmentItemDifferent = (
   item1: AdditionalShipmentItem,
-  item2: EditAdditionalShipmentItem
+  item2: EditAdditionalShipmentItem,
 ): boolean => {
   // Quick checks for primitive values first
   if (item1.product !== item2.product) return true;
@@ -76,7 +95,7 @@ const isAdditionalShipmentItemDifferent = (
 
 export const isShipmentDifferent = (
   shipment1: Shipment,
-  shipment2: EditShipment
+  shipment2: EditShipment,
 ): boolean => {
   // Quick checks for basic properties first
   if (!isDateEqual(shipment1.validFrom, shipment2.validFrom)) {
@@ -107,7 +126,7 @@ export const isShipmentDifferent = (
     if (
       isShipmentItemDifferent(
         shipment1.shipmentItems[i],
-        shipment2.shipmentItems[i]
+        shipment2.shipmentItems[i],
       )
     ) {
       return true;
@@ -119,7 +138,7 @@ export const isShipmentDifferent = (
     if (
       isAdditionalShipmentItemDifferent(
         shipment1.additionalShipmentItems[i],
-        shipment2.additionalShipmentItems[i]
+        shipment2.additionalShipmentItems[i],
       )
     ) {
       return true;

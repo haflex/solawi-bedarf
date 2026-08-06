@@ -75,3 +75,18 @@ export const deleteShipment = async (shipmentId: number) => {
 
   await verifyResponse(response);
 };
+
+export const recalculateShipment = async (
+  shipmentId: number,
+  revisionMessage?: string,
+) => {
+  const response = await fetch(getUrl("/shipment/recalculate"), {
+    method: "POST",
+    body: JSON.stringify({ id: shipmentId, revisionMessage }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  await verifyResponse(response);
+};
