@@ -45,7 +45,7 @@ import { prepareShipment } from "../lib/shipment/prepareShipment.ts";
 import { createShipmentOverviewPdf } from "../lib/shipment/shipmentOverviewPdf.ts";
 import { createShipmentPackagingPdfs } from "../lib/shipment/shipmentPackagingPdf.ts";
 import { getShipments, saveShipment } from "../requests/shipment.ts";
-import { deleteShipment } from "../requests/shipment.ts";
+import { deleteShipment, recalculateShipment } from "../requests/shipment.ts";
 import { useBIStore } from "../store/biStore";
 import { useConfigStore } from "../store/configStore";
 import { useProductStore } from "../store/productStore";
@@ -312,13 +312,24 @@ const onClose = () => {
   emit("close");
 };
 
-const onSave = () => {
-  if (
+// while the confirmation dialog is open, this holds whichever action (save
+// or recalculate) triggered it, so the dialog can stay generic
+const pendingConfirmedAction = ref<((revisionMessage?: string) => void) | null>(
+  null,
+);
+
+const needsRevisionMessage = computed(() => {
+  return (
     !isForecast.value &&
-    savedShipment?.value?.active &&
-    new Date(savedShipment?.value.validFrom) < new Date()
-  ) {
+    !!savedShipment?.value?.active &&
+    new Date(savedShipment!.value!.validFrom) < new Date()
+  );
+});
+
+const onSave = () => {
+  if (needsRevisionMessage.value) {
     // if the shipment is active and the validFrom is in the past, we need to confirm the change
+    pendingConfirmedAction.value = onSaveConfirmed;
     editConfirmationDialog.value = true;
     return;
   }
@@ -351,6 +362,35 @@ const onSaveConfirmed = (revisionMessage?: string) => {
     .catch((e: Error) => {
       console.log(e);
       setError(language.app.uiFeedback.saving.failed, e);
+      loading.value = false;
+    });
+};
+
+const onRecalculate = () => {
+  if (needsRevisionMessage.value) {
+    pendingConfirmedAction.value = onRecalculateConfirmed;
+    editConfirmationDialog.value = true;
+    return;
+  }
+  onRecalculateConfirmed();
+};
+
+const onRecalculateConfirmed = (revisionMessage?: string) => {
+  if (!savedShipment.value) {
+    return;
+  }
+  editConfirmationDialog.value = false;
+  editConfirmationDialogMessage.value = "";
+  loading.value = true;
+  recalculateShipment(savedShipment.value.id, revisionMessage)
+    .then(() => {
+      loading.value = false;
+      setSuccess("Mengen wurden anhand der aktuellen Bestellungen neu berechnet");
+      onEditShipment(savedShipment.value!.id);
+    })
+    .catch((e: Error) => {
+      console.log(e);
+      setError("Fehler beim Neuberechnen der Verteilung", e);
       loading.value = false;
     });
 };
@@ -717,6 +757,19 @@ watchEffect(async () => {
           {{ language.app.actions.save }}
         </v-btn>
         <v-btn
+          v-if="savedShipment"
+          :loading="loading"
+          @click="onRecalculate"
+          prepend-icon="mdi-refresh"
+        >
+          Neu berechnen
+          <v-tooltip activator="parent" location="top">
+            Berechnet die benötigten Mengen (Geliefert) aller Produkte anhand
+            der aktuell bestätigten Bestellungen neu. Zusatzprodukte sind
+            davon nicht betroffen.
+          </v-tooltip>
+        </v-btn>
+        <v-btn
           :loading="loading"
           @click="onShipmentPdfClick"
           :disabled="disableDownloadPdf"
@@ -757,8 +810,8 @@ watchEffect(async () => {
       <v-card-text>
         Die Lieferung liegt in der Vergangenheit und ist bereits veröffentlicht.
         Eine Änderung ist nur vorgesehen, falls die tatsächliche Lieferung von
-        der zuvor veröffentlichten Lieferung abweicht. Um sie speichern zu
-        können, bitte eine Änderungsmeldung eingeben.
+        der zuvor veröffentlichten Lieferung abweicht. Um fortzufahren, bitte
+        eine Änderungsmeldung eingeben.
       </v-card-text>
       <v-card-text>
         <v-text-field
@@ -771,8 +824,11 @@ watchEffect(async () => {
         >
       </v-card-text>
       <v-card-actions>
-        <v-btn @click="() => onSaveConfirmed(editConfirmationDialogMessage)"
-          >Speichern</v-btn
+        <v-btn
+          @click="
+            () => pendingConfirmedAction?.(editConfirmationDialogMessage)
+          "
+          >Bestätigen</v-btn
         >
         <v-btn @click="editConfirmationDialog = false"> Abbrechen </v-btn>
       </v-card-actions>

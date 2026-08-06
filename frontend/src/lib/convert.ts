@@ -16,6 +16,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 import { parseISO, formatISO } from "date-fns";
 
+export { valueToDelivered } from "@lebenswurzel/solawi-bedarf-shared/src/shipment/shipmentUtil.ts";
+
 export const dateToString = (date: Date | string) => {
   const isoDateString = formatISO(date);
   return isoDateString.substring(0, 16);
@@ -23,20 +25,6 @@ export const dateToString = (date: Date | string) => {
 
 export const stringToDate = (date: string) => {
   return date && parseISO(date);
-};
-
-export const valueToDelivered = ({
-  value,
-  multiplicator,
-  conversionFrom,
-  conversionTo,
-}: {
-  value: number;
-  multiplicator: number;
-  conversionFrom: number;
-  conversionTo: number;
-}) => {
-  return (value * multiplicator * conversionTo) / (100 * conversionFrom);
 };
 
 function shuffleArray<T>(array: T[]): T[] {

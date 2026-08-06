@@ -125,13 +125,21 @@ const port =
 
 const syncronize = config.testing.isTesting;
 
+// POSTGRES_URL historically also carries unix-socket paths as "socket:<path>"
+// (e.g. "socket:/run/postgresql"). pg treats a `host` starting with "/" as a
+// unix socket directory, so that prefix must be stripped before use.
+const socketPrefix = "socket:";
+const host = config.db.url.startsWith(socketPrefix)
+  ? config.db.url.slice(socketPrefix.length)
+  : config.db.url;
+
 console.log(
-  `Connecting to database ${config.db.url}:${port} (syncronize=${syncronize})`,
+  `Connecting to database ${host}:${port} (syncronize=${syncronize})`,
 );
 
 const dataSourceOptions: PostgresConnectionOptions = {
   type: "postgres",
-  url: config.db.url,
+  host,
   port,
   username: config.db.username,
   password: config.db.password,

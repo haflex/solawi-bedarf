@@ -62,6 +62,7 @@ import { durationLogger } from "./middleware/durationLogger";
 import { getErrorLog } from "./services/getErrorLog";
 import { getUserShipments } from "./services/shipment/getUserShipments";
 import { deleteShipment } from "./services/shipment/deleteShipment";
+import { recalculateShipment } from "./services/shipment/recalculateShipment";
 import { availabilityWeightsHandler } from "./services/bi/availabilityWeights";
 import { Server } from "http";
 import { IAppContext } from "./controllers/ctx";
@@ -169,6 +170,7 @@ export async function startServer(): Promise<Server> {
   router.get("/shipment", getUserShipments);
   router.get("/shipments", getShipments);
   router.post("/shipment", saveShipment);
+  router.post("/shipment/recalculate", recalculateShipment);
   router.delete("/shipment", deleteShipment);
 
   router.get("/productCategory", getProductCategory);
